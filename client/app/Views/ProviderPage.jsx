@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-import CardProvider from '../components/CardProvider'
+import CardProvider from '../Components/CardProvider'
 
 class ProviderPage extends Component {
 
