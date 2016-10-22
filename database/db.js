@@ -18,7 +18,7 @@ config = {
 };
 
 // 
-var mongoUrl = config.uri.dev || config.uri.test || config.uri.prod;
+var mongoUrl = config.uri.test || config.uri.test || config.uri.prod;
 
 var mongoDB = mongoUrl + config.database.name;
 
