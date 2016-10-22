@@ -1,0 +1,22 @@
+{
+  "name": "react-root",
+  "description": "",
+  "main": "client/public/index.html",
+  "authors": [
+    "apenachi"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/public/libraries",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
+
