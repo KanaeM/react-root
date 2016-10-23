@@ -31,12 +31,15 @@ class Application extends Component {
 		this.state = {
 			signInModalOpen: false,
 			login: false,
-			user: {},
 		}
 	}
 
 	handleOpenSignInModal(event) {
-		this.setState({signInModalOpen: true})
+		if(!this.state.login) {
+			this.setState({signInModalOpen: true})
+		} else {
+			this.setState({	user: {}, login: false})
+		}
 	}
 
 	handleSignInModal(open, usr){
@@ -94,9 +97,9 @@ class Application extends Component {
 								</div>
 							</ul>
 							<ul className="nav navbar-nav navbar-right">
-								<li><MuiThemeProvider><div><RaisedButton onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" > {user.userName}</span>)} </RaisedButton> </div></MuiThemeProvider></li>
-								<li><Link to="/provider" activeClassName="modal"> Post a Job!</Link></li>
-								<li><Link to ='/modal' activeClassName="modal">{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" > Welcome {user.userName}</span>)}</Link></li>
+								<li><MuiThemeProvider><div><RaisedButton backgroundColor= {'pink'} onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" > {user.userName}</span>)} </RaisedButton> </div></MuiThemeProvider></li>
+								<li><Link to="/provider" activeClassName="active"> Providers</Link></li>
+								<li><Link to ='' activeClassName="active" onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in"> {user.userName} </span>)}</Link></li>
 							</ul>
 						</div>
 					</nav>

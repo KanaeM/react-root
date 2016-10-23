@@ -16,16 +16,16 @@ class ProviderPage extends Component {
 	handleClick() {
 		var usr = (this.props.user.userName === undefined) ? 'robin' : {}
 		this.props.authenticate(usr, 'providers')	// receivers
-		console.log('this.props.user.name ', this.props.user.userName)
+		console.log('ProviderPage - this.props.user.name ', this.props.user.userName)
 	}
 
 	componentDidMount() {
-		console.log('componentDidMount - P');
-		console.log('this.props.user.name ', this.props.user.name)
+		console.log('ProviderPage - componentDidMount - P');
+		console.log('ProviderPage - this.props.user.name ', this.props.user.name)
 	}
 
 	componentDidUpdate() {
-		console.log('componentDidUpdate - P');
+		console.log('ProviderPage - componentDidUpdate - P');
 		console.log('user', this.props.user)
 	}
 
@@ -33,7 +33,7 @@ class ProviderPage extends Component {
 	render() {
 		const { user } = this.props;
 		var component;
-		if(user.userName === undefined){
+		if(!user){
 			component = <RaisedButton label="login" onClick={this.handleClick}/>
 		} else {
 			component = <RaisedButton label="logout" onClick={this.handleClick}/>

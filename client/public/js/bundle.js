@@ -47668,8 +47668,7 @@
 
 			_this.state = {
 				signInModalOpen: false,
-				login: false,
-				user: {}
+				login: false
 			};
 			return _this;
 		}
@@ -47677,7 +47676,11 @@
 		_createClass(Application, [{
 			key: 'handleOpenSignInModal',
 			value: function handleOpenSignInModal(event) {
-				this.setState({ signInModalOpen: true });
+				if (!this.state.login) {
+					this.setState({ signInModalOpen: true });
+				} else {
+					this.setState({ user: {}, login: false });
+				}
 			}
 		}, {
 			key: 'handleSignInModal',
@@ -47775,7 +47778,7 @@
 											null,
 											_react2.default.createElement(
 												_RaisedButton2.default,
-												{ onTouchTap: this.handleOpenSignInModal },
+												{ backgroundColor: 'pink', onTouchTap: this.handleOpenSignInModal },
 												!this.state.login && 'login',
 												' ',
 												this.state.login && _react2.default.createElement(
@@ -47795,8 +47798,8 @@
 									null,
 									_react2.default.createElement(
 										_reactRouter.Link,
-										{ to: '/provider', activeClassName: 'modal' },
-										' Post a Job!'
+										{ to: '/provider', activeClassName: 'active' },
+										' Providers'
 									)
 								),
 								_react2.default.createElement(
@@ -47804,14 +47807,15 @@
 									null,
 									_react2.default.createElement(
 										_reactRouter.Link,
-										{ to: '/modal', activeClassName: 'modal' },
+										{ to: '', activeClassName: 'active', onTouchTap: this.handleOpenSignInModal },
 										!this.state.login && 'login',
 										' ',
 										this.state.login && _react2.default.createElement(
 											'span',
 											{ className: 'glyphicon glyphicon-log-in' },
-											' Welcome ',
-											user.userName
+											' ',
+											user.userName,
+											' '
 										)
 									)
 								)
@@ -57113,18 +57117,18 @@
 			value: function handleClick() {
 				var usr = this.props.user.userName === undefined ? 'robin' : {};
 				this.props.authenticate(usr, 'providers'); // receivers
-				console.log('this.props.user.name ', this.props.user.userName);
+				console.log('ProviderPage - this.props.user.name ', this.props.user.userName);
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				console.log('componentDidMount - P');
-				console.log('this.props.user.name ', this.props.user.name);
+				console.log('ProviderPage - componentDidMount - P');
+				console.log('ProviderPage - this.props.user.name ', this.props.user.name);
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
-				console.log('componentDidUpdate - P');
+				console.log('ProviderPage - componentDidUpdate - P');
 				console.log('user', this.props.user);
 			}
 		}, {
@@ -57133,7 +57137,7 @@
 				var user = this.props.user;
 
 				var component;
-				if (user.userName === undefined) {
+				if (!user) {
 					component = _react2.default.createElement(_RaisedButton2.default, { label: 'login', onClick: this.handleClick });
 				} else {
 					component = _react2.default.createElement(_RaisedButton2.default, { label: 'logout', onClick: this.handleClick });

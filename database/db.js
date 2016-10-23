@@ -4,8 +4,8 @@ var chalk = require('chalk');
 // Replace uri and database values as needed
 config = {
 	uri : {
-		dev:  'mongodb://localhost:27017/',
-		test: 'mongodb://heroku_qm0ktctw:fg2sc6bfdlde5921be3qef5op9@ds035776.mlab.com:35776/heroku_qm0ktctw/',
+		test:  'mongodb://localhost:27017/',
+		dev: 'mongodb://heroku_qm0ktctw:fg2sc6bfdlde5921be3qef5op9@ds035776.mlab.com:35776/heroku_qm0ktctw/',
 		prod: 'mongodb://' + process.env.MONGODB_URI + '/'
 	},
 	database: {
@@ -18,7 +18,7 @@ config = {
 };
 
 // 
-var mongoUrl = config.uri.test || config.uri.test || config.uri.prod;
+var mongoUrl = config.uri.dev || config.uri.dev || config.uri.prod;
 
 var mongoDB = mongoUrl + config.database.name;
 
