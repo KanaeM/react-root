@@ -33,9 +33,9 @@ class ProviderPage extends Component {
 
 
 	render() {
-		const { user } = this.props;
+		const { login, user } = this.props;
 		var component;
-		if(!user){
+		if(!login){
 			// component = <RaisedButton label="login" onClick={this.handleClick}/>
 			component = 
 			(

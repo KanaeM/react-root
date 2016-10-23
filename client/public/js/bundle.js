@@ -57143,10 +57143,12 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var user = this.props.user;
+				var _props = this.props;
+				var login = _props.login;
+				var user = _props.user;
 
 				var component;
-				if (!user) {
+				if (!login) {
 					// component = <RaisedButton label="login" onClick={this.handleClick}/>
 					component = _react2.default.createElement(
 						'div',
