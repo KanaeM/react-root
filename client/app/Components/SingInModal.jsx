@@ -34,7 +34,7 @@ class SingInModal extends Component {
 		super(props);
 		this.handleClose = this.handleClose.bind(this);
 		this.handleOpen = this.handleOpen.bind(this);
-		this.handleGo = this.handleGo.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.state={
 			open: false,
@@ -57,21 +57,27 @@ class SingInModal extends Component {
 		console.log('user: ', this.state.user)
 	}
 	
-	handleGo(){
-	alert('user.name: ' + this.state.user.name)
-	alert('user.password: ' + this.state.user.password)
-	this.setState({open: false})
-	// TODO: handle validation
-	if(!this.state.user.name)
-		alert('text empty')
+	handleSubmit(){
+		// alert('user.name: ' + this.state.user.name)
+		// alert('user.password: ' + this.state.user.password)
+		this.setState({open: false})
+
+		this.props.handleSignInModal(false, this.state.user)
+		this.setState({user: {name: '', password: ''}});
+		console.log('SingInModal - handleSubmit: ', this.state.user)
 	}
 
 	handleClose(){
-		this.setState({open: false})
+		// this.setState({open: false})
+		this.setState({user: {name: '', password: ''}});	// Doesnot work right away it exec after close
+		console.log('SingInModal - handleClose: ', this.state.user)
+		this.props.handleSignInModal(false, {})
 	}
 
 	handleOpen(){
-		this.setState({open: true})
+		console.log('SingInModal - handleOpen')
+		// this.props.handleSignInModal(true, this.state.user)
+		// this.setState({open: true})
 	}
 
 	componentWillMount() {
@@ -80,25 +86,25 @@ class SingInModal extends Component {
 	}
 
 	render(){
+		const {signInModalOpen} = this.props
 		const actions = [
 				<RaisedButton
 					label="Cancel"
 					secondary={true}
 					// keyboardFocused={true}
-					onTouchTap={this.handleClose}
-				/>,
+					onTouchTap={this.handleClose}/>,
 				'  ',
-				<RaisedButton label="Go" primary={true} keyboardFocused={true} onTouchTap={this.handleGo}/>
+				<RaisedButton label="Submit" primary={true} keyboardFocused={true} onTouchTap={this.handleSubmit}/>
 			 ];
 		return(
 			<div>
-				<RaisedButton label="Sign In" onTouchTap={this.handleOpen} />
+				{/*<RaisedButton label="Sign In" onTouchTap={this.handleOpen} /> */}
 				<Dialog 
 					title="Sign In"
 					// style={{backgroundColor: blue200}}
 					actions={actions}
 					// modal={false}
-					open={this.state.open}
+					open={signInModalOpen}
 					contentStyle={customContentStyle}
 					// autoScrollBodyContent={false}
 					onRequestClose={this.handleClose}>
@@ -116,11 +122,12 @@ class SingInModal extends Component {
 						<TextField
 							floatingLabelText="Password"
 							hintText="password"
-							// value={this.state.user.password}
+							value={this.state.user.password}
 							onChange={this.handleChange}		
 							id="password"
 							type="password"
-						/><br />					
+						/>
+						<br />					
 					
 				</Dialog>
 			</div>

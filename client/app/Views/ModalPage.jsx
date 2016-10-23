@@ -4,11 +4,11 @@ import SingInModal from '../Components/SingInModal';
 class ModalPage extends Component {
 	
 	render() {
-		const {open} = this.props
+		// const {open} = this.props
 		return (
 
 			<div>
-				<SingInModal open={open}/>
+				<SingInModal />
 			</div>
 			
 		);

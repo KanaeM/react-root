@@ -47020,7 +47020,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SingInModal = __webpack_require__(580);
+	var _SingInModal = __webpack_require__(479);
 
 	var _SingInModal2 = _interopRequireDefault(_SingInModal);
 
@@ -47044,12 +47044,11 @@
 		_createClass(ModalPage, [{
 			key: 'render',
 			value: function render() {
-				var open = this.props.open;
-
+				// const {open} = this.props
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_SingInModal2.default, { open: open })
+					_react2.default.createElement(_SingInModal2.default, null)
 				);
 			}
 		}]);
@@ -47060,7 +47059,195 @@
 	exports.default = ModalPage;
 
 /***/ },
-/* 479 */,
+/* 479 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Dialog = __webpack_require__(411);
+
+	var _Dialog2 = _interopRequireDefault(_Dialog);
+
+	var _RaisedButton = __webpack_require__(244);
+
+	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+	var _FlatButton = __webpack_require__(382);
+
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+	var _TextField = __webpack_require__(420);
+
+	var _TextField2 = _interopRequireDefault(_TextField);
+
+	var _ExpandTransition = __webpack_require__(480);
+
+	var _ExpandTransition2 = _interopRequireDefault(_ExpandTransition);
+
+	var _colors = __webpack_require__(438);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// const styles = {
+	// 	errorStyle: {
+	// 		color: orange500,
+	// 		display: 'none'
+	// 	},
+	// 	underlineStyle: {
+	// 		borderColor: orange500,
+	// 	},
+	// 	floatingLabelStyle: {
+	// 		color: orange500,
+	// 	},
+	// 	floatingLabelFocusStyle: {
+	// 		color: blue500,
+	// 	},
+	// };
+
+
+	var customContentStyle = {
+		width: '25%',
+		maxWidth: 'none'
+	};
+
+	var SingInModal = function (_Component) {
+		_inherits(SingInModal, _Component);
+
+		function SingInModal(props) {
+			_classCallCheck(this, SingInModal);
+
+			var _this = _possibleConstructorReturn(this, (SingInModal.__proto__ || Object.getPrototypeOf(SingInModal)).call(this, props));
+
+			_this.handleClose = _this.handleClose.bind(_this);
+			_this.handleOpen = _this.handleOpen.bind(_this);
+			_this.handleSubmit = _this.handleSubmit.bind(_this);
+			_this.handleChange = _this.handleChange.bind(_this);
+			_this.state = {
+				open: false,
+				user: { name: '', password: '' }
+			};
+			return _this;
+		}
+
+		_createClass(SingInModal, [{
+			key: 'handleChange',
+			value: function handleChange(event) {
+				console.log(event.target.id); //Works
+				if (event.target.id === 'username') {
+					this.setState({
+						user: { name: event.target.value, password: this.state.user.password }
+					});
+				}
+				if (event.target.id === 'password') {
+					this.setState({
+						user: { name: this.state.user.name, password: event.target.value }
+					});
+				}
+				console.log('user: ', this.state.user);
+			}
+		}, {
+			key: 'handleSubmit',
+			value: function handleSubmit() {
+				// alert('user.name: ' + this.state.user.name)
+				// alert('user.password: ' + this.state.user.password)
+				this.setState({ open: false });
+
+				this.props.handleSignInModal(false, this.state.user);
+				this.setState({ user: { name: '', password: '' } });
+				console.log('SingInModal - handleSubmit: ', this.state.user);
+			}
+		}, {
+			key: 'handleClose',
+			value: function handleClose() {
+				// this.setState({open: false})
+				this.setState({ user: { name: '', password: '' } }); // Doesnot work right away it exec after close
+				console.log('SingInModal - handleClose: ', this.state.user);
+				this.props.handleSignInModal(false, {});
+			}
+		}, {
+			key: 'handleOpen',
+			value: function handleOpen() {
+				console.log('SingInModal - handleOpen');
+				// this.props.handleSignInModal(true, this.state.user)
+				// this.setState({open: true})
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				console.log('props', this.props.open);
+				// this.setState({open: this.props.open})
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var signInModalOpen = this.props.signInModalOpen;
+
+				var actions = [_react2.default.createElement(_RaisedButton2.default, {
+					label: 'Cancel',
+					secondary: true
+					// keyboardFocused={true}
+					, onTouchTap: this.handleClose }), '  ', _react2.default.createElement(_RaisedButton2.default, { label: 'Submit', primary: true, keyboardFocused: true, onTouchTap: this.handleSubmit })];
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_Dialog2.default,
+						{
+							title: 'Sign In'
+							// style={{backgroundColor: blue200}}
+							, actions: actions
+							// modal={false}
+							, open: signInModalOpen,
+							contentStyle: customContentStyle
+							// autoScrollBodyContent={false}
+							, onRequestClose: this.handleClose },
+						_react2.default.createElement(_TextField2.default
+						// hintText="Please Enter Password"
+						, { floatingLabelText: 'User Name',
+							hintText: 'user name',
+							value: this.state.user.name,
+							onChange: this.handleChange,
+							id: 'username'
+							// {errorText="This field is required."
+							// errorStyle={styles.errorStyle}
+						}),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(_TextField2.default, {
+							floatingLabelText: 'Password',
+							hintText: 'password',
+							value: this.state.user.password,
+							onChange: this.handleChange,
+							id: 'password',
+							type: 'password'
+						}),
+						_react2.default.createElement('br', null)
+					)
+				);
+			}
+		}]);
+
+		return SingInModal;
+	}(_react.Component);
+
+	exports.default = SingInModal;
+
+/***/ },
 /* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47431,6 +47618,10 @@
 
 	var _History2 = _interopRequireDefault(_History);
 
+	var _SingInModal = __webpack_require__(479);
+
+	var _SingInModal2 = _interopRequireDefault(_SingInModal);
+
 	var _MuiThemeProvider = __webpack_require__(477);
 
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
@@ -47438,6 +47629,14 @@
 	var _Paper = __webpack_require__(369);
 
 	var _Paper2 = _interopRequireDefault(_Paper);
+
+	var _RaisedButton = __webpack_require__(244);
+
+	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+	var _FlatButton = __webpack_require__(382);
+
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47464,10 +47663,11 @@
 			var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this, props));
 
 			_this.authenticate = _this.authenticate.bind(_this);
-			_this.handleOpen = _this.handleOpen.bind(_this);
+			_this.handleSignInModal = _this.handleSignInModal.bind(_this);
+			_this.handleOpenSignInModal = _this.handleOpenSignInModal.bind(_this);
 
 			_this.state = {
-				open: false,
+				signInModalOpen: false,
 				login: false,
 				user: {}
 			};
@@ -47475,10 +47675,18 @@
 		}
 
 		_createClass(Application, [{
-			key: 'handleOpen',
-			value: function handleOpen(event) {
-				this.setState({ open: this.state.open });
-				console.log('application-handleOpen: ', this.state.open);
+			key: 'handleOpenSignInModal',
+			value: function handleOpenSignInModal(event) {
+				this.setState({ signInModalOpen: true });
+			}
+		}, {
+			key: 'handleSignInModal',
+			value: function handleSignInModal(open, usr) {
+				this.setState({ signInModalOpen: open });
+				this.setState({ user: usr });
+				this.authenticate(usr.name, 'providers');
+				console.log('application - handleSignInModal: ', this.state.signInModalOpen);
+				console.log('application - user', usr.name);
 			}
 		}, {
 			key: 'authenticate',
@@ -47501,15 +47709,15 @@
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate(prevProps, prevState) {
-				console.log('componentDidUpdate');
-				console.log('user: ', this.state.user);
+				console.log('application - componentDidUpdate');
+				console.log('application - user: ', this.state.user);
 				// TODO : Check DB for updated data if needed
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				console.log('componentDidMount');
-				console.log('user: ', this.state.user);
+				console.log('application - componentDidMount');
+				console.log('application - user: ', this.state.user);
 				// TODO : setTimeOut(updateDate, time)
 			}
 		}, {
@@ -47520,7 +47728,7 @@
 				var login = _state.login;
 				var user = _state.user;
 				var authenticate = _state.authenticate;
-				var open = _state.open;
+				var signInModalOpen = _state.signInModalOpen;
 
 				return _react2.default.createElement(
 					'div',
@@ -47560,6 +47768,32 @@
 									'li',
 									null,
 									_react2.default.createElement(
+										_MuiThemeProvider2.default,
+										null,
+										_react2.default.createElement(
+											'div',
+											null,
+											_react2.default.createElement(
+												_RaisedButton2.default,
+												{ onTouchTap: this.handleOpenSignInModal },
+												!this.state.login && 'login',
+												' ',
+												this.state.login && _react2.default.createElement(
+													'span',
+													{ className: 'glyphicon glyphicon-log-in' },
+													' ',
+													user.userName
+												),
+												' '
+											),
+											' '
+										)
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
 										_reactRouter.Link,
 										{ to: '/provider', activeClassName: 'modal' },
 										' Post a Job!'
@@ -47575,7 +47809,7 @@
 										' ',
 										this.state.login && _react2.default.createElement(
 											'span',
-											{ className: 'glyphicon glyphicon-log-in', onClick: this.handleOpen },
+											{ className: 'glyphicon glyphicon-log-in' },
 											' Welcome ',
 											user.userName
 										)
@@ -47593,10 +47827,10 @@
 							_react2.default.createElement(
 								_Paper2.default,
 								{ style: style, zDepth: 5 },
+								_react2.default.createElement(_SingInModal2.default, { signInModalOpen: signInModalOpen, handleSignInModal: this.handleSignInModal }),
 								(0, _react.cloneElement)(children, {
 									user: user,
 									login: login,
-									open: open,
 									authenticate: this.authenticate
 								})
 							)
@@ -59238,188 +59472,6 @@
 	};
 
 	module.exports = keyOf;
-
-/***/ },
-/* 580 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Dialog = __webpack_require__(411);
-
-	var _Dialog2 = _interopRequireDefault(_Dialog);
-
-	var _RaisedButton = __webpack_require__(244);
-
-	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-	var _FlatButton = __webpack_require__(382);
-
-	var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-	var _TextField = __webpack_require__(420);
-
-	var _TextField2 = _interopRequireDefault(_TextField);
-
-	var _ExpandTransition = __webpack_require__(480);
-
-	var _ExpandTransition2 = _interopRequireDefault(_ExpandTransition);
-
-	var _colors = __webpack_require__(438);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// const styles = {
-	// 	errorStyle: {
-	// 		color: orange500,
-	// 		display: 'none'
-	// 	},
-	// 	underlineStyle: {
-	// 		borderColor: orange500,
-	// 	},
-	// 	floatingLabelStyle: {
-	// 		color: orange500,
-	// 	},
-	// 	floatingLabelFocusStyle: {
-	// 		color: blue500,
-	// 	},
-	// };
-
-
-	var customContentStyle = {
-		width: '25%',
-		maxWidth: 'none'
-	};
-
-	var SingInModal = function (_Component) {
-		_inherits(SingInModal, _Component);
-
-		function SingInModal(props) {
-			_classCallCheck(this, SingInModal);
-
-			var _this = _possibleConstructorReturn(this, (SingInModal.__proto__ || Object.getPrototypeOf(SingInModal)).call(this, props));
-
-			_this.handleClose = _this.handleClose.bind(_this);
-			_this.handleOpen = _this.handleOpen.bind(_this);
-			_this.handleGo = _this.handleGo.bind(_this);
-			_this.handleChange = _this.handleChange.bind(_this);
-			_this.state = {
-				open: false,
-				user: { name: '', password: '' }
-			};
-			return _this;
-		}
-
-		_createClass(SingInModal, [{
-			key: 'handleChange',
-			value: function handleChange(event) {
-				console.log(event.target.id); //Works
-				if (event.target.id === 'username') {
-					this.setState({
-						user: { name: event.target.value, password: this.state.user.password }
-					});
-				}
-				if (event.target.id === 'password') {
-					this.setState({
-						user: { name: this.state.user.name, password: event.target.value }
-					});
-				}
-				console.log('user: ', this.state.user);
-			}
-		}, {
-			key: 'handleGo',
-			value: function handleGo() {
-				alert('user.name: ' + this.state.user.name);
-				alert('user.password: ' + this.state.user.password);
-				this.setState({ open: false });
-				// TODO: handle validation
-				if (!this.state.user.name) alert('text empty');
-			}
-		}, {
-			key: 'handleClose',
-			value: function handleClose() {
-				this.setState({ open: false });
-			}
-		}, {
-			key: 'handleOpen',
-			value: function handleOpen() {
-				this.setState({ open: true });
-			}
-		}, {
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				console.log('props', this.props.open);
-				// this.setState({open: this.props.open})
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var actions = [_react2.default.createElement(_RaisedButton2.default, {
-					label: 'Cancel',
-					secondary: true
-					// keyboardFocused={true}
-					, onTouchTap: this.handleClose
-				}), '  ', _react2.default.createElement(_RaisedButton2.default, { label: 'Go', primary: true, keyboardFocused: true, onTouchTap: this.handleGo })];
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_RaisedButton2.default, { label: 'Sign In', onTouchTap: this.handleOpen }),
-					_react2.default.createElement(
-						_Dialog2.default,
-						{
-							title: 'Sign In'
-							// style={{backgroundColor: blue200}}
-							, actions: actions
-							// modal={false}
-							, open: this.state.open,
-							contentStyle: customContentStyle
-							// autoScrollBodyContent={false}
-							, onRequestClose: this.handleClose },
-						_react2.default.createElement(_TextField2.default
-						// hintText="Please Enter Password"
-						, { floatingLabelText: 'User Name',
-							hintText: 'user name',
-							value: this.state.user.name,
-							onChange: this.handleChange,
-							id: 'username'
-							// {errorText="This field is required."
-							// errorStyle={styles.errorStyle}
-						}),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement(_TextField2.default, {
-							floatingLabelText: 'Password',
-							hintText: 'password'
-							// value={this.state.user.password}
-							, onChange: this.handleChange,
-							id: 'password',
-							type: 'password'
-						}),
-						_react2.default.createElement('br', null)
-					)
-				);
-			}
-		}]);
-
-		return SingInModal;
-	}(_react.Component);
-
-	exports.default = SingInModal;
 
 /***/ }
 /******/ ]);
