@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import ModalTest from '../Components/ModalTest';
+import SingInModal from '../Components/SingInModal';
 
 class ModalPage extends Component {
 	
 	render() {
+		const {open} = this.props
 		return (
-			
-			<MuiThemeProvider>
+
 			<div>
-				<ModalTest />
+				<SingInModal open={open}/>
 			</div>
-			</MuiThemeProvider>
 			
 		);
 	}

@@ -22,12 +22,20 @@ class Application extends Component {
 		super(props);
 
 		this.authenticate = this.authenticate.bind(this);
+		this.handleOpen = this.handleOpen.bind(this);
+
 		this.state = {
+			open: false,
 			login: false,
 			user: {},
 		}
 	}
 
+	handleOpen(event){
+		this.setState({open: this.state.open})
+		console.log('application-handleOpen: ', this.state.open)
+	}
+	
 	authenticate(user, route) {
 		console.log('authenticate -> ', user);
 		helpers.getUser(user, route)
@@ -40,7 +48,6 @@ class Application extends Component {
 				}
 			}.bind(this))
 	}
-
 
 	updateState(usr) {
 		this.setState({	user: usr, login: true})
@@ -62,7 +69,7 @@ class Application extends Component {
 
 	render() {
 		const { children } = this.props;
-		const {login, user, authenticate} = this.state;
+		const {login, user, authenticate, open} = this.state;
 		return (
 				<div className="Application">
 					<nav className="navbar">
@@ -77,7 +84,7 @@ class Application extends Component {
 							</ul>
 							<ul className="nav navbar-nav navbar-right">
 								<li><Link to="/provider" activeClassName="modal"> Post a Job!</Link></li>
-								<li><Link to ='/modal' activeClassName="modal">{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in"> Welcome {user.userName}</span>)}</Link></li>
+								<li><Link to ='/modal' activeClassName="modal">{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" onClick={this.handleOpen}> Welcome {user.userName}</span>)}</Link></li>
 							</ul>
 						</div>
 					</nav>
@@ -88,6 +95,7 @@ class Application extends Component {
 										cloneElement(children, {
 											user: user,
 											login: login,
+											open: open,
 											authenticate: this.authenticate
 										})
 									}
