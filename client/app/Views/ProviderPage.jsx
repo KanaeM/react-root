@@ -9,6 +9,7 @@ class ProviderPage extends Component {
 	constructor(props){
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
+		this.componentDidMount = this.componentDidMount.bind(this);
 		this.state = {
 			
 		}
@@ -16,17 +17,18 @@ class ProviderPage extends Component {
 	handleClick() {
 		var usr = (this.props.user.userName === undefined) ? 'robin' : {}
 		this.props.authenticate(usr, 'providers')	// receivers
-		console.log('ProviderPage - this.props.user.name ', this.props.user.userName)
+		console.log('ProviderPage - handleClick')
+		console.log('ProviderPage - handleClick - userName: ', this.props.user.userName)
 	}
 
 	componentDidMount() {
-		console.log('ProviderPage - componentDidMount - P');
-		console.log('ProviderPage - this.props.user.name ', this.props.user.name)
+		console.log('ProviderPage - componentDidMount');
+		console.log('ProviderPage - componentDidMount - userName: ', this.props.user.userName)
 	}
 
 	componentDidUpdate() {
-		console.log('ProviderPage - componentDidUpdate - P');
-		console.log('user', this.props.user)
+		console.log('ProviderPage - componentDidUpdate');
+		console.log('ProviderPage - componentDidUpdate - userName: ', this.props.user.userName)
 	}
 
 
@@ -34,9 +36,23 @@ class ProviderPage extends Component {
 		const { user } = this.props;
 		var component;
 		if(!user){
-			component = <RaisedButton label="login" onClick={this.handleClick}/>
+			// component = <RaisedButton label="login" onClick={this.handleClick}/>
+			component = 
+			(
+					<div className="jumbotron">
+					  <h2>Welcome Provider</h2>
+					  <p>Please log in </p>
+					</div>
+			)
+
 		} else {
-			component = <RaisedButton label="logout" onClick={this.handleClick}/>
+			component = 
+			(
+					<div className="jumbotron">
+					  <h2>Welcome {user.userName}</h2>
+					  <p>loading ......</p>
+					</div>
+			)
 		}
 		
 

@@ -28,19 +28,25 @@ class MainPage extends Component {
 	}
 
 	handleClick(e) {
-		// alert('Iwas clicked');
-		// console.log('event', e.native);	// does get ahold of event
-		const route = '/provider'
-		console.log('route', route)
+		console.log('MainPage - handleClick')
+		const route = '/receiver'
 		browserHistory.push(route);
 	}
 
 	render() {
-		console.log('Main Page', this.props);
 		
 		return (
 				<Paper style={style.paper} zDepth={5} onClick={this.handleClick} >
+					<div className="jumbotron">
+					  <h1>Welcome to JADE</h1>
+					  <p>Job Aid Discovery Engine was created by RCB developers</p>
+					  <h4>Whenever you ready just click </h4>
+					</div>
 
+					<div className="container">
+					  <p>Find help, people that offer free services for anything</p>
+					  <p>There a lot of volunteers ready to help you with your every day tasks</p>
+					</div>
 				</Paper>
 		);
 	}

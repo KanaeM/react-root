@@ -47771,32 +47771,6 @@
 									'li',
 									null,
 									_react2.default.createElement(
-										_MuiThemeProvider2.default,
-										null,
-										_react2.default.createElement(
-											'div',
-											null,
-											_react2.default.createElement(
-												_RaisedButton2.default,
-												{ backgroundColor: 'pink', onTouchTap: this.handleOpenSignInModal },
-												!this.state.login && 'login',
-												' ',
-												this.state.login && _react2.default.createElement(
-													'span',
-													{ className: 'glyphicon glyphicon-log-in' },
-													' ',
-													user.userName
-												),
-												' '
-											),
-											' '
-										)
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
 										_reactRouter.Link,
 										{ to: '/provider', activeClassName: 'active' },
 										' Providers'
@@ -49195,18 +49169,51 @@
 		_createClass(MainPage, [{
 			key: 'handleClick',
 			value: function handleClick(e) {
-				// alert('Iwas clicked');
-				// console.log('event', e.native);	// does get ahold of event
-				var route = '/provider';
-				console.log('route', route);
+				console.log('MainPage - handleClick');
+				var route = '/receiver';
 				_reactRouter.browserHistory.push(route);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				console.log('Main Page', this.props);
 
-				return _react2.default.createElement(_Paper2.default, { style: style.paper, zDepth: 5, onClick: this.handleClick });
+				return _react2.default.createElement(
+					_Paper2.default,
+					{ style: style.paper, zDepth: 5, onClick: this.handleClick },
+					_react2.default.createElement(
+						'div',
+						{ className: 'jumbotron' },
+						_react2.default.createElement(
+							'h1',
+							null,
+							'Welcome to JADE'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Job Aid Discovery Engine was created by RCB developers'
+						),
+						_react2.default.createElement(
+							'h4',
+							null,
+							'Whenever you ready just click '
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'container' },
+						_react2.default.createElement(
+							'p',
+							null,
+							'Find help, people that offer free services for anything'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'There a lot of volunteers ready to help you with your every day tasks'
+						)
+					)
+				);
 			}
 		}]);
 
@@ -57108,6 +57115,7 @@
 			var _this = _possibleConstructorReturn(this, (ProviderPage.__proto__ || Object.getPrototypeOf(ProviderPage)).call(this, props));
 
 			_this.handleClick = _this.handleClick.bind(_this);
+			_this.componentDidMount = _this.componentDidMount.bind(_this);
 			_this.state = {};
 			return _this;
 		}
@@ -57117,19 +57125,20 @@
 			value: function handleClick() {
 				var usr = this.props.user.userName === undefined ? 'robin' : {};
 				this.props.authenticate(usr, 'providers'); // receivers
-				console.log('ProviderPage - this.props.user.name ', this.props.user.userName);
+				console.log('ProviderPage - handleClick');
+				console.log('ProviderPage - handleClick - userName: ', this.props.user.userName);
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				console.log('ProviderPage - componentDidMount - P');
-				console.log('ProviderPage - this.props.user.name ', this.props.user.name);
+				console.log('ProviderPage - componentDidMount');
+				console.log('ProviderPage - componentDidMount - userName: ', this.props.user.userName);
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
-				console.log('ProviderPage - componentDidUpdate - P');
-				console.log('user', this.props.user);
+				console.log('ProviderPage - componentDidUpdate');
+				console.log('ProviderPage - componentDidUpdate - userName: ', this.props.user.userName);
 			}
 		}, {
 			key: 'render',
@@ -57138,9 +57147,37 @@
 
 				var component;
 				if (!user) {
-					component = _react2.default.createElement(_RaisedButton2.default, { label: 'login', onClick: this.handleClick });
+					// component = <RaisedButton label="login" onClick={this.handleClick}/>
+					component = _react2.default.createElement(
+						'div',
+						{ className: 'jumbotron' },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Welcome Provider'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Please log in '
+						)
+					);
 				} else {
-					component = _react2.default.createElement(_RaisedButton2.default, { label: 'logout', onClick: this.handleClick });
+					component = _react2.default.createElement(
+						'div',
+						{ className: 'jumbotron' },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Welcome ',
+							user.userName
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'loading ......'
+						)
+					);
 				}
 
 				return _react2.default.createElement(
