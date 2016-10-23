@@ -97,7 +97,7 @@ class Application extends Component {
 								</div>
 							</ul>
 							<ul className="nav navbar-nav navbar-right">
-								<li><MuiThemeProvider><div><RaisedButton backgroundColor= {'pink'} onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" > {user.userName}</span>)} </RaisedButton> </div></MuiThemeProvider></li>
+								{/*<li><MuiThemeProvider><div><RaisedButton backgroundColor= {'pink'} onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" > {user.userName}</span>)} </RaisedButton> </div></MuiThemeProvider></li>*/}
 								<li><Link to="/provider" activeClassName="active"> Providers</Link></li>
 								<li><Link to ='' activeClassName="active" onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in"> {user.userName} </span>)}</Link></li>
 							</ul>
