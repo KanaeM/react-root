@@ -18,7 +18,6 @@ const style = {
 	display: 'inline-block',
 };
 
- 
 class Application extends Component {
 
 	constructor(props){
@@ -31,6 +30,7 @@ class Application extends Component {
 		this.state = {
 			signInModalOpen: false,
 			login: false,
+			user: {}
 		}
 	}
 
@@ -83,7 +83,7 @@ class Application extends Component {
 
 	render() {
 		const { children } = this.props;
-		const {login, user, authenticate, signInModalOpen} = this.state;
+		const {login, user, signInModalOpen} = this.state;
 		return (
 				<div className="Application">
 					<nav className="navbar">
@@ -110,8 +110,7 @@ class Application extends Component {
 									{
 										cloneElement(children, {
 											user: user,
-											login: login,
-											authenticate: this.authenticate
+											login: login
 										})
 									}
 							</Paper>

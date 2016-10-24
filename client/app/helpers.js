@@ -3,10 +3,6 @@ var axios = require('axios');
 
 var authKey = 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931';
 var query 	= '';
-var now = new Date();
-var startDate 	= 20160101;	//now.setDate(now.getDate()-30);
-var endDate		=  20160830; //now.setDate(now.getDate())
-
 var NYTUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' + authKey + '&q=';
 
 var helpers = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import ProviderDetails from '../Components/ProviderDetails';
 
 import CardProvider from '../Components/CardProvider'
 
@@ -51,6 +51,7 @@ class ProviderPage extends Component {
 					<div className="jumbotron">
 					  <h2>Welcome {user.userName}</h2>
 					  <p>loading ......</p>
+					  <ProviderDetails />
 					</div>
 			)
 		}

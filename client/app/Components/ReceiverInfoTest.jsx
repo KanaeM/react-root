@@ -10,50 +10,102 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 import helpers from '../helpers';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-class UserInfoPage extends Component {
+class ReceiverInfoPage extends Component {
 
  constructor(props){
  	super(props);
 
  	this.handleNext = this.handleNext.bind(this);
  	this.handlePrev = this.handlePrev.bind(this);
-  this.pushInfo = this.pushInfo.bind(this);
+  this.postInfo = this.postInfo.bind(this);
+  this.handleDropdown = this.handleDropdown.bind(this);
 
  	this.state ={
     loading: false,
     finished: false,
     stepIndex: 0,
-    // firstName: '',
-    // lastName: '',
-    // company: '',
-    // address1: '',
-    // address2: '',
-    // city: '',
-    // state: '',
-    // zip: '',
-    // phone: '',
-    // email: '',
-    // password: '',
-      task: '',
-      city: '',
-      time: '',
-      date: '',
-      description:'',
-      login: false,
-      modalOpen: false,
-      modalLoading: false
+    password: '',
+    task: '',
+    city: '',
+    time: '',
+    date: '',
+    description:'',
+    login: false,
+    modalOpen: false,
+    modalLoading: false,
+    dropdownValue: "none",
+    available:[{
+      userId: '',
+      fullName: ''
+    }]
   };
  }
 
-  
+ componentDidUpdate(prevProps, prevState){
+  if (prevState.time !== this.state.time){
+    console.log("Time has changed componentDidUpdate")
+    helpers.getProvider()
+      .then(function(providers){
+        for (var i=0; i<providers.data.length; i++){
+          console.log("getting into the for loop")
+          console.log(providers.data[i].firstName)
+          // this.setState({available.userId:providers.data[i]._id});
+          // this.setState({available.fullName:providers.data[i].firstName+" "+providers.data[i].lastName});
+          console.log(this.state.available)   
+        }
+      }.bind(this))
+  }
+ }
+
+//  componentDidMount(){
+//     if (this.state.time !== "" && this.state.date !== ""){
+    
+//   }
+// }
+
+//this will show a table with compatible providers on the "Post a Job" tab
+ providerTable(){
+   if (this.state.time !== "" && this.state.date !== ""){  
+    return(
+      <div>
+        <h1 style={{marginTop:40, textAlign:"center"}}>Available users</h1>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHeaderColumn>ID</TableHeaderColumn>
+              <TableHeaderColumn>Name</TableHeaderColumn>
+              <TableHeaderColumn>Status</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {
+              this.state.available.map( (row, index) => (
+              <TableRow key={index} selected={row.selected} >
+                <TableRowColumn>{index}</TableRowColumn>
+                <TableRowColumn>{row.userId}</TableRowColumn>
+                <TableRowColumn>{row.fullName}</TableRowColumn>
+              </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </div>
+    )
+  }
+  } 
+ 
+
   dummyAsync(cb){
     this.setState({loading: true}, () => {
       this.asyncTimer = setTimeout(cb, 500);
     });
   }
 
+//For Material UI Stepper
   handleNext(){
     const {stepIndex} = this.state;
     if (!this.state.loading) {
@@ -65,9 +117,20 @@ class UserInfoPage extends Component {
     }
   }
 
+    handlePrev() {
+    const {stepIndex} = this.state;
+    if (!this.state.loading) {
+      this.dummyAsync(() => this.setState({
+        loading: false,
+        stepIndex: stepIndex - 1,
+      }));
+    }
+  
+  }
+
   getServiceInfo(field, event){
     const receiverRequest = {};
-    if (this.state.login === false){
+    if (this.state.login === false && this.state.stepIndex === 2){
       receiverRequest[field] = event.target.value;
       console.log("You are not logged in, but here is your job post", receiverRequest);
 
@@ -77,6 +140,15 @@ class UserInfoPage extends Component {
     }
 }
 
+  getTime(blank, other, time){
+    console.log(time);
+    this.setState({time: time})
+  }
+
+  getDate(blank, other, date){
+    console.log(date);
+    this.setState({date: date})
+  }
 
   getReceiverInfo(field, event){
     const receiverInfo = {};
@@ -86,15 +158,25 @@ class UserInfoPage extends Component {
     this.setState(receiverInfo)
   }
 
-  handlePrev() {
-    const {stepIndex} = this.state;
-    if (!this.state.loading) {
-      this.dummyAsync(() => this.setState({
-        loading: false,
-        stepIndex: stepIndex - 1,
-      }));
-    }
-  
+//Once Logged in, this will post the new task to the Receiver table
+ postInfo(){
+  const {userName}=this.props
+  if (this.state.stepIndex === 2){
+    console.log("The new state for task pushInfo()", this.state)
+    var newTask = this.state
+    console.log("newtasks in postInfo", newTask)
+    helpers.postTask(newTask, userName)
+      .then(function(data){
+        console.log("saving receivers now from jsx", data)
+        console.log("this is the postTask userName", userName)
+      }.bind(this))
+  }
+}
+
+
+  handleDropdown(event, index, value) {
+    console.log(value)
+    this.setState({dropdownValue: value});
   }
 
   getStepContent(stepIndex) {
@@ -107,10 +189,18 @@ class UserInfoPage extends Component {
               id='text-field-controlled'
               floatingLabelText="Task"
               className = "task"
-              style={{marginRight: 20}}
+              style={{marginRight: 40}}
               onChange={this.getReceiverInfo.bind(this, "task")}
             />
- 						<br />
+            <DropDownMenu value={this.state.dropdownValue} onChange={this.handleDropdown}>
+              <MenuItem value="none" primaryText="Choose a category" />
+              <MenuItem value="Mechanic" primaryText="Mechanic" />
+              <MenuItem value="Cleaning" primaryText="Cleaning" />
+              <MenuItem value="Office" primaryText="Office Help" />
+              <MenuItem value="Delivery" primaryText="Delivery" />
+              <MenuItem value="Volunteer" primaryText="Volunteer" />
+              <MenuItem value={7} primaryText="" />
+            </DropDownMenu>
              <TextField
               id='text-field-controlled'
               floatingLabelText="City"
@@ -119,6 +209,7 @@ class UserInfoPage extends Component {
               onChange={this.getReceiverInfo.bind(this, "city")}
             />
             <br />
+           
             <TextField
               hintText="Job Description"
               floatingLabelText="Job Description"
@@ -136,36 +227,43 @@ class UserInfoPage extends Component {
           <div>
             <TimePicker
               hintText="Assignment Time"
-              onChange={this.getServiceInfo.bind(this, "time")}
+              onChange={this.getTime.bind(this, "time")}
+              format="ampm"
             />
-            <DatePicker hintText="Dates for Assignment" 
-              onChange={this.getServiceInfo.bind(this, "date")}
+            <DatePicker 
+              hintText="Assignment Date" 
+              onChange={this.getDate.bind(this, "date")}
+              formatDate={this.formatDate}
             />
-            <br />
           </div>
         );
-      case 2:
-        return (
-          <div>
-            <h3>Press Submit to post your job</h3>
-          </div>
-        );
+      // case 2:
+      //     return (
+      //       <div>
+      //         <TextField
+      //           id='text-field-controlled'
+      //           floatingLabelText="Username"
+      //           style={{marginRight: 20}}
+      //           onChange={this.getServiceInfo.bind(this, "userName")}
+      //         /><br />
+      //         <TextField
+      //           hintText="Password"
+      //           floatingLabelText="Password"
+      //           type="password"
+      //           onChange={this.getReceiverInfo.bind(this, "password")}
+      //         /><br />
+      //       </div>
+      //     );
+        case 2:
+          return (
+            <div>
+              <h3>Great! Press Submit to post your job!</h3>
+            </div>
+          );
       default:
         return 'You\'re a long way from home sonny jim!';
     }
   }
-
-pushInfo(){
-  if (this.state.stepIndex === 2){
-    console.log(this.state)
-    var newReceiver = this.state
-    helpers.postReceiver(newReceiver)
-      .then(function(data){
-        console.log("saving receivers now", data)
-        this.state
-      }.bind (this))
-  }
-}
 
   renderContent() {
     const {finished, stepIndex} = this.state;
@@ -175,8 +273,7 @@ pushInfo(){
       return (
         <div style={contentStyle}>
           <h3 style={{marginBottom: 20}}>Thank you for filling out the job post! We will contact you once you are connected with a candidate.</h3>
-          <p>
-            <a
+            <RaisedButton
               href="#"
               onClick={(event) => {
                 event.preventDefault();
@@ -184,9 +281,8 @@ pushInfo(){
                 
               }}
             >
-              Click here
-            </a> to start another job post
-          </p>
+              Add Another
+            </RaisedButton>
         </div>
       );
     }
@@ -202,10 +298,10 @@ pushInfo(){
             style={{marginRight: 12}}
           />
           <RaisedButton
-            label={stepIndex === 2 ? 'Finish' : 'Next'}
+            label={stepIndex === 2 ? 'Submit' : 'Next'}
             primary={true}
             onTouchTap={this.handleNext}
-            onClick={this.pushInfo}
+            onClick={this.postInfo}
           />
         </div>
       </div>
@@ -216,24 +312,29 @@ pushInfo(){
     const {loading, stepIndex} = this.state;
 
     return (
-      <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-        <Stepper activeStep={stepIndex}>
-          <Step completed={false}>
-            <StepLabel>Job Details</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Time</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Submit</StepLabel>
-          </Step>
-        </Stepper>
-        <ExpandTransition loading={loading} open={true}>
-          {this.renderContent()}
-        </ExpandTransition>
+      <div>
+        <div className="well" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+          <Stepper activeStep={stepIndex}>
+            <Step completed={false}>
+              <StepLabel>Job Details</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>Time</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>Submit</StepLabel>
+            </Step>
+          </Stepper>
+          <ExpandTransition loading={loading} open={true}>
+            {this.renderContent()}
+          </ExpandTransition>
+        </div>
+        <div>
+          {this.providerTable()}
+        </div>
       </div>
     );
   }
 }
-export default UserInfoPage;
+export default ReceiverInfoPage;
 
