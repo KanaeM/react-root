@@ -29,14 +29,14 @@ class MainPage extends Component {
 
 	handleClick(e) {
 		console.log('MainPage - handleClick')
-		const route = '/receiver'
+		const route = '/receivers'
 		browserHistory.push(route);
 	}
 
 	render() {
 		
 		return (
-				<Paper style={style.paper} zDepth={5} onClick={this.handleClick} >
+				<Paper className="MainPage" style={style.paper} zDepth={5} onClick={this.handleClick} >
 					<div className="jumbotron">
 					  <h1>Welcome to JADE</h1>
 					  <p>Job Aid Discovery Engine was created by RCB developers</p>

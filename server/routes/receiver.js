@@ -51,6 +51,18 @@ receiver
 		})
 	})
 
+	.delete('/delete/:admin', function(req, res) {
+		if(req.params.admin === 'admin'){
+			Receiver.remove({}, function(err) {
+				if(err){
+					res.send('Error Deleting Receivers ...! ')
+				} else {
+					res.send('Receivers Deleted')
+				}
+			})
+		}
+	})
+
 	//  This will push a request to receiver ONLY if he's login
 	//  ** <TODO> ** check if request already exist ..
 	.post('/request/:username', function(req, res){

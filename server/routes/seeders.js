@@ -88,7 +88,7 @@ var pros =
 		"city": "Jersey City",
 		"date": "10/20/2016",
 		"time": "09:00",
-		"description": "Need manicure soon",
+		"description": "Mechanic-Auto",
 	}
 // **	api.github.com/users
 [

@@ -1,64 +1,79 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import ProviderDetails from '../Components/ProviderDetails';
+import ProviderTabs from '../Components/ProviderTabs';
 
-import CardProvider from '../Components/CardProvider'
+import helpers from '../helpers';
 
 class ProviderPage extends Component {
 
 	constructor(props){
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
-		this.componentDidMount = this.componentDidMount.bind(this);
 		this.state = {
-			
+			details : []
 		}
 	}
+
 	handleClick() {
-		var usr = (this.props.user.userName === undefined) ? 'robin' : {}
-		this.props.authenticate(usr, 'providers')	// receivers
+		helpers.getProvider()
+			.then(function(providers){
+				this.state.details = providers
+				for (var i=0; i<providers.data.length; i++){
+					console.log('ProviderPage - handleClick ', providers.data[i].firstName)
+				}
+			}.bind(this))
 		console.log('ProviderPage - handleClick')
-		console.log('ProviderPage - handleClick - userName: ', this.props.user.userName)
 	}
 
 	componentDidMount() {
 		console.log('ProviderPage - componentDidMount');
-		console.log('ProviderPage - componentDidMount - userName: ', this.props.user.userName)
+		this.handleClick()
 	}
 
 	componentDidUpdate() {
 		console.log('ProviderPage - componentDidUpdate');
-		console.log('ProviderPage - componentDidUpdate - userName: ', this.props.user.userName)
 	}
 
 
 	render() {
-		const { login, user } = this.props;
+
+		const { login, user, url } = this.props;
 		var component;
-		if(!login){
+		if(url !== 'providers'){
 			// component = <RaisedButton label="login" onClick={this.handleClick}/>
-			component = 
-			(
-					<div className="jumbotron">
-					  <h2>Welcome Provider</h2>
-					  <p>Please log in </p>
-					</div>
+			component = (
+				<div className="container">
+				  <h2>Welcome {user.userName}</h2>
+				  <p>if you would like to become a service provider, please register</p>
+				</div>
 			)
 
 		} else {
-			component = 
-			(
-					<div className="jumbotron">
+			if(!login) {
+				component =	(
+					<div className="container">
+					  <h2>Welcome Provider</h2>
+					  <p>Please log in </p>
+					</div>
+				)
+
+			} else {
+				component = 
+				(
+					<div className="container">
 					  <h2>Welcome {user.userName}</h2>
 					  <p>loading ......</p>
-					  <ProviderDetails />
+					  <ProviderTabs login={login} user={user} />
 					</div>
-			)
+				)
+			}
+
 		}
 		
 
 		return (
-			<div>
+			<div className="providerPage">
+				
  				{	
  					component
 

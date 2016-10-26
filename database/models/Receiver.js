@@ -9,6 +9,7 @@ var ReceiverSchema = new Schema({
 	userName: { type: String, unique: true, required: true },
 	email: { type: String, unique: true, required: true },
 	password: { type: String, required: true },
+	url: String,
 	address1: { type: String },
 	address2: String,
 	city: { type: String },

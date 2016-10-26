@@ -6,6 +6,7 @@ var ProviderSchema = new Schema({
 	lastName: String,
 	userName: { type: String, unique: true, required: true },
 	email: { type: String, unique: true, required: true },
+	url: String,
 	password: { type: String, required: true },
 	address1: { type: String },
 	address2: String,

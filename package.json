@@ -28,7 +28,9 @@
     "react": "15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "15.3.2",
+    "react-motion": "^0.4.5",
     "react-router": "^2.8.1",
+    "react-swipeable-views": "^0.7.11",
     "react-tap-event-plugin": "^1.0.0",
     "webpack": "^1.13.1"
   },

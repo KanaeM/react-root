@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Dialog from 'material-ui/Dialog';
+import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
@@ -38,38 +39,42 @@ class SingInModal extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.state={
 			open: false,
-			user: {name:'', password:''}
+			user: {name:'', password:'', provider: false}
 		}
 	}
 	
 	handleChange (event){
 		console.log(event.target.id)	//Works
+		if(event.target.id === 'provider') {
+			this.setState({
+				user: {name: this.state.user.name, password: this.state.user.password, provider: !this.state.user.provider}
+			});
+		}
 		if(event.target.id === 'username') {
 			this.setState({
-				user: {name: event.target.value, password: this.state.user.password}
+				user: {name: event.target.value, password: this.state.user.password, provider: this.state.user.provider}
 			});
 		}
 		if(event.target.id === 'password') {
 			this.setState({
-				user: {name: this.state.user.name, password: event.target.value}
+				user: {name: this.state.user.name, password: event.target.value, provider: this.state.user.provider}
 			});
 		}
-		console.log('user: ', this.state.user)
+		console.log('SingInModal - handleChange - user: ', this.state.user)
 	}
 	
 	handleSubmit(){
 		// alert('user.name: ' + this.state.user.name)
 		// alert('user.password: ' + this.state.user.password)
 		this.setState({open: false})
-
-		this.props.handleSignInModal(false, this.state.user)
-		this.setState({user: {name: '', password: ''}});
 		console.log('SingInModal - handleSubmit: ', this.state.user)
+		this.props.handleSignInModal(false, this.state.user)
+		this.setState({user: {}});
 	}
 
 	handleClose(){
 		// this.setState({open: false})
-		this.setState({user: {name: '', password: ''}});	// Doesnot work right away it exec after close
+		this.setState({user: {}});	// Doesnot work right away it exec after close
 		console.log('SingInModal - handleClose: ', this.state.user)
 		this.props.handleSignInModal(false, {})
 	}
@@ -108,7 +113,15 @@ class SingInModal extends Component {
 					contentStyle={customContentStyle}
 					// autoScrollBodyContent={false}
 					onRequestClose={this.handleClose}>
-						 <TextField
+						<Checkbox
+							label = "Provider?"
+							id = "provider"
+							value = {this.state.user.provider}
+							onCheck = {this.handleChange}
+							// style={styles.checkbox}
+
+						/>
+						<TextField
 							// hintText="Please Enter Password"
 							floatingLabelText="User Name"
 							hintText="user name"

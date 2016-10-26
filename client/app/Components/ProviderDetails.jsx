@@ -90,6 +90,7 @@ class ProviderDetails extends React.Component {
 	}
 
 	renderContent() {
+		const {user} = this.props
 		const {finished, stepIndex} = this.state;
 		const contentStyle = {margin: '0 16px', overflow: 'hidden'};
 
@@ -138,13 +139,13 @@ class ProviderDetails extends React.Component {
 			<div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
 				<Stepper activeStep={stepIndex}>
 					<Step>
-						<StepLabel>Select campaign settings</StepLabel>
+						<StepLabel>Tasks queue</StepLabel>
 					</Step>
 					<Step>
-						<StepLabel>Create an ad group</StepLabel>
+						<StepLabel>Todos</StepLabel>
 					</Step>
 					<Step>
-						<StepLabel>Create an ad</StepLabel>
+						<StepLabel>History</StepLabel>
 					</Step>
 				</Stepper>
 				<ExpandTransition loading={loading} open={true}>

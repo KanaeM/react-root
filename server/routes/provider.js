@@ -64,18 +64,31 @@ provider
 			}
 		})
 	})
+
+	.delete('/delete/:admin', function(req, res) {
+		if(req.params.admin === 'admin'){
+			Provider.remove({}, function(err) {
+				if(err){
+					res.send('Error Deleting Providers ...! ')
+				} else {
+					res.send('Providers Deleted')
+				}
+			})
+		}
+	})
+
 	//	assign a todo to all providers ** <TODO> ProviderSchema.pre('update' **
 	.post('/todos', function(req, res){
 		var todo = {
-				"task": "Mechanic-Auto",
-				"city": "Jersey City",
-				"date": new Date("10/20/2016"),
-				"time": "09:00",
-				"description": "Radiator broken",
+				"task": { $regex: new RegExp(req.body.task, "i") },	// "Mechanic-Auto",
+				"city": { $regex: new RegExp(req.body.city, "i") },
+				"date": new Date(req.body.date),
+				"time": req.body.time,	//"09:00",
+				"description": req.body.description,	//"Radiator broken",
 				"status": {
 						"available": true,		//	since anytime=true
 						"confirmed": false,
-						"receiver": "username",	//	include Receiver userName
+						"receiver": req.body.userName,	//"username",
 						"done": false
 				}
 		}
@@ -86,7 +99,7 @@ provider
 			"services.anytime": true,
 			"services.task": { $regex: new RegExp(req.body.task, "i") },
 			"services.city" : { $regex: new RegExp(req.body.city, "i") },
-			"services.dates": new Date(req.body.date),
+			"services.dates": new Date(req.body.date)
 		}
 		// db.providers.update({userName: 'elsa'},{$pull:{'todos':{'status.available':true}}})
 		// Provider.findOneAndUpdate({userName: req.body.userName}, { $push: { todos: todo} }, function(err, pro) {
