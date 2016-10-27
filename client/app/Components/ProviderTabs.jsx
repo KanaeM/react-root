@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-
-import ProviderTabDetails from '../Components/ProviderTabDetails';
+import {greenA100, greenA400} from 'material-ui/styles/colors';
+import ProviderTabQueue from '../Components/ProviderTabQueue';
 
 const styles = {
 	headline: {
@@ -11,9 +11,20 @@ const styles = {
 		fontWeight: 400,
 	},
 	tabs: {
-		width: '95%'
-
-	}
+		width: '100%',
+	},
+	queue:{
+		color: greenA100,
+		fontSize: 25
+	},
+	pending:{
+		color: greenA400,
+		fontSize: 25
+	},
+	completed:{
+		color: greenA100,
+		fontSize: 25
+	}	
 };
 
 class ProviderTabs extends React.Component {
@@ -42,13 +53,12 @@ class ProviderTabs extends React.Component {
 		return (
 
 	<Tabs style= {styles.tabs}>
-		<Tab label='Tasks Queue' data-route='queue' onActive={this.handleTabActive} >
+		<Tab label='Tasks Queue' style={styles.queue} data-route='queue' onActive={this.handleTabActive} >
 			<div>
-				<h2 style={styles.headline}>Tab One</h2>
-				<ProviderTabDetails login={login} user={user} />
+				<ProviderTabQueue login={login} user={user} />
 			</div>
 		</Tab>
-		<Tab label='TODOS Pending' data-route='pending' onActive={this.handleTabActive} >
+		<Tab label='Tasks Pending' style={styles.pending} data-route='pending' onActive={this.handleTabActive} >
 			<div>
 				<h2 style={styles.headline}>Tab Two</h2>
 				<p>
@@ -56,7 +66,7 @@ class ProviderTabs extends React.Component {
 				</p>
 			</div>
 		</Tab>
-		<Tab label='TODO Completed' data-route='completed' onActive={this.handleTabActive} >
+		<Tab label='Tasks Completed' style={styles.completed} data-route='completed' onActive={this.handleTabActive} >
 			<div>
 				<h2 style={styles.headline}>Tab Three</h2>
 				<p>

@@ -42,8 +42,8 @@ class ProviderPage extends Component {
 		if(url !== 'providers'){
 			// component = <RaisedButton label="login" onClick={this.handleClick}/>
 			component = (
-				<div className="container">
-				  <h2>Welcome {user.userName}</h2>
+				<div className="pronone">
+				  <h2 style={{color:'white'}}>Welcome {user.userName}</h2>
 				  <p>if you would like to become a service provider, please register</p>
 				</div>
 			)
@@ -51,7 +51,7 @@ class ProviderPage extends Component {
 		} else {
 			if(!login) {
 				component =	(
-					<div className="container">
+					<div className="prologin">
 					  <h2>Welcome Provider</h2>
 					  <p>Please log in </p>
 					</div>
@@ -60,9 +60,8 @@ class ProviderPage extends Component {
 			} else {
 				component = 
 				(
-					<div className="container">
-					  <h2>Welcome {user.userName}</h2>
-					  <p>loading ......</p>
+					<div className="prowelcome">
+					  <h2 style={{color:'#00e6e6'}}>Welcome {user.userName}</h2>
 					  <ProviderTabs login={login} user={user} />
 					</div>
 				)

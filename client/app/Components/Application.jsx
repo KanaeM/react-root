@@ -1,8 +1,6 @@
 import React, { Component, cloneElement } from 'react';
 import helpers from '../helpers';
 import {Link} from 'react-router';
-import ArticleList from './ArticleList';
-import History from './History';
 
 import SingInModal from './SingInModal';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

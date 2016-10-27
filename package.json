@@ -8,7 +8,7 @@
     "mongo": "mongod --dbpath /usr/local/lib/MongoDB/data/ --profile 1 --slowms 2000",
     "bundle": "webpack --config webpack.config.js",
     "postinstall": "bower install && npm run bundle",
-    "start": "node ./server/server.js"
+    "start": "nodemon ./server/server.js"
   },
   "author": "jade",
   "license": "ISC",

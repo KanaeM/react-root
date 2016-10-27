@@ -60,7 +60,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reactTapEventPlugin = __webpack_require__(604);
+	var _reactTapEventPlugin = __webpack_require__(599);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
@@ -27109,22 +27109,6 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _SearchPage = __webpack_require__(236);
-
-	var _SearchPage2 = _interopRequireDefault(_SearchPage);
-
-	var _SavedPage = __webpack_require__(240);
-
-	var _SavedPage2 = _interopRequireDefault(_SavedPage);
-
-	var _MaterialPage = __webpack_require__(242);
-
-	var _MaterialPage2 = _interopRequireDefault(_MaterialPage);
-
-	var _ModalPage = __webpack_require__(480);
-
-	var _ModalPage2 = _interopRequireDefault(_ModalPage);
-
 	var _Application = __webpack_require__(489);
 
 	var _Application2 = _interopRequireDefault(_Application);
@@ -27155,684 +27139,22 @@
 		_reactRouter.Route,
 		{ component: _Application2.default },
 		_react2.default.createElement(_reactRouter.Route, { path: '/', component: _MainPage2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'search', component: _SearchPage2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'saved', component: _SavedPage2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'material', component: _MaterialPage2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'receivers', component: _ReceiverMainPage2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'userdata', component: _UserDataPage2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'employerdata', component: _EmployerDataPage2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'modal', component: _ModalPage2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'providers', component: _ProviderPage2.default }),
 		_react2.default.createElement(_reactRouter.IndexRoute, { component: _MainPage2.default })
 	);
 
 /***/ },
-/* 236 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Search = __webpack_require__(237);
-
-	var _Search2 = _interopRequireDefault(_Search);
-
-	var _ArticleList = __webpack_require__(238);
-
-	var _ArticleList2 = _interopRequireDefault(_ArticleList);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var SearchPage = function (_Component) {
-		_inherits(SearchPage, _Component);
-
-		function SearchPage(props) {
-			_classCallCheck(this, SearchPage);
-
-			return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props));
-		}
-
-		_createClass(SearchPage, [{
-			key: 'render',
-			value: function render() {
-				console.log('Search Page', this.props);
-				var _props = this.props,
-				    articles = _props.articles,
-				    setSearch = _props.setSearch,
-				    saveArticle = _props.saveArticle;
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'SearchPage text-center' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
-						_react2.default.createElement(
-							'h4',
-							null,
-							'News Finder! SearchPage'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
-						_react2.default.createElement(_Search2.default, { setSearch: setSearch })
-					),
-					_react2.default.createElement(_ArticleList2.default, { articles: articles, saveArticle: saveArticle })
-				);
-			}
-		}]);
-
-		return SearchPage;
-	}(_react.Component);
-
-	exports.default = SearchPage;
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Search = function (_React$Component) {
-		_inherits(Search, _React$Component);
-
-		function Search(props) {
-			_classCallCheck(this, Search);
-
-			var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
-
-			_this.state.search = '';
-			_this.handleChange = _this.handleChange.bind(_this);
-			_this.handleClick = _this.handleClick.bind(_this);
-			return _this;
-		}
-
-		_createClass(Search, [{
-			key: 'handleChange',
-			value: function handleChange(event) {
-				this.setState({ search: event.target.value });
-			}
-		}, {
-			key: 'handleClick',
-			value: function handleClick() {
-				console.log('this.state.search', this.state.search);
-				this.props.setSearch(this.state.search);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'col-sm-8 col-sm-offset2' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'panel panel-default' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-heading' },
-							_react2.default.createElement(
-								'h3',
-								{ className: 'panel-title text-center' },
-								'Search ',
-								_react2.default.createElement(
-									'strong',
-									null,
-									'News'
-								),
-								' ...!'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'panel-body text-center' },
-							_react2.default.createElement(
-								'form',
-								null,
-								_react2.default.createElement(
-									'div',
-									{ className: 'form-group' },
-									_react2.default.createElement('input', { type: 'text', className: 'form-control text-center', onChange: this.handleChange, required: true }),
-									_react2.default.createElement('br', null),
-									_react2.default.createElement(
-										'button',
-										{ type: 'button', className: 'btn btn-primary', onClick: this.handleClick },
-										'Submit'
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
-
-		return Search;
-	}(_react2.default.Component);
-
-	exports.default = Search;
-
-/***/ },
-/* 238 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ArticleItem = __webpack_require__(239);
-
-	var _ArticleItem2 = _interopRequireDefault(_ArticleItem);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ArticleList = function (_Component) {
-		_inherits(ArticleList, _Component);
-
-		function ArticleList(props) {
-			_classCallCheck(this, ArticleList);
-
-			return _possibleConstructorReturn(this, (ArticleList.__proto__ || Object.getPrototypeOf(ArticleList)).call(this, props));
-		}
-
-		_createClass(ArticleList, [{
-			key: 'render',
-			value: function render() {
-				var _props = this.props,
-				    articles = _props.articles,
-				    saveArticle = _props.saveArticle;
-
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'panel panel-default ArticleList' },
-					articles.map(function (article, key) {
-						if (article.type_of_material === 'News') return _react2.default.createElement(_ArticleItem2.default, { key: key, article: article, saveArticle: saveArticle });
-					})
-				);
-			}
-		}]);
-
-		return ArticleList;
-	}(_react.Component);
-
-	exports.default = ArticleList;
-
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ArticleItem = function (_Component) {
-		_inherits(ArticleItem, _Component);
-
-		function ArticleItem(props) {
-			_classCallCheck(this, ArticleItem);
-
-			var _this = _possibleConstructorReturn(this, (ArticleItem.__proto__ || Object.getPrototypeOf(ArticleItem)).call(this, props));
-
-			_this.handleClick = _this.handleClick.bind(_this);
-			return _this;
-		}
-
-		_createClass(ArticleItem, [{
-			key: 'handleClick',
-			value: function handleClick(event) {
-				console.log('event ArticleItem', event.target.id);
-				var article = {
-					NYTTitle: this.props.article.headline.main,
-					NYTDate: this.props.article.pub_date,
-					NYTUrl: this.props.article.web_url,
-					NYTId: event.target.id
-				};
-				console.log(article);
-				this.props.saveArticle(article);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				console.log('ArticleItem', this.props);
-				var article = this.props.article;
-
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'panel panel-default' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'panel-body text-center' },
-						_react2.default.createElement(
-							'h6',
-							{ className: 'panel-title text-center' },
-							article.headline.main
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							article.pub_date
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: article.web_url },
-							article.web_url
-						),
-						_react2.default.createElement(
-							'button',
-							{ type: 'button', onClick: this.handleClick, id: article._id, className: 'btn btn-info' },
-							'save'
-						)
-					)
-				);
-			}
-		}]);
-
-		return ArticleItem;
-	}(_react.Component);
-
-	exports.default = ArticleItem;
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ArticleList = __webpack_require__(238);
-
-	var _ArticleList2 = _interopRequireDefault(_ArticleList);
-
-	var _History = __webpack_require__(241);
-
-	var _History2 = _interopRequireDefault(_History);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var SavedPage = function (_Component) {
-		_inherits(SavedPage, _Component);
-
-		function SavedPage(props) {
-			_classCallCheck(this, SavedPage);
-
-			return _possibleConstructorReturn(this, (SavedPage.__proto__ || Object.getPrototypeOf(SavedPage)).call(this, props));
-		}
-
-		_createClass(SavedPage, [{
-			key: 'render',
-			value: function render() {
-				console.log('Saved Page', this.props);
-				var _props = this.props,
-				    changeShow = _props.changeShow,
-				    savedArticles = _props.savedArticles;
-
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'SavedPage' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row text-center' },
-						_react2.default.createElement(
-							'h1',
-							null,
-							'History Page'
-						),
-						_react2.default.createElement(_History2.default, { savedArticles: savedArticles })
-					)
-				);
-			}
-		}]);
-
-		return SavedPage;
-	}(_react.Component);
-
-	exports.default = SavedPage;
-
-/***/ },
-/* 241 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var History = function (_Component) {
-	  _inherits(History, _Component);
-
-	  function History(props) {
-	    _classCallCheck(this, History);
-
-	    return _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
-	  }
-
-	  _createClass(History, [{
-	    key: "render",
-	    value: function render() {
-	      var savedArticles = this.props.savedArticles;
-
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "panel panel-default" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "panel-heading" },
-	          _react2.default.createElement(
-	            "h3",
-	            { className: "panel-title text-center" },
-	            "Artciles Currently Saved"
-	          )
-	        ),
-	        savedArticles.map(function (article, key) {
-	          return _react2.default.createElement(
-	            "div",
-	            { key: key, className: "panel-body text-center" },
-	            _react2.default.createElement(
-	              "h6",
-	              { className: "panel-title text-center" },
-	              article.NYTTitle
-	            ),
-	            _react2.default.createElement(
-	              "p",
-	              null,
-	              article.NYTDate
-	            ),
-	            _react2.default.createElement(
-	              "a",
-	              { href: article.NYTUrl },
-	              article.NYTUrl
-	            )
-	          );
-	        })
-	      );
-	    }
-	  }]);
-
-	  return History;
-	}(_react.Component);
-
-	module.exports = History;
-
-/***/ },
-/* 242 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ButtonRaise = __webpack_require__(243);
-
-	var _ButtonRaise2 = _interopRequireDefault(_ButtonRaise);
-
-	var _DatePickerTest = __webpack_require__(372);
-
-	var _DatePickerTest2 = _interopRequireDefault(_DatePickerTest);
-
-	var _TextFieldTest = __webpack_require__(428);
-
-	var _TextFieldTest2 = _interopRequireDefault(_TextFieldTest);
-
-	var _AppBar = __webpack_require__(429);
-
-	var _AppBar2 = _interopRequireDefault(_AppBar);
-
-	var _IconButton = __webpack_require__(392);
-
-	var _IconButton2 = _interopRequireDefault(_IconButton);
-
-	var _close = __webpack_require__(435);
-
-	var _close2 = _interopRequireDefault(_close);
-
-	var _FlatButton = __webpack_require__(384);
-
-	var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-	var _getMuiTheme = __webpack_require__(436);
-
-	var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
-
-	var _MuiThemeProvider = __webpack_require__(479);
-
-	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
-
-	var _colors = __webpack_require__(440);
-
-	var _reactRouter = __webpack_require__(172);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// const css = {
-	// 	title: {
-	// 		cursor: 'pointer',
-	// 	},
-	// };
-
-	var MaterialPage = function (_Component) {
-		_inherits(MaterialPage, _Component);
-
-		function MaterialPage(props) {
-			_classCallCheck(this, MaterialPage);
-
-			var _this = _possibleConstructorReturn(this, (MaterialPage.__proto__ || Object.getPrototypeOf(MaterialPage)).call(this, props));
-
-			_this.state = { css: {
-					title: { cursor: 'pointer' },
-					button: { 'color': 'white' }
-				} };
-			_this.handleTouchTap = _this.handleTouchTap.bind(_this);
-			// this.handleClick = this.handleClick.bind(this);
-			return _this;
-		}
-
-		//	TODO
-		//	http://frontendinsights.com/role-based-authorization-using-react-router/
-		//	http://www.tech-dojo.org/#!/articles/5697fd5ddb99acd646dea1aa
-
-
-		_createClass(MaterialPage, [{
-			key: 'handleTouchTap',
-			value: function handleTouchTap(e) {
-				alert('onTouchTap triggered on the title component');
-				console.log('event 1: ', e.target.innerHTML);
-				console.log('event 2: ', e.target.getAttribute('id'));
-				console.log('event 3: ', e.target.attributes.getNamedItem('id'));
-				this.setState({ css: {
-						title: { color: 'green' },
-						button: { 'borderStyle': 'solid', 'borderWidth': '1px' }
-					}
-				});
-				// css.title = {
-				// 		color: 'red'
-				// 	}
-			}
-		}, {
-			key: 'handleClick',
-			value: function handleClick(e, id) {
-				// e.preventDefault()
-				// e.persist();
-				console.log('event', e.native);
-				alert('I was clicked ' + e.target.id);
-			}
-		}, {
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				// check if user data available
-				var authorized = true;
-				if (!authorized) {
-					_reactRouter.browserHistory.push('/');
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				console.log('Material Page', this);
-				return _react2.default.createElement(
-					_MuiThemeProvider2.default,
-					null,
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(_AppBar2.default, {
-							title: _react2.default.createElement(
-								'span',
-								{ style: this.state.css.title },
-								'Title'
-							),
-							onTitleTouchTap: this.handleTouchTap,
-							iconElementLeft: _react2.default.createElement(
-								_IconButton2.default,
-								null,
-								_react2.default.createElement(_close2.default, null)
-							),
-							iconElementRight: _react2.default.createElement(_FlatButton2.default, { label: 'Login', style: this.state.css.button, id: 'login', onTouchTap: this.handleTouchTap }) }),
-						_react2.default.createElement(_DatePickerTest2.default, null),
-						_react2.default.createElement(_TextFieldTest2.default, null)
-					)
-				);
-			}
-		}]);
-
-		return MaterialPage;
-	}(_react.Component);
-
-	exports.default = MaterialPage;
-
-/***/ },
-/* 243 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _RaisedButton = __webpack_require__(244);
-
-	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var MyAwesomeReactComponent = function MyAwesomeReactComponent() {
-	  return _react2.default.createElement(_RaisedButton2.default, { label: 'Default' });
-	};
-
-	exports.default = MyAwesomeReactComponent;
-
-/***/ },
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
 /* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -32842,42 +32164,7 @@
 	};
 
 /***/ },
-/* 372 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _DatePicker = __webpack_require__(373);
-
-	var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * The Date Picker defaults to a portrait dialog. The `mode` property can be set to `landscape`.
-	 * You can also disable the Dialog passing `true` to the `disabled` property.
-	 */
-	var DatePickerTest = function DatePickerTest() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(_DatePicker2.default, { hintText: 'Portrait Dialog' }),
-	    _react2.default.createElement(_DatePicker2.default, { hintText: 'Landscape Dialog', mode: 'landscape' }),
-	    _react2.default.createElement(_DatePicker2.default, { hintText: 'Dialog Disabled', disabled: true })
-	  );
-	};
-
-	exports.default = DatePickerTest;
-
-/***/ },
+/* 372 */,
 /* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41293,489 +40580,9 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 428 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _TextField = __webpack_require__(422);
-
-	var _TextField2 = _interopRequireDefault(_TextField);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var TextFieldTest = function TextFieldTest() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'Hint Text'
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'The hint text can be as long as you want, it will wrap.'
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      id: 'text-field-default',
-	      defaultValue: 'Default Value'
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'Hint Text',
-	      floatingLabelText: 'Floating Label Text'
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'Hint Text',
-	      floatingLabelText: 'Fixed Floating Label Text',
-	      floatingLabelFixed: true
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'Password Field',
-	      floatingLabelText: 'Password',
-	      type: 'password'
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'MultiLine with rows: 2 and rowsMax: 4',
-	      multiLine: true,
-	      rows: 2,
-	      rowsMax: 4
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'Message Field',
-	      floatingLabelText: 'MultiLine and FloatingLabel',
-	      multiLine: true,
-	      rows: 2
-	    }),
-	    _react2.default.createElement('br', null),
-	    _react2.default.createElement(_TextField2.default, {
-	      hintText: 'Full width',
-	      fullWidth: true
-	    })
-	  );
-	};
-
-	exports.default = TextFieldTest;
-
-/***/ },
-/* 429 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _AppBar = __webpack_require__(430);
-
-	var _AppBar2 = _interopRequireDefault(_AppBar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _AppBar2.default;
-
-/***/ },
-/* 430 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends2 = __webpack_require__(246);
-
-	var _extends3 = _interopRequireDefault(_extends2);
-
-	var _keys = __webpack_require__(431);
-
-	var _keys2 = _interopRequireDefault(_keys);
-
-	var _objectWithoutProperties2 = __webpack_require__(284);
-
-	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-	var _getPrototypeOf = __webpack_require__(285);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(290);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(291);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(295);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(330);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	exports.getStyles = getStyles;
-
-	var _simpleAssign = __webpack_require__(338);
-
-	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _IconButton = __webpack_require__(392);
-
-	var _IconButton2 = _interopRequireDefault(_IconButton);
-
-	var _menu = __webpack_require__(434);
-
-	var _menu2 = _interopRequireDefault(_menu);
-
-	var _Paper = __webpack_require__(369);
-
-	var _Paper2 = _interopRequireDefault(_Paper);
-
-	var _propTypes = __webpack_require__(371);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _warning = __webpack_require__(177);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function getStyles(props, context) {
-	  var _context$muiTheme = context.muiTheme;
-	  var appBar = _context$muiTheme.appBar;
-	  var iconButtonSize = _context$muiTheme.button.iconButtonSize;
-	  var zIndex = _context$muiTheme.zIndex;
-
-
-	  var flatButtonSize = 36;
-
-	  var styles = {
-	    root: {
-	      position: 'relative',
-	      zIndex: zIndex.appBar,
-	      width: '100%',
-	      display: 'flex',
-	      backgroundColor: appBar.color,
-	      paddingLeft: appBar.padding,
-	      paddingRight: appBar.padding
-	    },
-	    title: {
-	      whiteSpace: 'nowrap',
-	      overflow: 'hidden',
-	      textOverflow: 'ellipsis',
-	      margin: 0,
-	      paddingTop: 0,
-	      letterSpacing: 0,
-	      fontSize: 24,
-	      fontWeight: appBar.titleFontWeight,
-	      color: appBar.textColor,
-	      height: appBar.height,
-	      lineHeight: appBar.height + 'px'
-	    },
-	    mainElement: {
-	      boxFlex: 1,
-	      flex: '1'
-	    },
-	    iconButtonStyle: {
-	      marginTop: (appBar.height - iconButtonSize) / 2,
-	      marginRight: 8,
-	      marginLeft: -16
-	    },
-	    iconButtonIconStyle: {
-	      fill: appBar.textColor,
-	      color: appBar.textColor
-	    },
-	    flatButton: {
-	      color: appBar.textColor,
-	      marginTop: (iconButtonSize - flatButtonSize) / 2 + 1
-	    }
-	  };
-
-	  return styles;
-	}
-
-	var AppBar = function (_Component) {
-	  (0, _inherits3.default)(AppBar, _Component);
-
-	  function AppBar() {
-	    var _ref;
-
-	    var _temp, _this, _ret;
-
-	    (0, _classCallCheck3.default)(this, AppBar);
-
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AppBar.__proto__ || (0, _getPrototypeOf2.default)(AppBar)).call.apply(_ref, [this].concat(args))), _this), _this.handleTouchTapLeftIconButton = function (event) {
-	      if (_this.props.onLeftIconButtonTouchTap) {
-	        _this.props.onLeftIconButtonTouchTap(event);
-	      }
-	    }, _this.handleTouchTapRightIconButton = function (event) {
-	      if (_this.props.onRightIconButtonTouchTap) {
-	        _this.props.onRightIconButtonTouchTap(event);
-	      }
-	    }, _this.handleTitleTouchTap = function (event) {
-	      if (_this.props.onTitleTouchTap) {
-	        _this.props.onTitleTouchTap(event);
-	      }
-	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-	  }
-
-	  (0, _createClass3.default)(AppBar, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      process.env.NODE_ENV !== "production" ? (0, _warning2.default)(!this.props.iconElementLeft || !this.props.iconClassNameLeft, 'Properties iconElementLeft\n      and iconClassNameLeft cannot be simultaneously defined. Please use one or the other.') : void 0;
-
-	      process.env.NODE_ENV !== "production" ? (0, _warning2.default)(!this.props.iconElementRight || !this.props.iconClassNameRight, 'Properties iconElementRight\n      and iconClassNameRight cannot be simultaneously defined. Please use one or the other.') : void 0;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var title = _props.title;
-	      var titleStyle = _props.titleStyle;
-	      var iconStyleLeft = _props.iconStyleLeft;
-	      var iconStyleRight = _props.iconStyleRight;
-	      var onTitleTouchTap = _props.onTitleTouchTap;
-	      var showMenuIconButton = _props.showMenuIconButton;
-	      var iconElementLeft = _props.iconElementLeft;
-	      var iconElementRight = _props.iconElementRight;
-	      var iconClassNameLeft = _props.iconClassNameLeft;
-	      var iconClassNameRight = _props.iconClassNameRight;
-	      var onLeftIconButtonTouchTap = _props.onLeftIconButtonTouchTap;
-	      var onRightIconButtonTouchTap = _props.onRightIconButtonTouchTap;
-	      var className = _props.className;
-	      var style = _props.style;
-	      var zDepth = _props.zDepth;
-	      var children = _props.children;
-	      var other = (0, _objectWithoutProperties3.default)(_props, ['title', 'titleStyle', 'iconStyleLeft', 'iconStyleRight', 'onTitleTouchTap', 'showMenuIconButton', 'iconElementLeft', 'iconElementRight', 'iconClassNameLeft', 'iconClassNameRight', 'onLeftIconButtonTouchTap', 'onRightIconButtonTouchTap', 'className', 'style', 'zDepth', 'children']);
-	      var prepareStyles = this.context.muiTheme.prepareStyles;
-
-	      var styles = getStyles(this.props, this.context);
-
-	      var menuElementLeft = void 0;
-	      var menuElementRight = void 0;
-
-	      // If the title is a string, wrap in an h1 tag.
-	      // If not, wrap in a div tag.
-	      var titleComponent = typeof title === 'string' || title instanceof String ? 'h1' : 'div';
-
-	      var titleElement = _react2.default.createElement(titleComponent, {
-	        onTouchTap: this.handleTitleTouchTap,
-	        style: prepareStyles((0, _simpleAssign2.default)(styles.title, styles.mainElement, titleStyle))
-	      }, title);
-
-	      var iconLeftStyle = (0, _simpleAssign2.default)({}, styles.iconButtonStyle, iconStyleLeft);
-
-	      if (showMenuIconButton) {
-	        if (iconElementLeft) {
-	          var iconElementLeftProps = {};
-
-	          if (iconElementLeft.type.muiName === 'IconButton') {
-	            var iconElemLeftChildren = iconElementLeft.props.children;
-	            var iconButtonIconStyle = !(iconElemLeftChildren && iconElemLeftChildren.props && iconElemLeftChildren.props.color) ? styles.iconButtonIconStyle : null;
-
-	            iconElementLeftProps.iconStyle = (0, _simpleAssign2.default)({}, iconButtonIconStyle, iconElementLeft.props.iconStyle);
-	          }
-
-	          if (!iconElementLeft.props.onTouchTap && this.props.onLeftIconButtonTouchTap) {
-	            iconElementLeftProps.onTouchTap = this.handleTouchTapLeftIconButton;
-	          }
-
-	          menuElementLeft = _react2.default.createElement(
-	            'div',
-	            { style: prepareStyles(iconLeftStyle) },
-	            (0, _keys2.default)(iconElementLeftProps).length > 0 ? (0, _react.cloneElement)(iconElementLeft, iconElementLeftProps) : iconElementLeft
-	          );
-	        } else {
-	          menuElementLeft = _react2.default.createElement(
-	            _IconButton2.default,
-	            {
-	              style: iconLeftStyle,
-	              iconStyle: styles.iconButtonIconStyle,
-	              iconClassName: iconClassNameLeft,
-	              onTouchTap: this.handleTouchTapLeftIconButton
-	            },
-	            iconClassNameLeft ? '' : _react2.default.createElement(_menu2.default, { style: (0, _simpleAssign2.default)({}, styles.iconButtonIconStyle) })
-	          );
-	        }
-	      }
-
-	      var iconRightStyle = (0, _simpleAssign2.default)({}, styles.iconButtonStyle, {
-	        marginRight: -16,
-	        marginLeft: 'auto'
-	      }, iconStyleRight);
-
-	      if (iconElementRight) {
-	        var iconElementRightProps = {};
-
-	        switch (iconElementRight.type.muiName) {
-	          case 'IconMenu':
-	          case 'IconButton':
-	            var iconElemRightChildren = iconElementRight.props.children;
-	            var _iconButtonIconStyle = !(iconElemRightChildren && iconElemRightChildren.props && iconElemRightChildren.props.color) ? styles.iconButtonIconStyle : null;
-
-	            iconElementRightProps.iconStyle = (0, _simpleAssign2.default)({}, _iconButtonIconStyle, iconElementRight.props.iconStyle);
-	            break;
-
-	          case 'FlatButton':
-	            iconElementRightProps.style = (0, _simpleAssign2.default)({}, styles.flatButton, iconElementRight.props.style);
-	            break;
-
-	          default:
-	        }
-
-	        if (!iconElementRight.props.onTouchTap && this.props.onRightIconButtonTouchTap) {
-	          iconElementRightProps.onTouchTap = this.handleTouchTapRightIconButton;
-	        }
-
-	        menuElementRight = _react2.default.createElement(
-	          'div',
-	          { style: prepareStyles(iconRightStyle) },
-	          (0, _keys2.default)(iconElementRightProps).length > 0 ? (0, _react.cloneElement)(iconElementRight, iconElementRightProps) : iconElementRight
-	        );
-	      } else if (iconClassNameRight) {
-	        menuElementRight = _react2.default.createElement(_IconButton2.default, {
-	          style: iconRightStyle,
-	          iconStyle: styles.iconButtonIconStyle,
-	          iconClassName: iconClassNameRight,
-	          onTouchTap: this.handleTouchTapRightIconButton
-	        });
-	      }
-
-	      return _react2.default.createElement(
-	        _Paper2.default,
-	        (0, _extends3.default)({}, other, {
-	          rounded: false,
-	          className: className,
-	          style: (0, _simpleAssign2.default)({}, styles.root, style),
-	          zDepth: zDepth
-	        }),
-	        menuElementLeft,
-	        titleElement,
-	        menuElementRight,
-	        children
-	      );
-	    }
-	  }]);
-	  return AppBar;
-	}(_react.Component);
-
-	AppBar.muiName = 'AppBar';
-	AppBar.defaultProps = {
-	  showMenuIconButton: true,
-	  title: '',
-	  zDepth: 1
-	};
-	AppBar.contextTypes = {
-	  muiTheme: _react.PropTypes.object.isRequired
-	};
-	process.env.NODE_ENV !== "production" ? AppBar.propTypes = {
-	  /**
-	   * Can be used to render a tab inside an app bar for instance.
-	   */
-	  children: _react.PropTypes.node,
-	  /**
-	   * Applied to the app bar's root element.
-	   */
-	  className: _react.PropTypes.string,
-	  /**
-	   * The classname of the icon on the left of the app bar.
-	   * If you are using a stylesheet for your icons, enter the class name for the icon to be used here.
-	   */
-	  iconClassNameLeft: _react.PropTypes.string,
-	  /**
-	   * Similiar to the iconClassNameLeft prop except that
-	   * it applies to the icon displayed on the right of the app bar.
-	   */
-	  iconClassNameRight: _react.PropTypes.string,
-	  /**
-	   * The custom element to be displayed on the left side of the
-	   * app bar such as an SvgIcon.
-	   */
-	  iconElementLeft: _react.PropTypes.element,
-	  /**
-	   * Similiar to the iconElementLeft prop except that this element is displayed on the right of the app bar.
-	   */
-	  iconElementRight: _react.PropTypes.element,
-	  /**
-	   * Override the inline-styles of the element displayed on the left side of the app bar.
-	   */
-	  iconStyleLeft: _react.PropTypes.object,
-	  /**
-	   * Override the inline-styles of the element displayed on the right side of the app bar.
-	   */
-	  iconStyleRight: _react.PropTypes.object,
-	  /**
-	   * Callback function for when the left icon is selected via a touch tap.
-	   *
-	   * @param {object} event TouchTap event targeting the left `IconButton`.
-	   */
-	  onLeftIconButtonTouchTap: _react.PropTypes.func,
-	  /**
-	   * Callback function for when the right icon is selected via a touch tap.
-	   *
-	   * @param {object} event TouchTap event targeting the right `IconButton`.
-	   */
-	  onRightIconButtonTouchTap: _react.PropTypes.func,
-	  /**
-	   * Callback function for when the title text is selected via a touch tap.
-	   *
-	   * @param {object} event TouchTap event targeting the `title` node.
-	   */
-	  onTitleTouchTap: _react.PropTypes.func,
-	  /**
-	   * Determines whether or not to display the Menu icon next to the title.
-	   * Setting this prop to false will hide the icon.
-	   */
-	  showMenuIconButton: _react.PropTypes.bool,
-	  /**
-	   * Override the inline-styles of the root element.
-	   */
-	  style: _react.PropTypes.object,
-	  /**
-	   * The title to display on the app bar.
-	   */
-	  title: _react.PropTypes.node,
-	  /**
-	   * Override the inline-styles of the app bar's title element.
-	   */
-	  titleStyle: _react.PropTypes.object,
-	  /**
-	   * The zDepth of the component.
-	   * The shadow of the app bar is also dependent on this property.
-	   */
-	  zDepth: _propTypes2.default.zDepth
-	} : void 0;
-	exports.default = AppBar;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
+/* 428 */,
+/* 429 */,
+/* 430 */,
 /* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41803,80 +40610,8 @@
 	});
 
 /***/ },
-/* 434 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _pure = __webpack_require__(398);
-
-	var _pure2 = _interopRequireDefault(_pure);
-
-	var _SvgIcon = __webpack_require__(407);
-
-	var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var NavigationMenu = function NavigationMenu(props) {
-	  return _react2.default.createElement(
-	    _SvgIcon2.default,
-	    props,
-	    _react2.default.createElement('path', { d: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' })
-	  );
-	};
-	NavigationMenu = (0, _pure2.default)(NavigationMenu);
-	NavigationMenu.displayName = 'NavigationMenu';
-	NavigationMenu.muiName = 'SvgIcon';
-
-	exports.default = NavigationMenu;
-
-/***/ },
-/* 435 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _pure = __webpack_require__(398);
-
-	var _pure2 = _interopRequireDefault(_pure);
-
-	var _SvgIcon = __webpack_require__(407);
-
-	var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var NavigationClose = function NavigationClose(props) {
-	  return _react2.default.createElement(
-	    _SvgIcon2.default,
-	    props,
-	    _react2.default.createElement('path', { d: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' })
-	  );
-	};
-	NavigationClose = (0, _pure2.default)(NavigationClose);
-	NavigationClose.displayName = 'NavigationClose';
-	NavigationClose.muiName = 'SvgIcon';
-
-	exports.default = NavigationClose;
-
-/***/ },
+/* 434 */,
+/* 435 */,
 /* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47175,60 +45910,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 480 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _SingInModal = __webpack_require__(481);
-
-	var _SingInModal2 = _interopRequireDefault(_SingInModal);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ModalPage = function (_Component) {
-		_inherits(ModalPage, _Component);
-
-		function ModalPage() {
-			_classCallCheck(this, ModalPage);
-
-			return _possibleConstructorReturn(this, (ModalPage.__proto__ || Object.getPrototypeOf(ModalPage)).apply(this, arguments));
-		}
-
-		_createClass(ModalPage, [{
-			key: 'render',
-			value: function render() {
-				// const {open} = this.props
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_SingInModal2.default, null)
-				);
-			}
-		}]);
-
-		return ModalPage;
-	}(_react.Component);
-
-	exports.default = ModalPage;
-
-/***/ },
+/* 480 */,
 /* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -48644,14 +47326,6 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _ArticleList = __webpack_require__(238);
-
-	var _ArticleList2 = _interopRequireDefault(_ArticleList);
-
-	var _History = __webpack_require__(241);
-
-	var _History2 = _interopRequireDefault(_History);
-
 	var _SingInModal = __webpack_require__(481);
 
 	var _SingInModal2 = _interopRequireDefault(_SingInModal);
@@ -48878,12 +47552,7 @@
 
 	'use strict';
 
-	// Include the axios package for performing HTTP requests (promise based alternative to request)
 	var axios = __webpack_require__(491);
-
-	var authKey = 'b9f91d369ff59547cd47b931d8cbc56b:0:74623931';
-	var query = '';
-	var NYTUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' + authKey + '&q=';
 
 	var helpers = {
 
@@ -48910,24 +47579,6 @@
 			return axios.get(query).then(function (response) {
 				console.log(response);
 				return response.data.response.docs;
-			});
-		},
-		// This function send a request to drop Article collection from DB
-
-		dropArticle: function dropArticle() {
-			console.log('Send Request to drop Article Collection');
-			return axios.delete('/api/articles').then(function (response) {
-				console.log(response);
-				return response;
-			});
-		},
-
-		// This function retrieves saved articles
-		getArticle: function getArticle() {
-			console.log('getArticle');
-			return axios.get('/api/articles').then(function (response) {
-				console.log(response);
-				return response;
 			});
 		},
 
@@ -60905,7 +59556,8 @@
 								modal: true,
 								open: this.state.openModal,
 								autoScrollBodyContent: true,
-								autoDetectWindowHeight: true
+								autoDetectWindowHeight: true,
+								repositionOnUpdate: true
 							},
 							_react2.default.createElement(
 								'div',
@@ -64119,10 +62771,10 @@
 					// component = <RaisedButton label="login" onClick={this.handleClick}/>
 					component = _react2.default.createElement(
 						'div',
-						{ className: 'container' },
+						{ className: 'pronone' },
 						_react2.default.createElement(
 							'h2',
-							null,
+							{ style: { color: 'white' } },
 							'Welcome ',
 							user.userName
 						),
@@ -64136,7 +62788,7 @@
 					if (!login) {
 						component = _react2.default.createElement(
 							'div',
-							{ className: 'container' },
+							{ className: 'prologin' },
 							_react2.default.createElement(
 								'h2',
 								null,
@@ -64151,17 +62803,12 @@
 					} else {
 						component = _react2.default.createElement(
 							'div',
-							{ className: 'container' },
+							{ className: 'prowelcome' },
 							_react2.default.createElement(
 								'h2',
-								null,
+								{ style: { color: '#00e6e6' } },
 								'Welcome ',
 								user.userName
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								'loading ......'
 							),
 							_react2.default.createElement(_ProviderTabs2.default, { login: login, user: user })
 						);
@@ -64199,9 +62846,11 @@
 
 	var _Tabs = __webpack_require__(512);
 
-	var _ProviderTabDetails = __webpack_require__(598);
+	var _colors = __webpack_require__(440);
 
-	var _ProviderTabDetails2 = _interopRequireDefault(_ProviderTabDetails);
+	var _ProviderTabQueue = __webpack_require__(611);
+
+	var _ProviderTabQueue2 = _interopRequireDefault(_ProviderTabQueue);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64219,8 +62868,19 @@
 			fontWeight: 400
 		},
 		tabs: {
-			width: '95%'
-
+			width: '100%'
+		},
+		queue: {
+			color: _colors.greenA100,
+			fontSize: 25
+		},
+		pending: {
+			color: _colors.greenA400,
+			fontSize: 25
+		},
+		completed: {
+			color: _colors.greenA100,
+			fontSize: 25
 		}
 	};
 
@@ -64262,21 +62922,16 @@
 					{ style: styles.tabs },
 					_react2.default.createElement(
 						_Tabs.Tab,
-						{ label: 'Tasks Queue', 'data-route': 'queue', onActive: this.handleTabActive },
+						{ label: 'Tasks Queue', style: styles.queue, 'data-route': 'queue', onActive: this.handleTabActive },
 						_react2.default.createElement(
 							'div',
 							null,
-							_react2.default.createElement(
-								'h2',
-								{ style: styles.headline },
-								'Tab One'
-							),
-							_react2.default.createElement(_ProviderTabDetails2.default, { login: login, user: user })
+							_react2.default.createElement(_ProviderTabQueue2.default, { login: login, user: user })
 						)
 					),
 					_react2.default.createElement(
 						_Tabs.Tab,
-						{ label: 'TODOS Pending', 'data-route': 'pending', onActive: this.handleTabActive },
+						{ label: 'Tasks Pending', style: styles.pending, 'data-route': 'pending', onActive: this.handleTabActive },
 						_react2.default.createElement(
 							'div',
 							null,
@@ -64294,7 +62949,7 @@
 					),
 					_react2.default.createElement(
 						_Tabs.Tab,
-						{ label: 'TODO Completed', 'data-route': 'completed', onActive: this.handleTabActive },
+						{ label: 'Tasks Completed', style: styles.completed, 'data-route': 'completed', onActive: this.handleTabActive },
 						_react2.default.createElement(
 							'div',
 							null,
@@ -64320,477 +62975,372 @@
 	exports.default = ProviderTabs;
 
 /***/ },
-/* 598 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Table = __webpack_require__(566);
-
-	var _TextField = __webpack_require__(422);
-
-	var _TextField2 = _interopRequireDefault(_TextField);
-
-	var _Toggle = __webpack_require__(575);
-
-	var _Toggle2 = _interopRequireDefault(_Toggle);
-
-	var _Checkbox = __webpack_require__(482);
-
-	var _Checkbox2 = _interopRequireDefault(_Checkbox);
-
-	var _Dialog = __webpack_require__(413);
-
-	var _Dialog2 = _interopRequireDefault(_Dialog);
-
-	var _Card = __webpack_require__(577);
-
-	var _colors = __webpack_require__(440);
-
-	var _FlatButton = __webpack_require__(384);
-
-	var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-	var _done = __webpack_require__(589);
-
-	var _done2 = _interopRequireDefault(_done);
-
-	var _helpers = __webpack_require__(490);
-
-	var _helpers2 = _interopRequireDefault(_helpers);
-
-	var _ProviderTabDetailConfirmation = __webpack_require__(599);
-
-	var _ProviderTabDetailConfirmation2 = _interopRequireDefault(_ProviderTabDetailConfirmation);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var styles = {
-		propContainer: {
-			width: 185,
-			overflow: 'hidden',
-			margin: '20px auto 0'
-		},
-		propToggleHeader: {
-			margin: '20px auto 10px'
-		}
-	};
-	var rowNum;
-
-	var ProviderTabDetails = function (_React$Component) {
-		_inherits(ProviderTabDetails, _React$Component);
-
-		function ProviderTabDetails(props) {
-			_classCallCheck(this, ProviderTabDetails);
-
-			var _this = _possibleConstructorReturn(this, (ProviderTabDetails.__proto__ || Object.getPrototypeOf(ProviderTabDetails)).call(this, props));
-
-			_this.handleToggle = _this.handleToggle.bind(_this);
-			_this.handleChange = _this.handleChange.bind(_this);
-			_this.handleRowSelection = _this.handleRowSelection.bind(_this);
-			_this.handleAvailable = _this.handleAvailable.bind(_this);
-			_this.modalRowDetails = _this.modalRowDetails.bind(_this);
-			_this.handleModalClose = _this.handleModalClose.bind(_this);
-
-			_this.state = {
-				fixedHeader: true,
-				fixedFooter: true,
-				stripedRows: true,
-				showRowHover: true,
-				selectable: true,
-				// multiSelectable: false,
-				// enableSelectAll: false,
-				// deselectOnClickaway: true,
-				showCheckboxes: false,
-				openModal: false,
-				height: '150px',
-				todos: []
-			};
-			return _this;
-		}
-
-		_createClass(ProviderTabDetails, [{
-			key: 'handleAvailable',
-			value: function handleAvailable(event) {
-				this.handleModalClose();
-				if (event.target.checked) {
-					console.log('ProviderTabDetails - handleAvailable : ', event.target.id);
-				}
-
-				if (this.state.todos.indexOf(event.target.id) > -1) {
-					this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1);
-				} else {
-					this.state.todos.push(event.target.id);
-				}
-				console.log(this.state.todos);
-				// alert('You have select this task: ' + this.props.user.todos[rowNum]._id)
-			}
-		}, {
-			key: 'handleRowSelection',
-			value: function handleRowSelection(row) {
-				// alert('i wass selected:' + row)
-				this.setState({ openModal: true });
-				rowNum = row;
-			}
-		}, {
-			key: 'handleModalClose',
-			value: function handleModalClose() {
-				this.setState({ openModal: false });
-			}
-		}, {
-			key: 'modalRowDetails',
-			value: function modalRowDetails() {
-				var todos = this.props.user.todos;
-
-
-				if (this.state.openModal === true) {
-					var actions = [_react2.default.createElement(_FlatButton2.default, {
-						label: 'OK',
-						primary: true,
-						disabled: false,
-						onTouchTap: this.handleModalClose
-					})];
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							_Dialog2.default,
-							{
-								title: 'Task Information for ' && todos[rowNum].status.receiver,
-								actions: actions,
-								modal: true,
-								open: this.state.openModal
-							},
-							_react2.default.createElement(
-								'div',
-								null,
-								_react2.default.createElement(
-									_Card.Card,
-									null,
-									_react2.default.createElement(_Card.CardHeader, {
-										title: 'Category       Date',
-										subtitle: todos[rowNum].task + '  -  ' + todos[rowNum].date,
-										actAsExpander: true,
-										showExpandableButton: true
-									}),
-									_react2.default.createElement(
-										_Card.CardText,
-										{ expandable: true },
-										_react2.default.createElement(
-											'h4',
-											null,
-											'Description'
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											todos[rowNum].description
-										),
-										_react2.default.createElement(
-											'h6',
-											{ style: { marginTop: 5 } },
-											'Status'
-										),
-										todos[rowNum].status.available ? _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 }) : _react2.default.createElement(
-											'span',
-											null,
-											'Unselected'
-										)
-									)
-								)
-							)
-						)
-					);
-				}
-			}
-		}, {
-			key: 'handleToggle',
-			value: function handleToggle(event, toggled) {
-				this.setState(_defineProperty({}, event.target.name, toggled));
-			}
-		}, {
-			key: 'handleChange',
-			value: function handleChange(event) {
-				this.setState({ height: event.target.value });
-			}
-		}, {
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate() {
-				console.log('ProviderTabDetails - componentDidMount');
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _this2 = this;
-
-				var _props = this.props,
-				    login = _props.login,
-				    user = _props.user;
-
-				// IS showing all todos for the user neeed to separate them 
-
-				return _react2.default.createElement(
-					'div',
-					null,
-					this.modalRowDetails(),
-					_react2.default.createElement(
-						_Table.Table,
-						{
-							height: this.state.height,
-							fixedHeader: this.state.fixedHeader,
-							fixedFooter: this.state.fixedFooter,
-							selectable: this.state.selectable,
-							multiSelectable: this.state.multiSelectable,
-							onRowSelection: this.handleRowSelection
-						},
-						_react2.default.createElement(
-							_Table.TableHeader,
-							{
-								displaySelectAll: this.state.showCheckboxes,
-								adjustForCheckbox: this.state.showCheckboxes,
-								enableSelectAll: this.state.enableSelectAll
-							},
-							_react2.default.createElement(
-								_Table.TableRow,
-								null,
-								_react2.default.createElement(
-									_Table.TableHeaderColumn,
-									{ tooltip: 'The Task' },
-									'Category'
-								),
-								_react2.default.createElement(
-									_Table.TableHeaderColumn,
-									{ tooltip: 'The Name' },
-									'Description'
-								),
-								_react2.default.createElement(
-									_Table.TableHeaderColumn,
-									{ tooltip: 'The Status' },
-									'City'
-								),
-								_react2.default.createElement(
-									_Table.TableHeaderColumn,
-									{ tooltip: 'The Status' },
-									'Date'
-								),
-								_react2.default.createElement(
-									_Table.TableHeaderColumn,
-									{ tooltip: 'The Status' },
-									'Selected'
-								),
-								_react2.default.createElement(
-									_Table.TableHeaderColumn,
-									{ tooltip: 'The Status' },
-									'Receiver'
-								)
-							)
-						),
-						_react2.default.createElement(
-							_Table.TableBody,
-							{
-								displayRowCheckbox: this.state.showCheckboxes,
-								deselectOnClickaway: this.state.deselectOnClickaway,
-								showRowHover: this.state.showRowHover,
-								stripedRows: this.state.stripedRows
-							},
-							user.todos.map(function (row, index) {
-								return _react2.default.createElement(
-									_Table.TableRow,
-									{ key: index, selected: row.selected },
-									_react2.default.createElement(
-										_Table.TableRowColumn,
-										null,
-										row.task
-									),
-									_react2.default.createElement(
-										_Table.TableRowColumn,
-										null,
-										row.city
-									),
-									_react2.default.createElement(
-										_Table.TableRowColumn,
-										null,
-										row.description
-									),
-									_react2.default.createElement(
-										_Table.TableRowColumn,
-										null,
-										row.date.split('T')[0]
-									),
-									_react2.default.createElement(
-										_Table.TableRowColumn,
-										null,
-										_react2.default.createElement(_Checkbox2.default, {
-											value: row.status.available
-											// checked = {row.status.available}
-											, onCheck: _this2.handleAvailable // TODO post to
-											, id: row._id // _id probably does not exist 
-										})
-									),
-									_react2.default.createElement(
-										_Table.TableRowColumn,
-										null,
-										row.status.receiver
-									)
-								);
-							})
-						)
-					),
-					_react2.default.createElement(_ProviderTabDetailConfirmation2.default, { toBeDone: this.state.todos })
-				);
-			}
-		}]);
-
-		return ProviderTabDetails;
-	}(_react2.default.Component);
-
-	exports.default = ProviderTabDetails;
-
-/***/ },
+/* 598 */,
 /* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(600);
+	var defaultClickRejectionStrategy = __webpack_require__(601);
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var alreadyInjected = false;
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	module.exports = function injectTapEventPlugin (strategyOverrides) {
+	  strategyOverrides = strategyOverrides || {}
+	  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
 
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Snackbar = __webpack_require__(600);
-
-	var _Snackbar2 = _interopRequireDefault(_Snackbar);
-
-	var _RaisedButton = __webpack_require__(244);
-
-	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ProviderTabDetailConfirmation = function (_React$Component) {
-	  _inherits(ProviderTabDetailConfirmation, _React$Component);
-
-	  function ProviderTabDetailConfirmation(props) {
-	    _classCallCheck(this, ProviderTabDetailConfirmation);
-
-	    var _this = _possibleConstructorReturn(this, (ProviderTabDetailConfirmation.__proto__ || Object.getPrototypeOf(ProviderTabDetailConfirmation)).call(this, props));
-
-	    _this.handleTouchTap = _this.handleTouchTap.bind(_this);
-	    _this.handleRequestClose = _this.handleRequestClose.bind(_this);
-
-	    _this.state = {
-	      message: 'Please confirm ...',
-	      open: false
-	    };
-	    _this.timer = undefined;
-	    return _this;
+	  if (process.env.NODE_ENV !== 'production') {
+	    invariant(
+	      !alreadyInjected,
+	      'injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
+	It is recommended to call injectTapEventPlugin() just before you call \
+	ReactDOM.render(). If you are using an external library which calls injectTapEventPlugin() \
+	itself, please contact the maintainer as it shouldn\'t be called in library code and \
+	should be injected by the application.'
+	    )
 	  }
 
-	  _createClass(ProviderTabDetailConfirmation, [{
-	    key: 'componentWillUnMount',
-	    value: function componentWillUnMount() {
-	      clearTimeout(this.timer);
-	    }
-	  }, {
-	    key: 'handleActionTouchTap',
-	    value: function handleActionTouchTap() {
-	      alert('I was clicked');
-	    }
-	  }, {
-	    key: 'handleTouchTap',
-	    value: function handleTouchTap() {
-	      var _this2 = this;
+	  alreadyInjected = true;
 
-	      var toBeDone = this.props.toBeDone;
+	  __webpack_require__(43).injection.injectEventPluginsByName({
+	    'TapEventPlugin':       __webpack_require__(602)(shouldRejectClick)
+	  });
+	};
 
-	      this.setState({
-	        open: true
-	      });
-	      console.log('toBeDone', toBeDone);
-	      toBeDone.forEach(function (todo, index) {
-	        console.log('todo', todo);
-	        _this2.timer = setTimeout(function (todo) {
-	          // alert('todo' + todo)
-	          _this2.setState({
-	            message: 'This todo number: ' + index + ' was added' + todo
-	          });
-	        }, 1500);
-	      });
-
-	      // this.timer = setTimeout(() => {
-	      //   this.setState({
-	      //     message: `this.props.toBeDone[]` //`Event ${Math.round(Math.random() * 100)} added to your calendar`,
-	      //   });
-	      // }, 1500);
-	    }
-	  }, {
-	    key: 'handleRequestClose',
-	    value: function handleRequestClose() {
-	      this.setState({
-	        open: false
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var toBeDone = this.props.toBeDone;
-
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_RaisedButton2.default, {
-	          onTouchTap: this.handleTouchTap,
-	          label: 'Add TODOS'
-	        }),
-	        _react2.default.createElement(_Snackbar2.default, {
-	          open: this.state.open,
-	          message: this.state.message,
-	          onActionTouchTap: this.handleActionTouchTap,
-	          action: 'undo',
-	          autoHideDuration: 3000,
-	          onRequestClose: this.handleRequestClose
-	        })
-	      );
-	    }
-	  }]);
-
-	  return ProviderTabDetailConfirmation;
-	}(_react2.default.Component);
-
-	exports.default = ProviderTabDetailConfirmation;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule invariant
+	 */
+
+	"use strict";
+
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+
+	var invariant = function (condition, format, a, b, c, d, e, f) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
+	        return args[argIndex++];
+	      }));
+	    }
+
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+
+	module.exports = invariant;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 601 */
+/***/ function(module, exports) {
+
+	module.exports = function(lastTouchEvent, clickTimestamp) {
+	  if (lastTouchEvent && (clickTimestamp - lastTouchEvent) < 750) {
+	    return true;
+	  }
+	};
+
+
+/***/ },
+/* 602 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 * @providesModule TapEventPlugin
+	 * @typechecks static-only
+	 */
+
+	"use strict";
+
+	var EventConstants = __webpack_require__(41);
+	var EventPluginUtils = __webpack_require__(45);
+	var EventPropagators = __webpack_require__(42);
+	var SyntheticUIEvent = __webpack_require__(76);
+	var TouchEventUtils = __webpack_require__(603);
+	var ViewportMetrics = __webpack_require__(77);
+
+	var keyOf = __webpack_require__(604);
+	var topLevelTypes = EventConstants.topLevelTypes;
+
+	var isStartish = EventPluginUtils.isStartish;
+	var isEndish = EventPluginUtils.isEndish;
+
+	var isTouch = function(topLevelType) {
+	  var touchTypes = [
+	    topLevelTypes.topTouchCancel,
+	    topLevelTypes.topTouchEnd,
+	    topLevelTypes.topTouchStart,
+	    topLevelTypes.topTouchMove
+	  ];
+	  return touchTypes.indexOf(topLevelType) >= 0;
+	}
+
+	/**
+	 * Number of pixels that are tolerated in between a `touchStart` and `touchEnd`
+	 * in order to still be considered a 'tap' event.
+	 */
+	var tapMoveThreshold = 10;
+	var ignoreMouseThreshold = 750;
+	var startCoords = {x: null, y: null};
+	var lastTouchEvent = null;
+
+	var Axis = {
+	  x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
+	  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
+	};
+
+	function getAxisCoordOfEvent(axis, nativeEvent) {
+	  var singleTouch = TouchEventUtils.extractSingleTouch(nativeEvent);
+	  if (singleTouch) {
+	    return singleTouch[axis.page];
+	  }
+	  return axis.page in nativeEvent ?
+	    nativeEvent[axis.page] :
+	    nativeEvent[axis.client] + ViewportMetrics[axis.envScroll];
+	}
+
+	function getDistance(coords, nativeEvent) {
+	  var pageX = getAxisCoordOfEvent(Axis.x, nativeEvent);
+	  var pageY = getAxisCoordOfEvent(Axis.y, nativeEvent);
+	  return Math.pow(
+	    Math.pow(pageX - coords.x, 2) + Math.pow(pageY - coords.y, 2),
+	    0.5
+	  );
+	}
+
+	var touchEvents = [
+	  topLevelTypes.topTouchStart,
+	  topLevelTypes.topTouchCancel,
+	  topLevelTypes.topTouchEnd,
+	  topLevelTypes.topTouchMove,
+	];
+
+	var dependencies = [
+	  topLevelTypes.topMouseDown,
+	  topLevelTypes.topMouseMove,
+	  topLevelTypes.topMouseUp,
+	].concat(touchEvents);
+
+	var eventTypes = {
+	  touchTap: {
+	    phasedRegistrationNames: {
+	      bubbled: keyOf({onTouchTap: null}),
+	      captured: keyOf({onTouchTapCapture: null})
+	    },
+	    dependencies: dependencies
+	  }
+	};
+
+	var now = (function() {
+	  if (Date.now) {
+	    return Date.now;
+	  } else {
+	    // IE8 support: http://stackoverflow.com/questions/9430357/please-explain-why-and-how-new-date-works-as-workaround-for-date-now-in
+	    return function () {
+	      return +new Date;
+	    }
+	  }
+	})();
+
+	function createTapEventPlugin(shouldRejectClick) {
+	  return {
+
+	    tapMoveThreshold: tapMoveThreshold,
+
+	    ignoreMouseThreshold: ignoreMouseThreshold,
+
+	    eventTypes: eventTypes,
+
+	    /**
+	     * @param {string} topLevelType Record from `EventConstants`.
+	     * @param {DOMEventTarget} targetInst The listening component root node.
+	     * @param {object} nativeEvent Native browser event.
+	     * @return {*} An accumulation of synthetic events.
+	     * @see {EventPluginHub.extractEvents}
+	     */
+	    extractEvents: function(
+	      topLevelType,
+	      targetInst,
+	      nativeEvent,
+	      nativeEventTarget
+	    ) {
+
+	      if (isTouch(topLevelType)) {
+	        lastTouchEvent = now();
+	      } else {
+	        if (shouldRejectClick(lastTouchEvent, now())) {
+	          return null;
+	        }
+	      }
+
+	      if (!isStartish(topLevelType) && !isEndish(topLevelType)) {
+	        return null;
+	      }
+	      var event = null;
+	      var distance = getDistance(startCoords, nativeEvent);
+	      if (isEndish(topLevelType) && distance < tapMoveThreshold) {
+	        event = SyntheticUIEvent.getPooled(
+	          eventTypes.touchTap,
+	          targetInst,
+	          nativeEvent,
+	          nativeEventTarget
+	        );
+	      }
+	      if (isStartish(topLevelType)) {
+	        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
+	        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
+	      } else if (isEndish(topLevelType)) {
+	        startCoords.x = 0;
+	        startCoords.y = 0;
+	      }
+	      EventPropagators.accumulateTwoPhaseDispatches(event);
+	      return event;
+	    }
+
+	  };
+	}
+
+	module.exports = createTapEventPlugin;
+
+
+/***/ },
+/* 603 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 * @providesModule TouchEventUtils
+	 */
+
+	var TouchEventUtils = {
+	  /**
+	   * Utility function for common case of extracting out the primary touch from a
+	   * touch event.
+	   * - `touchEnd` events usually do not have the `touches` property.
+	   *   http://stackoverflow.com/questions/3666929/
+	   *   mobile-sarai-touchend-event-not-firing-when-last-touch-is-removed
+	   *
+	   * @param {Event} nativeEvent Native event that may or may not be a touch.
+	   * @return {TouchesObject?} an object with pageX and pageY or null.
+	   */
+	  extractSingleTouch: function(nativeEvent) {
+	    var touches = nativeEvent.touches;
+	    var changedTouches = nativeEvent.changedTouches;
+	    var hasTouches = touches && touches.length > 0;
+	    var hasChangedTouches = changedTouches && changedTouches.length > 0;
+
+	    return !hasTouches && hasChangedTouches ? changedTouches[0] :
+	           hasTouches ? touches[0] :
+	           nativeEvent;
+	  }
+	};
+
+	module.exports = TouchEventUtils;
+
+
+/***/ },
+/* 604 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule keyOf
+	 */
+
+	/**
+	 * Allows extraction of a minified key. Let's the build system minify keys
+	 * without losing the ability to dynamically use key strings as values
+	 * themselves. Pass in an object with a single key/val pair and it will return
+	 * you the string key of that single record. Suppose you want to grab the
+	 * value for a key 'className' inside of an object. Key/val minification may
+	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
+	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
+	 * reuse those resolutions.
+	 */
+	"use strict";
+
+	var keyOf = function (oneKeyObj) {
+	  var key;
+	  for (key in oneKeyObj) {
+	    if (!oneKeyObj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    return key;
+	  }
+	  return null;
+	};
+
+	module.exports = keyOf;
+
+/***/ },
+/* 605 */,
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64800,7 +63350,7 @@
 	});
 	exports.default = undefined;
 
-	var _Snackbar = __webpack_require__(601);
+	var _Snackbar = __webpack_require__(607);
 
 	var _Snackbar2 = _interopRequireDefault(_Snackbar);
 
@@ -64809,7 +63359,7 @@
 	exports.default = _Snackbar2.default;
 
 /***/ },
-/* 601 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -64862,7 +63412,7 @@
 
 	var _ClickAwayListener2 = _interopRequireDefault(_ClickAwayListener);
 
-	var _SnackbarBody = __webpack_require__(602);
+	var _SnackbarBody = __webpack_require__(608);
 
 	var _SnackbarBody2 = _interopRequireDefault(_SnackbarBody);
 
@@ -65124,7 +63674,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 602 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -65154,7 +63704,7 @@
 
 	var _transitions2 = _interopRequireDefault(_transitions);
 
-	var _withWidth = __webpack_require__(603);
+	var _withWidth = __webpack_require__(609);
 
 	var _withWidth2 = _interopRequireDefault(_withWidth);
 
@@ -65294,7 +63844,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 603 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65444,367 +63994,518 @@
 	}
 
 /***/ },
-/* 604 */
+/* 610 */,
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(605);
-	var defaultClickRejectionStrategy = __webpack_require__(606);
+	'use strict';
 
-	var alreadyInjected = false;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
-	module.exports = function injectTapEventPlugin (strategyOverrides) {
-	  strategyOverrides = strategyOverrides || {}
-	  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	  if (process.env.NODE_ENV !== 'production') {
-	    invariant(
-	      !alreadyInjected,
-	      'injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
-	It is recommended to call injectTapEventPlugin() just before you call \
-	ReactDOM.render(). If you are using an external library which calls injectTapEventPlugin() \
-	itself, please contact the maintainer as it shouldn\'t be called in library code and \
-	should be injected by the application.'
-	    )
-	  }
+	var _react = __webpack_require__(1);
 
-	  alreadyInjected = true;
+	var _react2 = _interopRequireDefault(_react);
 
-	  __webpack_require__(43).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(607)(shouldRejectClick)
-	  });
+	var _Table = __webpack_require__(566);
+
+	var _TextField = __webpack_require__(422);
+
+	var _TextField2 = _interopRequireDefault(_TextField);
+
+	var _Toggle = __webpack_require__(575);
+
+	var _Toggle2 = _interopRequireDefault(_Toggle);
+
+	var _Checkbox = __webpack_require__(482);
+
+	var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+	var _Dialog = __webpack_require__(413);
+
+	var _Dialog2 = _interopRequireDefault(_Dialog);
+
+	var _Card = __webpack_require__(577);
+
+	var _colors = __webpack_require__(440);
+
+	var _RaisedButton = __webpack_require__(244);
+
+	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+	var _done = __webpack_require__(589);
+
+	var _done2 = _interopRequireDefault(_done);
+
+	var _helpers = __webpack_require__(490);
+
+	var _helpers2 = _interopRequireDefault(_helpers);
+
+	var _ProviderTabQueueConfirmation = __webpack_require__(612);
+
+	var _ProviderTabQueueConfirmation2 = _interopRequireDefault(_ProviderTabQueueConfirmation);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import RaisedButton from 'material-ui/RaisedButton';
+
+
+	var styles = {
+		propContainer: {
+			width: 185,
+			overflow: 'hidden',
+			margin: '20px auto 0'
+		},
+		propToggleHeader: {
+			margin: '20px auto 10px'
+		}
 	};
+	var rowNum;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+	var ProviderTabQueue = function (_React$Component) {
+		_inherits(ProviderTabQueue, _React$Component);
+
+		function ProviderTabQueue(props) {
+			_classCallCheck(this, ProviderTabQueue);
+
+			var _this = _possibleConstructorReturn(this, (ProviderTabQueue.__proto__ || Object.getPrototypeOf(ProviderTabQueue)).call(this, props));
+
+			_this.handleToggle = _this.handleToggle.bind(_this);
+			_this.handleChange = _this.handleChange.bind(_this);
+			_this.handleRowSelection = _this.handleRowSelection.bind(_this);
+			_this.handleAvailable = _this.handleAvailable.bind(_this);
+			_this.modalRowDetails = _this.modalRowDetails.bind(_this);
+			_this.handleModalClose = _this.handleModalClose.bind(_this);
+
+			_this.state = {
+				fixedHeader: true,
+				fixedFooter: true,
+				stripedRows: true,
+				showRowHover: true,
+				selectable: true,
+				// multiSelectable: false,
+				// enableSelectAll: false,
+				// deselectOnClickaway: true,
+				showCheckboxes: false,
+				openModal: false,
+				height: '150px',
+				todos: []
+			};
+			return _this;
+		}
+
+		_createClass(ProviderTabQueue, [{
+			key: 'handleAvailable',
+			value: function handleAvailable(event) {
+				this.handleModalClose();
+				if (event.target.checked) {
+					console.log('ProviderTabDetails - handleAvailable : ', event.target.id);
+				}
+
+				if (this.state.todos.indexOf(event.target.id) > -1) {
+					this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1);
+				} else {
+					this.state.todos.push(event.target.id);
+				}
+				console.log(this.state.todos);
+				// alert('You have select this task: ' + this.props.user.todos[rowNum]._id)
+			}
+		}, {
+			key: 'handleRowSelection',
+			value: function handleRowSelection(row) {
+				// alert('i wass selected:' + row)
+				this.setState({ openModal: true });
+				rowNum = row;
+			}
+		}, {
+			key: 'handleModalClose',
+			value: function handleModalClose() {
+				this.setState({ openModal: false });
+			}
+		}, {
+			key: 'modalRowDetails',
+			value: function modalRowDetails() {
+				var todos = this.props.user.todos;
+
+
+				if (this.state.openModal === true) {
+					var actions = [_react2.default.createElement(_RaisedButton2.default, {
+						label: 'OK',
+						primary: true,
+						disabled: false,
+						onTouchTap: this.handleModalClose
+					})];
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							_Dialog2.default,
+							{
+								title: 'Task Information for ' + todos[rowNum].status.receiver,
+								actions: actions,
+								modal: true,
+								open: this.state.openModal
+							},
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									_Card.Card,
+									null,
+									_react2.default.createElement(
+										_Card.CardHeader
+										// title={'Category' + todos[rowNum].task}
+										// subtitle=
+										,
+										{ actAsExpander: true,
+											showExpandableButton: true
+										},
+										_react2.default.createElement(
+											'span',
+											null,
+											'Category: ' + todos[rowNum].task
+										),
+										_react2.default.createElement(
+											'span',
+											{ style: { 'paddingLeft': '50px' } },
+											'City: ' + todos[rowNum].city
+										),
+										_react2.default.createElement(
+											'span',
+											{ style: { 'paddingLeft': '50px' } },
+											'Date: ' + todos[rowNum].date.split('T')[0]
+										)
+									),
+									_react2.default.createElement(
+										_Card.CardText,
+										{ expandable: true },
+										_react2.default.createElement(
+											'h4',
+											null,
+											'Details'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											'Description: ' + todos[rowNum].description
+										),
+										_react2.default.createElement(
+											'span',
+											null,
+											'Date' + todos[rowNum].date
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'span',
+											null,
+											'Status: '
+										),
+										todos[rowNum].status.available ? _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 }) : _react2.default.createElement(
+											'span',
+											null,
+											'Unselected'
+										)
+									)
+								)
+							)
+						)
+					);
+				}
+			}
+		}, {
+			key: 'handleToggle',
+			value: function handleToggle(event, toggled) {
+				this.setState(_defineProperty({}, event.target.name, toggled));
+			}
+		}, {
+			key: 'handleChange',
+			value: function handleChange(event) {
+				this.setState({ height: event.target.value });
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate() {
+				console.log('ProviderTabDetails - componentDidMount');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
+
+				var _props = this.props,
+				    login = _props.login,
+				    user = _props.user;
+
+				// IS showing all todos for the user neeed to separate them 
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					this.modalRowDetails(),
+					_react2.default.createElement(
+						_Table.Table,
+						{
+							height: this.state.height,
+							fixedHeader: this.state.fixedHeader,
+							fixedFooter: this.state.fixedFooter,
+							selectable: this.state.selectable,
+							multiSelectable: this.state.multiSelectable,
+							onRowSelection: this.handleRowSelection
+						},
+						_react2.default.createElement(
+							_Table.TableHeader,
+							{
+								displaySelectAll: this.state.showCheckboxes,
+								adjustForCheckbox: this.state.showCheckboxes,
+								enableSelectAll: this.state.enableSelectAll
+							},
+							_react2.default.createElement(
+								_Table.TableRow,
+								null,
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Task' },
+									'Number'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Task' },
+									'Category'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'City'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Name' },
+									'Description'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Date'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Selected'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Receiver'
+								)
+							)
+						),
+						_react2.default.createElement(
+							_Table.TableBody,
+							{
+								displayRowCheckbox: this.state.showCheckboxes,
+								deselectOnClickaway: this.state.deselectOnClickaway,
+								showRowHover: this.state.showRowHover,
+								stripedRows: this.state.stripedRows
+							},
+							user.todos.map(function (row, index) {
+								return _react2.default.createElement(
+									_Table.TableRow,
+									{ key: index, selected: row.selected },
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										index
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.task
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.city
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.description
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.date.split('T')[0]
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										_react2.default.createElement(_Checkbox2.default, {
+											value: row.status.available
+											// checked = {row.status.available}
+											, onCheck: _this2.handleAvailable // TODO post to
+											, id: row._id // _id probably does not exist 
+										})
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.status.receiver
+									)
+								);
+							})
+						)
+					),
+					_react2.default.createElement(_ProviderTabQueueConfirmation2.default, { toBeDone: this.state.todos })
+				);
+			}
+		}]);
+
+		return ProviderTabQueue;
+	}(_react2.default.Component);
+
+	exports.default = ProviderTabQueue;
 
 /***/ },
-/* 605 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule invariant
-	 */
+	'use strict';
 
-	"use strict";
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var invariant = function (condition, format, a, b, c, d, e, f) {
-	  if (process.env.NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Snackbar = __webpack_require__(606);
+
+	var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
+	var _RaisedButton = __webpack_require__(244);
+
+	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ranNum;
+
+	var ProviderTabQueueConfirmation = function (_React$Component) {
+	  _inherits(ProviderTabQueueConfirmation, _React$Component);
+
+	  function ProviderTabQueueConfirmation(props) {
+	    _classCallCheck(this, ProviderTabQueueConfirmation);
+
+	    var _this = _possibleConstructorReturn(this, (ProviderTabQueueConfirmation.__proto__ || Object.getPrototypeOf(ProviderTabQueueConfirmation)).call(this, props));
+
+	    _this.handleTouchTap = _this.handleTouchTap.bind(_this);
+	    _this.handleRequestClose = _this.handleRequestClose.bind(_this);
+
+	    _this.state = {
+	      message: 'Confirming TODO ...',
+	      open: false
+	    };
+	    _this.timer = undefined;
+	    return _this;
+	  }
+
+	  _createClass(ProviderTabQueueConfirmation, [{
+	    key: 'componentWillUnMount',
+	    value: function componentWillUnMount() {
+	      clearTimeout(this.timer);
 	    }
-	  }
-
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      }));
+	  }, {
+	    key: 'handleActionTouchTap',
+	    value: function handleActionTouchTap() {
+	      confirm('todo ' + ranNum + ' will be cancel ..!');
 	    }
+	  }, {
+	    key: 'handleTouchTap',
+	    value: function handleTouchTap() {
+	      var toBeDone = this.props.toBeDone;
 
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
+	      console.log('toBeDone: ', toBeDone);
+	      this.setState({
+	        open: true
+	      });
+	      // console.log('toBeDone', toBeDone)
+	      // toBeDone.forEach((todo, index) => {
+	      //   console.log('todo', todo)
+	      //    this.timer = setTimeout((todo) => {
+	      //     // alert('todo' + todo)
+	      //     this.setState({
+	      //       message: 'This todo number: ' + index + ' was added' + todo
+	      //     })
+	      //   }, 1500)
 
-	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+	      // })
+	      ranNum = Math.round(Math.random() * 100);
+	      this.setState({
+	        message: 'Todo ' + ranNum + ' was added to pending'
+	      });
 
-/***/ },
-/* 606 */
-/***/ function(module, exports) {
-
-	module.exports = function(lastTouchEvent, clickTimestamp) {
-	  if (lastTouchEvent && (clickTimestamp - lastTouchEvent) < 750) {
-	    return true;
-	  }
-	};
-
-
-/***/ },
-/* 607 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 * @providesModule TapEventPlugin
-	 * @typechecks static-only
-	 */
-
-	"use strict";
-
-	var EventConstants = __webpack_require__(41);
-	var EventPluginUtils = __webpack_require__(45);
-	var EventPropagators = __webpack_require__(42);
-	var SyntheticUIEvent = __webpack_require__(76);
-	var TouchEventUtils = __webpack_require__(608);
-	var ViewportMetrics = __webpack_require__(77);
-
-	var keyOf = __webpack_require__(609);
-	var topLevelTypes = EventConstants.topLevelTypes;
-
-	var isStartish = EventPluginUtils.isStartish;
-	var isEndish = EventPluginUtils.isEndish;
-
-	var isTouch = function(topLevelType) {
-	  var touchTypes = [
-	    topLevelTypes.topTouchCancel,
-	    topLevelTypes.topTouchEnd,
-	    topLevelTypes.topTouchStart,
-	    topLevelTypes.topTouchMove
-	  ];
-	  return touchTypes.indexOf(topLevelType) >= 0;
-	}
-
-	/**
-	 * Number of pixels that are tolerated in between a `touchStart` and `touchEnd`
-	 * in order to still be considered a 'tap' event.
-	 */
-	var tapMoveThreshold = 10;
-	var ignoreMouseThreshold = 750;
-	var startCoords = {x: null, y: null};
-	var lastTouchEvent = null;
-
-	var Axis = {
-	  x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
-	  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
-	};
-
-	function getAxisCoordOfEvent(axis, nativeEvent) {
-	  var singleTouch = TouchEventUtils.extractSingleTouch(nativeEvent);
-	  if (singleTouch) {
-	    return singleTouch[axis.page];
-	  }
-	  return axis.page in nativeEvent ?
-	    nativeEvent[axis.page] :
-	    nativeEvent[axis.client] + ViewportMetrics[axis.envScroll];
-	}
-
-	function getDistance(coords, nativeEvent) {
-	  var pageX = getAxisCoordOfEvent(Axis.x, nativeEvent);
-	  var pageY = getAxisCoordOfEvent(Axis.y, nativeEvent);
-	  return Math.pow(
-	    Math.pow(pageX - coords.x, 2) + Math.pow(pageY - coords.y, 2),
-	    0.5
-	  );
-	}
-
-	var touchEvents = [
-	  topLevelTypes.topTouchStart,
-	  topLevelTypes.topTouchCancel,
-	  topLevelTypes.topTouchEnd,
-	  topLevelTypes.topTouchMove,
-	];
-
-	var dependencies = [
-	  topLevelTypes.topMouseDown,
-	  topLevelTypes.topMouseMove,
-	  topLevelTypes.topMouseUp,
-	].concat(touchEvents);
-
-	var eventTypes = {
-	  touchTap: {
-	    phasedRegistrationNames: {
-	      bubbled: keyOf({onTouchTap: null}),
-	      captured: keyOf({onTouchTapCapture: null})
-	    },
-	    dependencies: dependencies
-	  }
-	};
-
-	var now = (function() {
-	  if (Date.now) {
-	    return Date.now;
-	  } else {
-	    // IE8 support: http://stackoverflow.com/questions/9430357/please-explain-why-and-how-new-date-works-as-workaround-for-date-now-in
-	    return function () {
-	      return +new Date;
+	      // this.timer = setTimeout(() => {
+	      //   this.setState({
+	      //     message: `Todo ${Math.round(Math.random() * 100)} added to your queue`,
+	      //   });
+	      // }, 1500);
 	    }
-	  }
-	})();
-
-	function createTapEventPlugin(shouldRejectClick) {
-	  return {
-
-	    tapMoveThreshold: tapMoveThreshold,
-
-	    ignoreMouseThreshold: ignoreMouseThreshold,
-
-	    eventTypes: eventTypes,
-
-	    /**
-	     * @param {string} topLevelType Record from `EventConstants`.
-	     * @param {DOMEventTarget} targetInst The listening component root node.
-	     * @param {object} nativeEvent Native browser event.
-	     * @return {*} An accumulation of synthetic events.
-	     * @see {EventPluginHub.extractEvents}
-	     */
-	    extractEvents: function(
-	      topLevelType,
-	      targetInst,
-	      nativeEvent,
-	      nativeEventTarget
-	    ) {
-
-	      if (isTouch(topLevelType)) {
-	        lastTouchEvent = now();
-	      } else {
-	        if (shouldRejectClick(lastTouchEvent, now())) {
-	          return null;
-	        }
-	      }
-
-	      if (!isStartish(topLevelType) && !isEndish(topLevelType)) {
-	        return null;
-	      }
-	      var event = null;
-	      var distance = getDistance(startCoords, nativeEvent);
-	      if (isEndish(topLevelType) && distance < tapMoveThreshold) {
-	        event = SyntheticUIEvent.getPooled(
-	          eventTypes.touchTap,
-	          targetInst,
-	          nativeEvent,
-	          nativeEventTarget
-	        );
-	      }
-	      if (isStartish(topLevelType)) {
-	        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
-	        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
-	      } else if (isEndish(topLevelType)) {
-	        startCoords.x = 0;
-	        startCoords.y = 0;
-	      }
-	      EventPropagators.accumulateTwoPhaseDispatches(event);
-	      return event;
+	  }, {
+	    key: 'handleRequestClose',
+	    value: function handleRequestClose() {
+	      this.setState({
+	        open: false
+	      });
 	    }
-
-	  };
-	}
-
-	module.exports = createTapEventPlugin;
-
-
-/***/ },
-/* 608 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 * @providesModule TouchEventUtils
-	 */
-
-	var TouchEventUtils = {
-	  /**
-	   * Utility function for common case of extracting out the primary touch from a
-	   * touch event.
-	   * - `touchEnd` events usually do not have the `touches` property.
-	   *   http://stackoverflow.com/questions/3666929/
-	   *   mobile-sarai-touchend-event-not-firing-when-last-touch-is-removed
-	   *
-	   * @param {Event} nativeEvent Native event that may or may not be a touch.
-	   * @return {TouchesObject?} an object with pageX and pageY or null.
-	   */
-	  extractSingleTouch: function(nativeEvent) {
-	    var touches = nativeEvent.touches;
-	    var changedTouches = nativeEvent.changedTouches;
-	    var hasTouches = touches && touches.length > 0;
-	    var hasChangedTouches = changedTouches && changedTouches.length > 0;
-
-	    return !hasTouches && hasChangedTouches ? changedTouches[0] :
-	           hasTouches ? touches[0] :
-	           nativeEvent;
-	  }
-	};
-
-	module.exports = TouchEventUtils;
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var toBeDone = this.props.toBeDone;
 
 
-/***/ },
-/* 609 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule keyOf
-	 */
-
-	/**
-	 * Allows extraction of a minified key. Let's the build system minify keys
-	 * without losing the ability to dynamically use key strings as values
-	 * themselves. Pass in an object with a single key/val pair and it will return
-	 * you the string key of that single record. Suppose you want to grab the
-	 * value for a key 'className' inside of an object. Key/val minification may
-	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
-	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
-	 * reuse those resolutions.
-	 */
-	"use strict";
-
-	var keyOf = function (oneKeyObj) {
-	  var key;
-	  for (key in oneKeyObj) {
-	    if (!oneKeyObj.hasOwnProperty(key)) {
-	      continue;
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'text-center' },
+	        _react2.default.createElement(_RaisedButton2.default, {
+	          onTouchTap: this.handleTouchTap,
+	          secondary: true,
+	          label: 'Add TODOS'
+	        }),
+	        _react2.default.createElement(_Snackbar2.default, {
+	          open: this.state.open,
+	          message: this.state.message,
+	          onActionTouchTap: this.handleActionTouchTap,
+	          action: 'undo',
+	          autoHideDuration: 3000,
+	          onRequestClose: this.handleRequestClose
+	        })
+	      );
 	    }
-	    return key;
-	  }
-	  return null;
-	};
+	  }]);
 
-	module.exports = keyOf;
+	  return ProviderTabQueueConfirmation;
+	}(_react2.default.Component);
+
+	exports.default = ProviderTabQueueConfirmation;
 
 /***/ }
 /******/ ]);

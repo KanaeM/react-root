@@ -7,11 +7,12 @@ import Checkbox from 'material-ui/Checkbox';
 import Dialog from 'material-ui/Dialog';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import {cyan100, blue200, blueGrey200, lightGreenA700} from 'material-ui/styles/colors';
-import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import CheckMark from 'material-ui/svg-icons/action/done';
 import helpers from '../helpers';
 
-import ProviderTabDetailConfirmation from '../Components/ProviderTabDetailConfirmation';
+import ProviderTabQueueConfirmation from '../Components/ProviderTabQueueConfirmation';
 
 const styles = {
 	propContainer: {
@@ -25,7 +26,7 @@ const styles = {
 };
 var rowNum
 
-class ProviderTabDetails extends React.Component {
+class ProviderTabQueue extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -83,7 +84,7 @@ class ProviderTabDetails extends React.Component {
 
 		if (this.state.openModal === true){
 			const actions = [
-				<FlatButton
+				<RaisedButton
 					label="OK"
 					primary={true}
 					disabled={false}
@@ -93,7 +94,7 @@ class ProviderTabDetails extends React.Component {
 			return(
 				<div>
 					<Dialog
-						title={'Task Information for ' && todos[rowNum].status.receiver}
+						title={'Task Information for ' + todos[rowNum].status.receiver}
 						actions={actions}
 						modal={true}
 						open={this.state.openModal}
@@ -101,15 +102,22 @@ class ProviderTabDetails extends React.Component {
 						<div>
 							<Card>
 								<CardHeader
-									title="Category       Date"
-									subtitle={todos[rowNum].task + '  -  ' + todos[rowNum].date}
+									// title={'Category' + todos[rowNum].task}
+									// subtitle=
 									actAsExpander={true}
 									showExpandableButton={true}
-								/>
+								>
+									<span>{'Category: ' + todos[rowNum].task}</span>
+									<span style={{'paddingLeft':'50px'}}>{'City: ' + todos[rowNum].city}</span>
+									<span style={{'paddingLeft':'50px'}}>{'Date: ' + todos[rowNum].date.split('T')[0]}</span>
+									
+								</CardHeader>
 								<CardText expandable={true}>
-									<h4>Description</h4>
-									<p>{todos[rowNum].description}</p>
-									<h6 style={{marginTop: 5}}>Status</h6>
+									<h4>Details</h4>
+									<p>{'Description: ' + todos[rowNum].description}</p>
+									<span>{'Date' + todos[rowNum].date}</span>
+									<br/>
+									<span>{'Status: '}</span>
 									{
 										todos[rowNum].status.available?
 											(<CheckMark style={{size: 50}} color={lightGreenA700} />) 
@@ -161,9 +169,10 @@ class ProviderTabDetails extends React.Component {
 						enableSelectAll={this.state.enableSelectAll}
 					>
 						<TableRow>
+							<TableHeaderColumn tooltip="The Task">Number</TableHeaderColumn>
 							<TableHeaderColumn tooltip="The Task">Category</TableHeaderColumn>
-							<TableHeaderColumn tooltip="The Name">Description</TableHeaderColumn>
 							<TableHeaderColumn tooltip="The Status">City</TableHeaderColumn>
+							<TableHeaderColumn tooltip="The Name">Description</TableHeaderColumn>
 							<TableHeaderColumn tooltip="The Status">Date</TableHeaderColumn>
 							<TableHeaderColumn tooltip="The Status">Selected</TableHeaderColumn>
 							<TableHeaderColumn tooltip="The Status">Receiver</TableHeaderColumn>
@@ -177,6 +186,7 @@ class ProviderTabDetails extends React.Component {
 					>
 						{user.todos.map( (row, index) => (
 							<TableRow key={index} selected={row.selected}>
+								<TableRowColumn>{index}</TableRowColumn>
 								<TableRowColumn>{row.task}</TableRowColumn>
 								<TableRowColumn>{row.city}</TableRowColumn>
 								<TableRowColumn>{row.description}</TableRowColumn>
@@ -194,10 +204,10 @@ class ProviderTabDetails extends React.Component {
 							))}
 					</TableBody>
 				</Table>
-				<ProviderTabDetailConfirmation toBeDone={this.state.todos}/>
+				<ProviderTabQueueConfirmation toBeDone={this.state.todos}/>
 			</div>
 		);
 	}
 }
 
-export default ProviderTabDetails;
+export default ProviderTabQueue;

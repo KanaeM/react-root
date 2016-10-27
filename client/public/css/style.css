@@ -11,7 +11,9 @@
      background-color: #BCF;
   }
 */
-
+.pronone {
+  background-color: #dcffcc
+}
 .MainPage {
   /*background-image: url("../img/react-router.jpg");*/
   /*background-size: 100%;*/

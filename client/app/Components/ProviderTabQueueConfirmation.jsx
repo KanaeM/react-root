@@ -2,7 +2,9 @@ import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class ProviderTabDetailConfirmation extends React.Component {
+var ranNum
+
+class ProviderTabQueueConfirmation extends React.Component {
 
   constructor(props) {
     super(props);
@@ -10,7 +12,7 @@ class ProviderTabDetailConfirmation extends React.Component {
     this.handleRequestClose = this.handleRequestClose.bind(this);
 
     this.state = {
-      message: 'Please confirm ...',
+      message: 'Confirming TODO ...',
       open: false,
     };
     this.timer = undefined;
@@ -21,33 +23,38 @@ class ProviderTabDetailConfirmation extends React.Component {
   }
 
   handleActionTouchTap() {
-    alert('I was clicked')
+    confirm('todo ' + ranNum + ' will be cancel ..!' )
 
   }
 
   handleTouchTap() {
     const {toBeDone} = this.props
+    console.log('toBeDone: ', toBeDone)
     this.setState({
       open: true,
     });
-    console.log('toBeDone', toBeDone)
-    toBeDone.forEach((todo, index) => {
-      console.log('todo', todo)
-       this.timer = setTimeout((todo) => {
-        // alert('todo' + todo)
-        this.setState({
-          message: 'This todo number: ' + index + ' was added' + todo
-        })
-      }, 1500)
+    // console.log('toBeDone', toBeDone)
+    // toBeDone.forEach((todo, index) => {
+    //   console.log('todo', todo)
+    //    this.timer = setTimeout((todo) => {
+    //     // alert('todo' + todo)
+    //     this.setState({
+    //       message: 'This todo number: ' + index + ' was added' + todo
+    //     })
+    //   }, 1500)
      
-    })
-
+    // })
+    ranNum = Math.round(Math.random() * 100)
+      this.setState({
+        message: 'Todo ' + ranNum + ' was added to pending' ,
+      });
 
     // this.timer = setTimeout(() => {
     //   this.setState({
-    //     message: `this.props.toBeDone[]` //`Event ${Math.round(Math.random() * 100)} added to your calendar`,
+    //     message: `Todo ${Math.round(Math.random() * 100)} added to your queue`,
     //   });
     // }, 1500);
+
   };
 
   handleRequestClose() {
@@ -60,9 +67,10 @@ class ProviderTabDetailConfirmation extends React.Component {
     const {toBeDone} = this.props
 
     return (
-      <div>
+      <div className='text-center'>
         <RaisedButton
           onTouchTap={this.handleTouchTap}
+          secondary={true}
           label="Add TODOS"
         />
         <Snackbar
@@ -78,4 +86,4 @@ class ProviderTabDetailConfirmation extends React.Component {
   }
 }
 
-export default ProviderTabDetailConfirmation
+export default ProviderTabQueueConfirmation
