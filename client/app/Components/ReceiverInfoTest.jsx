@@ -15,7 +15,7 @@ import MenuItem from 'material-ui/MenuItem';
 import helpers from '../receiverhelpers';
 import provHelpers from '../helpers'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import LoginAlertModule from './LoginAlertModule'
+// import LoginAlertModule from './LoginAlertModule'
 
 var t, d 
 class ReceiverInfoPage extends Component {
