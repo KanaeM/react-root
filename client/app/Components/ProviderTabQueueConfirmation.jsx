@@ -28,26 +28,20 @@ class ProviderTabQueueConfirmation extends React.Component {
   }
 
   handleTouchTap() {
-    const {toBeDone} = this.props
-    console.log('toBeDone: ', toBeDone)
-    this.setState({
-      open: true,
-    });
-    // console.log('toBeDone', toBeDone)
-    // toBeDone.forEach((todo, index) => {
-    //   console.log('todo', todo)
-    //    this.timer = setTimeout((todo) => {
-    //     // alert('todo' + todo)
-    //     this.setState({
-    //       message: 'This todo number: ' + index + ' was added' + todo
-    //     })
-    //   }, 1500)
-     
-    // })
-    ranNum = Math.round(Math.random() * 100)
+    const {todo} = this.props
+    console.log('ProviderTabQueueConfirmation - handleTouchTap ', todo)
+    console.log('ProviderTabQueueConfirmation - handleTouchTap ', todo.length)
+    if(todo.length > 0) {
       this.setState({
-        message: 'Todo ' + ranNum + ' was added to pending' ,
+        open: true,
+        message: 'Todo ' + todo[todo.length-1].task + ' for ' + todo[todo.length-1].status.receiver
       });
+    } else {
+      this.setState({
+        open: true,
+        message: 'Please select task ...'
+      });      
+    }
 
     // this.timer = setTimeout(() => {
     //   this.setState({
@@ -61,17 +55,18 @@ class ProviderTabQueueConfirmation extends React.Component {
     this.setState({
       open: false,
     });
+    console.log('closing')  // update todos here ...
   };
 
   render() {
-    const {toBeDone} = this.props
+    const {todo} = this.props
 
     return (
       <div className='text-center'>
         <RaisedButton
           onTouchTap={this.handleTouchTap}
           secondary={true}
-          label="Add TODOS"
+          label="Add Task"
         />
         <Snackbar
           open={this.state.open}

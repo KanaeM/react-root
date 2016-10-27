@@ -79,16 +79,17 @@ provider
 
 	//	assign a todo to all providers ** <TODO> ProviderSchema.pre('update' **
 	.post('/todos', function(req, res){
+		console.log("TODO req.body", req.body.todo._id)
 		var todo = {
-				"task": { $regex: new RegExp(req.body.task, "i") },	// "Mechanic-Auto",
-				"city": { $regex: new RegExp(req.body.city, "i") },
-				"date": new Date(req.body.date),
-				"time": req.body.time,	//"09:00",
-				"description": req.body.description,	//"Radiator broken",
+				"task": req.body.todo.task,	// "Mechanic-Auto",
+				"city": req.body.todo.city,
+				"date": "11/30/2016",
+				"time": "12:30pm",	//"09:00",
+				"description": req.body.todo.description,	//"Radiator broken",
 				"status": {
 						"available": true,		//	since anytime=true
 						"confirmed": false,
-						"receiver": req.body._id,	//"username",
+						"receiver": "elsa",	//"username",
 						"done": false
 				}
 		}
@@ -96,10 +97,10 @@ provider
 		console.log('todo.status.anytime: ' + todo.status.receiver);
 
 		var query = {
-			"services.anytime": true,
-			"services.task": { $regex: new RegExp(req.body.task, "i") },
-			"services.city" : { $regex: new RegExp(req.body.city, "i") },
-			"services.dates": new Date(req.body.date)
+			"services.anytime": true
+			// "services.task": req.body.task,
+			// "services.city" : req.body.city,
+			// "services.dates": new Date(req.body.date)
 		}
 		// db.providers.update({userName: 'elsa'},{$pull:{'todos':{'status.available':true}}})
 		// Provider.findOneAndUpdate({userName: req.body.userName}, { $push: { todos: todo} }, function(err, pro) {
@@ -115,10 +116,10 @@ provider
 		//	2. push todo to all Providers anytime = false
 		todo.status.available = false;
 		var query = {
-			"services.anytime": false,
-			"services.task": { $regex: new RegExp(req.body.task, "i") },
-			"services.city" : { $regex: new RegExp(req.body.city, "i") },
-			"services.dates": new Date(req.body.date),
+			"services.anytime": false
+			// "services.task": req.body.task,
+			// "services.city" : req.body.city,
+			// "services.dates": new Date(req.body.date),
 		}		
 		Provider.update(query, { $push: { todos: todo} }, { multi: true }, function(err, pros) {
 			if(err){

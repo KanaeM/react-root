@@ -48,7 +48,7 @@ class ProviderTabQueue extends React.Component {
 			// deselectOnClickaway: true,
 			showCheckboxes: false,
 			openModal: false,
-			height: '150px',
+			height: '350px',
 			todos: []
 		};
 	}
@@ -56,13 +56,22 @@ class ProviderTabQueue extends React.Component {
 	handleAvailable(event) {
 		this.handleModalClose()
 		if(event.target.checked){
-			console.log('ProviderTabDetails - handleAvailable : ', event.target.id)
+			console.log('ProviderTabQueue - handleAvailable : ', event.target.id)
 		}
-
-		if(this.state.todos.indexOf(event.target.id) > -1) {
-			this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1)
+		var valid = this.state.todos.filter(function(todo) { 
+			return todo._id === event.target.id
+		})[0]
+		console.log('valid',valid)
+		if(valid ) {
+			this.state.todos = this.state.todos.filter(function(todo) {
+	    	return todo._id !== event.target.id ;
+			});
+			// this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1)
 		} else {
-			this.state.todos.push(event.target.id)
+			var temp = this.props.user.todos[rowNum]
+			temp.status.available = true
+			this.state.todos.push(temp)
+			// this.state.todos.push(this.props.user.todos[rowNum])
 		}		
 		console.log(this.state.todos)
 		// alert('You have select this task: ' + this.props.user.todos[rowNum]._id)
@@ -143,7 +152,7 @@ class ProviderTabQueue extends React.Component {
 	};
 
 	componentDidUpdate() {
-		console.log('ProviderTabDetails - componentDidMount');
+		console.log('ProviderTabQueue - componentDidMount');
 	}
 
 
@@ -204,7 +213,7 @@ class ProviderTabQueue extends React.Component {
 							))}
 					</TableBody>
 				</Table>
-				<ProviderTabQueueConfirmation toBeDone={this.state.todos}/>
+				<ProviderTabQueueConfirmation todo={this.state.todos}/>
 			</div>
 		);
 	}

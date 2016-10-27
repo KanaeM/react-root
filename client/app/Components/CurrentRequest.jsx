@@ -78,9 +78,6 @@ class CurrentRequest extends Component {
 	          actions={actions}
 	          modal={true}
 	          open={this.state.openModal}
-            autoScrollBodyContent={true}
-            autoDetectWindowHeight={true}
-            repositionOnUpdate={true}
 	        >
 	        	<div>
 	        		<Card>
@@ -120,9 +117,12 @@ class CurrentRequest extends Component {
 	    );
   	}
 	}
-	// componentDidUpdate(){
 
-	// }
+	componentDidUpdate(prevProp, prevState){
+		if (prevState.incompleteTasks !== this.state.incompleteTasks){
+			this.componentDidMount();	
+		}
+	}
 
   componentDidMount(){
   	const {user} = this.props;
@@ -140,6 +140,7 @@ class CurrentRequest extends Component {
 
 	render(){
 		let {user} = this.props
+		const {incompleteTasks} = this.state
 		return (
 			<div>
 				<div>
