@@ -10,7 +10,7 @@
     "postinstall": "bower install && npm run bundle",
     "start": "node ./server/server.js"
   },
-  "author": "apenachi",
+  "author": "jade",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.12.0",

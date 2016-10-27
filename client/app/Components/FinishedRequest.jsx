@@ -9,20 +9,6 @@ import CheckMark from 'material-ui/svg-icons/action/done';
 import helpers from '../helpers';
 import {cyan100, blue200, blueGrey200, lightGreenA700} from 'material-ui/styles/colors';
 
-// const styles = {
-//   propContainer: {
-//     width: 200,
-//     overflow: 'hidden',
-//     margin: '20px auto 0',
-//   },
-//   propToggleHeader: {
-//     margin: '20px auto 10px',
-//   },
-// };
-
-let requests=[];
-let chosenArray=''
-
 class FinishedRequest extends Component {
 	constructor(props){
 		super(props);
@@ -35,12 +21,7 @@ class FinishedRequest extends Component {
 		this.state = {
       height: '450px',
       openModal: false,
-      completedTasks: [
-      	{
-      		task: "hello",
-      		city: "this works"
-      	}
-      ]
+      completedTasks: []
     };
 	}
 
@@ -116,23 +97,31 @@ class FinishedRequest extends Component {
 	  }
  	}
 
+  componentDidUpdate(prevProp, prevState){
+    if(prevState.completedTasks !== this.state.completedTasks){
+      console.log("the completedTasks has CHANGED")
+    }
+  }
+
   componentDidMount(){
   	const {user} = this.props;
-		for(var i=0; i<user.requests.length; i++){
-			if(user.requests[i].status.done === true){
-				console.log("USERREQUEST",user.requests[i])
-				// requests.push(user.requests[i]);
-				this.setState({completedTasks: user.requests[i]});
-				console.log("finishedrequest state:", this.state)
-			}else{
-				console.log("all tasks are still active")
-			}
-		}	
+  		for(var i=0; i<user.requests.length; i++){
+  			console.log("these are the mounted for loop", user.requests[i])
+  			if(user.requests[i].status.done === true){
+  				
+  				// requests.push(user.requests[i]);
+  				this.setState({completedTasks: user.requests});
+  			}else{
+  				console.log("all assignments are done")
+  			}
+  		}
+  		console.log("these are the tasks", this.state)
   }
 
 	render(){
 
 		const {user} = this.props
+		let {completedTasks} = this.state
 
 		return (
 			<div>
@@ -167,7 +156,7 @@ class FinishedRequest extends Component {
 	            showRowHover={true}
 	            stripedRows={true}
 	          >
-	            {this.props.user.requests.map( (row, index) => (
+	            {completedTasks.map( (row, index) => (
 	              <TableRow key={index} selected={row.selected} >
 	                <TableRowColumn>{index}</TableRowColumn>
 	                <TableRowColumn>{row.task}</TableRowColumn>

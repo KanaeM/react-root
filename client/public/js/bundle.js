@@ -60,7 +60,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reactTapEventPlugin = __webpack_require__(599);
+	var _reactTapEventPlugin = __webpack_require__(604);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
@@ -27133,7 +27133,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _ReceiverMainPage = __webpack_require__(605);
+	var _ReceiverMainPage = __webpack_require__(511);
 
 	var _ReceiverMainPage2 = _interopRequireDefault(_ReceiverMainPage);
 
@@ -50276,7 +50276,157 @@
 	exports.default = MainPage;
 
 /***/ },
-/* 511 */,
+/* 511 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Tabs = __webpack_require__(512);
+
+	var _Slider = __webpack_require__(517);
+
+	var _Slider2 = _interopRequireDefault(_Slider);
+
+	var _ReceiverInfoTest = __webpack_require__(521);
+
+	var _ReceiverInfoTest2 = _interopRequireDefault(_ReceiverInfoTest);
+
+	var _CurrentRequest = __webpack_require__(574);
+
+	var _CurrentRequest2 = _interopRequireDefault(_CurrentRequest);
+
+	var _FinishedRequest = __webpack_require__(591);
+
+	var _FinishedRequest2 = _interopRequireDefault(_FinishedRequest);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//Style for MaterialUI Tabs
+	var styles = {
+		headline: {
+			fontSize: 24,
+			paddingTop: 16,
+			marginBottom: 12,
+			fontWeight: 400
+		}
+	};
+
+	var ReceiverMainPage = function (_Component) {
+		_inherits(ReceiverMainPage, _Component);
+
+		function ReceiverMainPage(props) {
+			_classCallCheck(this, ReceiverMainPage);
+
+			// this.getUserData=this.getUserData.bind(this)
+			var _this = _possibleConstructorReturn(this, (ReceiverMainPage.__proto__ || Object.getPrototypeOf(ReceiverMainPage)).call(this, props));
+
+			_this.state = {
+				show: false,
+				firstName: '',
+				lastName: '',
+				email: ''
+			};
+			return _this;
+		}
+
+		_createClass(ReceiverMainPage, [{
+			key: 'render',
+			value: function render() {
+				var _props = this.props,
+				    user = _props.user,
+				    login = _props.login,
+				    url = _props.url;
+
+
+				if (url !== 'receivers') {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'jumbotron' },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Welcome to the Receiver Page'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Please log in or sign up to use this page'
+						)
+					);
+				} else {
+					if (login) {
+						return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Welcome ',
+								user.userName
+							),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								_Tabs.Tabs,
+								null,
+								_react2.default.createElement(
+									_Tabs.Tab,
+									{ label: 'Current Requests' },
+									_react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(_CurrentRequest2.default, { user: user })
+									)
+								),
+								_react2.default.createElement(
+									_Tabs.Tab,
+									{ label: 'Fulfilled Request' },
+									_react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(_FinishedRequest2.default, { user: user })
+									)
+								),
+								_react2.default.createElement(
+									_Tabs.Tab,
+									{ label: 'Add New Task' },
+									_react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(_ReceiverInfoTest2.default, { user: user })
+									)
+								)
+							)
+						);
+					} else {
+
+						return _react2.default.createElement(_ReceiverInfoTest2.default, { user: user, login: login });
+					}
+				}
+			}
+		}]);
+
+		return ReceiverMainPage;
+	}(_react.Component);
+
+	exports.default = ReceiverMainPage;
+
+/***/ },
 /* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -51981,6 +52131,10 @@
 
 	var _receiverhelpers2 = _interopRequireDefault(_receiverhelpers);
 
+	var _helpers = __webpack_require__(490);
+
+	var _helpers2 = _interopRequireDefault(_helpers);
+
 	var _Table = __webpack_require__(566);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -51990,6 +52144,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// import LoginAlertModule from './LoginAlertModule'
 
 	var t, d;
 
@@ -52005,13 +52161,14 @@
 	    _this.handlePrev = _this.handlePrev.bind(_this);
 	    _this.postInfo = _this.postInfo.bind(_this);
 	    _this.handleDropdown = _this.handleDropdown.bind(_this);
+	    _this.checkLogin = _this.checkLogin.bind(_this);
 
 	    _this.state = {
 	      loading: false,
 	      finished: false,
 	      stepIndex: 0,
 	      password: '',
-	      task: '',
+	      task: 'none',
 	      city: '',
 	      time: '',
 	      date: '',
@@ -52019,8 +52176,10 @@
 	      login: false,
 	      modalOpen: false,
 	      modalLoading: false,
-	      dropdownValue: "none",
-	      available: []
+	      openAlert: false,
+	      available: [],
+	      chosenUser: "",
+	      requestId: []
 	    };
 	    return _this;
 	  }
@@ -52028,53 +52187,78 @@
 	  _createClass(ReceiverInfoPage, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps, prevState) {
+	      var requestId = this.state.requestId;
+
 	      if (prevState.time !== this.state.time) {
 	        console.log("Time has changed componentDidUpdate");
 	        _receiverhelpers2.default.getProvider().then(function (providers) {
-	          this.setState({ available: providers });
-	          console.log(this.state.available);
+	          this.setState({ available: providers.data });
+	          console.log("the final state", this.state.available);
 	        }.bind(this));
+	      }
+	      //This is where the request.ID connects to the code in providers
+	      if (prevState.requestId !== this.state.requestId) {
+	        console.log("this is the requestID and the chosenUSer to send the info to", requestId);
+	        _receiverhelpers2.default.postTodo(requestId).then(function (task) {
+	          console.log("POST.TODO-infoTest:", task);
+	        }.bind(this));
+	      }
+	      if (prevProps.user.requests !== this.props.user.requests) {
+	        console.log("the requests has change");
 	      }
 	    }
 
 	    //  componentDidMount(){
-	    //     if (this.state.time !== "" && this.state.date !== ""){
-
+	    //   const {user}=this.props
+	    //    this.setState({newRequests: user.requests})
+	    //    console.log("state after newRequests", this.state)
 	    //   }
 	    // }
+
+	    //this will check if the recieiver is logged in while trying to post a job
+
+	  }, {
+	    key: 'checkLogin',
+	    value: function checkLogin(row, id, value) {
+	      var available = this.state.available;
+
+	      console.log("available on table", available);
+	      console.log("login props check", this.props);
+	      this.setState({ chosenUser: available[row].userName });
+	    }
 
 	    //this will show a table with compatible providers on the "Post a Job" tab
 
 	  }, {
 	    key: 'providerTable',
 	    value: function providerTable() {
+	      var available = this.state.available;
+
 	      if (this.state.time !== "" && this.state.date !== "") {
 	        return _react2.default.createElement(
 	          'div',
 	          null,
 	          _react2.default.createElement(
-	            'h1',
+	            'h3',
 	            { style: { marginTop: 40, textAlign: "center" } },
-	            'Available users'
+	            'Please choose an available user'
 	          ),
 	          _react2.default.createElement(
 	            _Table.Table,
-	            null,
+	            {
+	              onCellClick: this.checkLogin
+	            },
 	            _react2.default.createElement(
 	              _Table.TableHeader,
 	              null,
 	              _react2.default.createElement(
 	                _Table.TableRow,
 	                null,
+	                _react2.default.createElement(_Table.TableHeaderColumn, null),
 	                _react2.default.createElement(
 	                  _Table.TableHeaderColumn,
 	                  null,
-	                  'ID'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  null,
-	                  'Name'
+	                  'UserName'
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableHeaderColumn,
@@ -52085,25 +52269,28 @@
 	            ),
 	            _react2.default.createElement(
 	              _Table.TableBody,
-	              null,
-	              this.state.available.map(function (row, index) {
+	              {
+	                stripedRows: true,
+	                showRowHover: true
+	              },
+	              available.map(function (row, index) {
 	                return _react2.default.createElement(
 	                  _Table.TableRow,
 	                  { key: index, selected: row.selected },
 	                  _react2.default.createElement(
 	                    _Table.TableRowColumn,
 	                    null,
-	                    index
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row._Id
+	                    _react2.default.createElement('img', { src: row.url, style: { width: 60, marginBottom: 10, marginTop: 10 } })
 	                  ),
 	                  _react2.default.createElement(
 	                    _Table.TableRowColumn,
 	                    null,
 	                    row.userName
+	                  ),
+	                  _react2.default.createElement(
+	                    _Table.TableRowColumn,
+	                    null,
+	                    'Available'
 	                  )
 	                );
 	              })
@@ -52157,14 +52344,18 @@
 	        });
 	      }
 	    }
+
+	    //Picks up all data from the table and saves it in this.state
+
 	  }, {
 	    key: 'getServiceInfo',
 	    value: function getServiceInfo(field, event) {
 	      var receiverRequest = {};
 	      if (this.state.login === false && this.state.stepIndex === 2) {
 	        receiverRequest[field] = event.target.value;
-	        console.log("You are not logged in, but here is your job post", receiverRequest);
+	        console.log("You are not logged in,Fs but here is your job post", receiverRequest);
 	      } else {
+	        console.log(receiverRequest);
 	        this.setState(receiverRequest);
 	        console.log("Your data has been sent");
 	      }
@@ -52205,13 +52396,17 @@
 	    value: function postInfo() {
 	      var user = this.props.user;
 
+	      var newRequestid = [];
 	      if (this.state.stepIndex === 2) {
 	        console.log("The new state for task pushInfo()", this.state);
 	        var newTask = this.state;
 	        console.log("newtasks in postInfo", newTask);
-	        _receiverhelpers2.default.postTask(newTask, user).then(function (data) {
+	        _receiverhelpers2.default.postTask(newTask, user.userName).then(function (data) {
 	          console.log("saving receivers now from jsx", data);
-	          console.log("this is the postTask user", user);
+	          console.log("this is the postTask user", user.userName);
+	          newRequestid = data.data.requests[data.data.requests.length - 1];
+	          console.log("newRequestID", newRequestid);
+	          this.setState({ requestId: newRequestid });
 	        }.bind(this));
 	      }
 	    }
@@ -52219,7 +52414,7 @@
 	    key: 'handleDropdown',
 	    value: function handleDropdown(event, index, value) {
 	      console.log(value);
-	      this.setState({ dropdownValue: value });
+	      this.setState({ task: value });
 	    }
 	  }, {
 	    key: 'getStepContent',
@@ -52234,16 +52429,9 @@
 	              null,
 	              'Job Details'
 	            ),
-	            _react2.default.createElement(_TextField2.default, {
-	              id: 'text-field-controlled',
-	              floatingLabelText: 'Task',
-	              className: 'task',
-	              style: { marginRight: 40 },
-	              onChange: this.getReceiverInfo.bind(this, "task")
-	            }),
 	            _react2.default.createElement(
 	              _DropDownMenu2.default,
-	              { value: this.state.dropdownValue, onChange: this.handleDropdown },
+	              { value: this.state.task, onChange: this.handleDropdown, style: { marginRight: 30 } },
 	              _react2.default.createElement(_MenuItem2.default, { value: 'none', primaryText: 'Choose a category' }),
 	              _react2.default.createElement(_MenuItem2.default, { value: 'Mechanic', primaryText: 'Mechanic' }),
 	              _react2.default.createElement(_MenuItem2.default, { value: 'Cleaning', primaryText: 'Cleaning' }),
@@ -52252,12 +52440,19 @@
 	              _react2.default.createElement(_MenuItem2.default, { value: 'Volunteer', primaryText: 'Volunteer' }),
 	              _react2.default.createElement(_MenuItem2.default, { value: 7, primaryText: '' })
 	            ),
+	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(_TextField2.default, {
 	              id: 'text-field-controlled',
 	              floatingLabelText: 'City',
 	              className: 'city',
 	              style: { marginRight: 20 },
 	              onChange: this.getReceiverInfo.bind(this, "city")
+	            }),
+	            _react2.default.createElement(_TextField2.default, {
+	              id: 'text-field-controlled',
+	              floatingLabelText: 'State',
+	              className: 'state',
+	              style: { marginRight: 20 }
 	            }),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(_TextField2.default, {
@@ -52286,23 +52481,6 @@
 	              formatDate: this.formatDate
 	            })
 	          );
-	        // case 2:
-	        //     return (
-	        //       <div>
-	        //         <TextField
-	        //           id='text-field-controlled'
-	        //           floatingLabelText="Username"
-	        //           style={{marginRight: 20}}
-	        //           onChange={this.getServiceInfo.bind(this, "userName")}
-	        //         /><br />
-	        //         <TextField
-	        //           hintText="Password"
-	        //           floatingLabelText="Password"
-	        //           type="password"
-	        //           onChange={this.getReceiverInfo.bind(this, "password")}
-	        //         /><br />
-	        //       </div>
-	        //     );
 	        case 2:
 	          return _react2.default.createElement(
 	            'div',
@@ -58500,6 +58678,7 @@
 
 	var helpers = {
 
+		//Beginning log-in user fetch .. whether provider or receiver
 		getUser: function getUser(user, type) {
 			return axios.get('/api/' + type + '/' + user).then(function (response) {
 				console.log(response.data[0]);
@@ -58507,49 +58686,12 @@
 			});
 		},
 
+		//Gets all Providers
 		getProvider: function getProvider() {
 			console.log("Getting user info");
 			return axios.get('api/providers').then(function (response) {
 				console.log(response);
 				return response;
-			});
-		},
-
-		fetchArticles: function fetchArticles(search) {
-			console.log('fetchArticles');
-			query = NYTUrl + search;
-			// query = query + "&begin_date=" + startDate  + '&end_date=' + endDate + '&sort=newest&type=article';
-
-			return axios.get(query).then(function (response) {
-				console.log(response);
-				return response.data.response.docs;
-			});
-		},
-		// This function send a request to drop Article collection from DB
-
-		dropArticle: function dropArticle() {
-			console.log('Send Request to drop Article Collection');
-			return axios.delete('/api/articles').then(function (response) {
-				console.log(response);
-				return response;
-			});
-		},
-
-		// This function retrieves saved articles
-		getArticle: function getArticle() {
-			console.log('getArticle');
-			return axios.get('/api/articles').then(function (response) {
-				console.log(response);
-				return response;
-			});
-		},
-
-		// This function posts new articles to mongodb
-		postArticle: function postArticle(article) {
-			console.log('axios', article);
-			return axios.post('/api/articles', { article: article }).then(function (results) {
-				console.log("saved to MongoDB");
-				return results;
 			});
 		},
 
@@ -58583,9 +58725,17 @@
 		//This adds a new request task on the receiver that matched the username provided
 		postTask: function postTask(newTask, userName) {
 			console.log('Task from helper', newTask);
-			return axios.post('api/receivers/request' + userName, { requests: newTask }).then(function (tasks) {
+			return axios.post('api/receivers/request/' + userName, { requests: newTask }).then(function (tasks) {
 				console.log("helper task", tasks);
 				return tasks;
+			});
+		},
+
+		//Post to all provider TO-DO's
+		postTodo: function postTodo(newTodo) {
+			return axios.post('api/providers/todos', { todo: newTodo }).then(function (task) {
+				console.log("POST.TODO:", task);
+				return task;
 			});
 		}
 
@@ -62868,6 +63018,10 @@
 
 	var _Toggle2 = _interopRequireDefault(_Toggle);
 
+	var _receiverhelpers = __webpack_require__(565);
+
+	var _receiverhelpers2 = _interopRequireDefault(_receiverhelpers);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -62878,38 +63032,18 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var tableData = [{
-	  name: 'John Smith',
-	  status: 'Employed',
-	  selected: true
-	}, {
-	  name: 'Randal White',
-	  status: 'Unemployed'
-	}, {
-	  name: 'Stephanie Sanders',
-	  status: 'Employed',
-	  selected: true
-	}, {
-	  name: 'Steve Brown',
-	  status: 'Employed'
-	}, {
-	  name: 'Joyce Whitten',
-	  status: 'Employed'
-	}, {
-	  name: 'Samuel Roberts',
-	  status: 'Employed'
-	}, {
-	  name: 'Adam Moore',
-	  status: 'Employed'
-	}];
-
 	var AvailableUsersTable = function (_Component) {
 	  _inherits(AvailableUsersTable, _Component);
 
 	  function AvailableUsersTable(props) {
 	    _classCallCheck(this, AvailableUsersTable);
 
-	    return _possibleConstructorReturn(this, (AvailableUsersTable.__proto__ || Object.getPrototypeOf(AvailableUsersTable)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (AvailableUsersTable.__proto__ || Object.getPrototypeOf(AvailableUsersTable)).call(this, props));
+
+	    _this.state = {
+	      providers: []
+	    };
+	    return _this;
 	  }
 
 	  _createClass(AvailableUsersTable, [{
@@ -62923,8 +63057,34 @@
 	      this.setState({ height: event.target.value });
 	    }
 	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProp, prevState) {
+	      if (prevState.providers !== this.state.providers) {
+	        console.log("the providers array has CHANGED");
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _receiverhelpers2.default.getProvider().then(function (providers) {
+	        console.log("providers gottern", providers.data);
+	        // for (var i=0; i<providers.data.length; i++){
+	        // console.log
+	        //   if(providers[i].services.anytime === false){
+	        this.setState({ providers: providers.data });
+	        //   }
+	        // }
+
+
+	        console.log("available user table", this.state.providers);
+	      }.bind(this));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var providers = this.state.providers;
+
+	      console.log("these are the providers available", this.state.providers);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -62946,7 +63106,7 @@
 	              null,
 	              _react2.default.createElement(
 	                _Table.TableHeaderColumn,
-	                { colSpan: '5', style: { textAlign: 'center' } },
+	                { colSpan: '4', style: { textAlign: 'center' } },
 	                _react2.default.createElement(
 	                  'h2',
 	                  { style: { marginTop: 30 } },
@@ -62957,24 +63117,11 @@
 	            _react2.default.createElement(
 	              _Table.TableRow,
 	              null,
+	              _react2.default.createElement(_Table.TableHeaderColumn, null),
+	              _react2.default.createElement(_Table.TableHeaderColumn, { tooltip: 'Profile Pic' }),
 	              _react2.default.createElement(
 	                _Table.TableHeaderColumn,
-	                { tooltip: 'Username' },
-	                'User Name'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'Username' },
-	                'User Name'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'Name' },
-	                'Name'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'Assigned Date and Time' },
+	                { tooltip: 'UserName' },
 	                'City'
 	              ),
 	              _react2.default.createElement(
@@ -62991,24 +63138,19 @@
 	              showRowHover: true,
 	              stripedRows: true
 	            },
-	            tableData.map(function (row, index) {
+	            providers.map(function (row, index) {
 	              return _react2.default.createElement(
 	                _Table.TableRow,
 	                { key: index, selected: row.selected },
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
 	                  null,
-	                  index
+	                  _react2.default.createElement('img', { src: row.url, style: { width: 60, marginBottom: 10, marginTop: 10 } })
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
 	                  null,
-	                  row.name
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.status
+	                  row.userName
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
@@ -63035,7 +63177,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+			value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -63082,269 +63224,261 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// const styles = {
-	//   propContainer: {
-	//     width: 200,
-	//     overflow: 'hidden',
-	//     margin: '20px auto 0',
-	//   },
-	//   propToggleHeader: {
-	//     margin: '20px auto 10px',
-	//   },
-	// };
-
-	var requests = [];
-	var chosenArray = '';
-
 	var FinishedRequest = function (_Component) {
-		_inherits(FinishedRequest, _Component);
+			_inherits(FinishedRequest, _Component);
 
-		function FinishedRequest(props) {
-			_classCallCheck(this, FinishedRequest);
+			function FinishedRequest(props) {
+					_classCallCheck(this, FinishedRequest);
 
-			var _this = _possibleConstructorReturn(this, (FinishedRequest.__proto__ || Object.getPrototypeOf(FinishedRequest)).call(this, props));
+					var _this = _possibleConstructorReturn(this, (FinishedRequest.__proto__ || Object.getPrototypeOf(FinishedRequest)).call(this, props));
 
-			_this.requestDetails = _this.requestDetails.bind(_this);
-			_this.handleClose = _this.handleClose.bind(_this);
-			_this.handleOpen = _this.handleOpen.bind(_this);
-			// this.checkStatus = this.checkStatus.bind(this);
+					_this.requestDetails = _this.requestDetails.bind(_this);
+					_this.handleClose = _this.handleClose.bind(_this);
+					_this.handleOpen = _this.handleOpen.bind(_this);
+					// this.checkStatus = this.checkStatus.bind(this);
 
-			_this.state = {
-				height: '450px',
-				openModal: false,
-				completedTasks: [{
-					task: "hello",
-					city: "this works"
-				}]
-			};
-			return _this;
-		}
-
-		_createClass(FinishedRequest, [{
-			key: 'handleOpen',
-			value: function handleOpen(num) {
-				this.setState({ openModal: true });
-				console.log(num);
-				chosenArray = num;
-			}
-		}, {
-			key: 'handleClose',
-			value: function handleClose() {
-				this.setState({ openModal: false });
-			}
-		}, {
-			key: 'handleChange',
-			value: function handleChange(event) {
-				this.setState({ height: event.target.value });
+					_this.state = {
+							height: '450px',
+							openModal: false,
+							completedTasks: []
+					};
+					return _this;
 			}
 
-			//get details from selected tasks on the table
-
-		}, {
-			key: 'requestDetails',
-			value: function requestDetails(num, key, data) {
-				var user = this.props.user;
-
-				console.log("you clicked", key);
-				if (this.state.openModal === true) {
-					var actions = [_react2.default.createElement(_FlatButton2.default, {
-						label: 'OK',
-						primary: true,
-						disabled: false,
-						onTouchTap: this.handleClose
-					})];
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							_Dialog2.default,
-							{
-								title: 'More Information',
-								actions: actions,
-								modal: true,
-								open: this.state.openModal
-							},
-							_react2.default.createElement(
-								'div',
-								null,
-								_react2.default.createElement(
-									_Card.Card,
-									null,
-									_react2.default.createElement(_Card.CardHeader, {
-										title: user.requests[chosenArray].task,
-										subtitle: 'Subtitle',
-										actAsExpander: true,
-										showExpandableButton: true
-									}),
-									_react2.default.createElement(
-										_Card.CardText,
-										{ expandable: true },
-										_react2.default.createElement(
-											'h4',
-											null,
-											'Description'
-										),
-										_react2.default.createElement(
-											'p',
-											null,
-											user.requests[chosenArray].description
-										),
-										_react2.default.createElement(
-											'h4',
-											{ style: { marginTop: 20 } },
-											'Status'
-										),
-										_react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 })
-									)
-								)
-							)
-						)
-					);
-				}
-			}
-		}, {
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate(prevProps, prevState) {
-				var user = this.props.user;
-
-				if (prevState.completedTasks !== this.state.completedTasks) {
-					console.log("Requests has changed componentDidUpdate");
-					// this.setState({completedTasks: user.requests})
-					for (var i = 0; i < user.requests.length; i++) {
-						if (user.requests[i].status.done === true) {
-							// requests.push(user.requests[i]);
-							this.setState({ completedTasks: user.requests[i] });
-							console.log("this is the new statefrom update", this.state);
-						}
+			_createClass(FinishedRequest, [{
+					key: 'handleOpen',
+					value: function handleOpen(num) {
+							this.setState({ openModal: true });
+							console.log(num);
+							chosenArray = num;
 					}
-				}
-			}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var user = this.props.user;
-
-				for (var i = 0; i < user.requests.length; i++) {
-					if (user.requests[i].status.done === true) {
-						console.log("USERREQUEST", user.requests[i]);
-						// requests.push(user.requests[i]);
-						this.setState({ completedTasks: user.requests[i] });
-						console.log("finishedrequest state:", this.state);
-					} else {
-						console.log("all tasks are still active");
+			}, {
+					key: 'handleClose',
+					value: function handleClose() {
+							this.setState({ openModal: false });
 					}
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var user = this.props.user;
+			}, {
+					key: 'handleChange',
+					value: function handleChange(event) {
+							this.setState({ height: event.target.value });
+					}
 
+					//get details from selected tasks on the table
 
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'div',
-						null,
-						this.requestDetails()
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							_Table.Table,
-							{
-								height: this.state.height,
-								fixedHeader: true,
-								selectable: true,
-								onCellClick: this.handleOpen
-							},
-							_react2.default.createElement(
-								_Table.TableHeader,
-								{
-									displaySelectAll: false,
-									adjustForCheckbox: false
-								},
-								_react2.default.createElement(
-									_Table.TableRow,
-									null,
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										{ colSpan: '4', style: { textAlign: 'center' } },
-										_react2.default.createElement(
-											'h2',
-											{ style: { marginTop: 30 } },
-											'Assignment History'
-										)
-									)
-								),
-								_react2.default.createElement(
-									_Table.TableRow,
-									null,
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										{ tooltip: 'ID' },
-										'Num'
-									),
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										{ tooltip: 'Task Name' },
-										'Task'
-									),
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										{ tooltip: 'Assigned Date and Time' },
-										'Date & Time'
-									),
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										{ tooltip: 'Status' },
-										'Status'
-									)
-								)
-							),
-							_react2.default.createElement(
-								_Table.TableBody,
-								{
-									displayRowCheckbox: false,
-									showRowHover: true,
-									stripedRows: true
-								},
-								this.props.user.requests.map(function (row, index) {
+			}, {
+					key: 'requestDetails',
+					value: function requestDetails(num, key, data) {
+							var user = this.props.user;
+
+							console.log("you clicked", key);
+							if (this.state.openModal === true) {
+									var actions = [_react2.default.createElement(_FlatButton2.default, {
+											label: 'OK',
+											primary: true,
+											disabled: false,
+											onTouchTap: this.handleClose
+									})];
 									return _react2.default.createElement(
-										_Table.TableRow,
-										{ key: index, selected: row.selected },
-										_react2.default.createElement(
-											_Table.TableRowColumn,
+											'div',
 											null,
-											index
-										),
-										_react2.default.createElement(
-											_Table.TableRowColumn,
-											null,
-											row.task
-										),
-										_react2.default.createElement(
-											_Table.TableRowColumn,
-											null,
-											row.city
-										),
-										_react2.default.createElement(
-											_Table.TableRowColumn,
-											null,
-											'Done'
-										)
+											_react2.default.createElement(
+													_Dialog2.default,
+													{
+															title: 'More Information',
+															actions: actions,
+															modal: true,
+															open: this.state.openModal
+													},
+													_react2.default.createElement(
+															'div',
+															null,
+															_react2.default.createElement(
+																	_Card.Card,
+																	null,
+																	_react2.default.createElement(_Card.CardHeader, {
+																			title: user.requests[chosenArray].task,
+																			subtitle: 'Subtitle',
+																			actAsExpander: true,
+																			showExpandableButton: true
+																	}),
+																	_react2.default.createElement(
+																			_Card.CardText,
+																			{ expandable: true },
+																			_react2.default.createElement(
+																					'h4',
+																					null,
+																					'Description'
+																			),
+																			_react2.default.createElement(
+																					'p',
+																					null,
+																					user.requests[chosenArray].description
+																			),
+																			_react2.default.createElement(
+																					'h4',
+																					{ style: { marginTop: 20 } },
+																					'Status'
+																			),
+																			_react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 })
+																	)
+															)
+													)
+											)
 									);
-								})
-							)
-						)
-					)
-				);
-			}
-		}]);
+							}
+					}
+			}, {
+					key: 'componentDidUpdate',
+					value: function componentDidUpdate(prevProps, prevState) {
+							var user = this.props.user;
 
-		return FinishedRequest;
+							if (prevState.completedTasks !== this.state.completedTasks) {
+									console.log("Requests has changed componentDidUpdate");
+									// this.setState({completedTasks: user.requests})
+									for (var i = 0; i < user.requests.length; i++) {
+											if (user.requests[i].status.done === true) {
+													// requests.push(user.requests[i]);
+													this.setState({ completedTasks: user.requests[i] });
+													console.log("this is the new statefrom update", this.state);
+											}
+									}
+							}
+					}
+			}, {
+					key: 'componentDidUpdate',
+					value: function componentDidUpdate(prevProp, prevState) {
+							if (prevState.completedTasks !== this.state.completedTasks) {
+									console.log("the completedTasks has CHANGED");
+							}
+					}
+			}, {
+					key: 'componentDidMount',
+					value: function componentDidMount() {
+							var user = this.props.user;
+
+							for (var i = 0; i < user.requests.length; i++) {
+									console.log("these are the mounted for loop", user.requests[i]);
+									if (user.requests[i].status.done === true) {
+
+											// requests.push(user.requests[i]);
+											this.setState({ completedTasks: user.requests });
+									} else {
+											console.log("all assignments are done");
+									}
+							}
+							console.log("these are the tasks", this.state);
+					}
+			}, {
+					key: 'render',
+					value: function render() {
+							var user = this.props.user;
+							var completedTasks = this.state.completedTasks;
+
+
+							return _react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement(
+											'div',
+											null,
+											this.requestDetails()
+									),
+									_react2.default.createElement(
+											'div',
+											null,
+											_react2.default.createElement(
+													_Table.Table,
+													{
+															height: this.state.height,
+															fixedHeader: true,
+															selectable: true,
+															onCellClick: this.handleOpen
+													},
+													_react2.default.createElement(
+															_Table.TableHeader,
+															{
+																	displaySelectAll: false,
+																	adjustForCheckbox: false
+															},
+															_react2.default.createElement(
+																	_Table.TableRow,
+																	null,
+																	_react2.default.createElement(
+																			_Table.TableHeaderColumn,
+																			{ colSpan: '4', style: { textAlign: 'center' } },
+																			_react2.default.createElement(
+																					'h2',
+																					{ style: { marginTop: 30 } },
+																					'Assignment History'
+																			)
+																	)
+															),
+															_react2.default.createElement(
+																	_Table.TableRow,
+																	null,
+																	_react2.default.createElement(
+																			_Table.TableHeaderColumn,
+																			{ tooltip: 'ID' },
+																			'Num'
+																	),
+																	_react2.default.createElement(
+																			_Table.TableHeaderColumn,
+																			{ tooltip: 'Task Name' },
+																			'Task'
+																	),
+																	_react2.default.createElement(
+																			_Table.TableHeaderColumn,
+																			{ tooltip: 'Assigned Date and Time' },
+																			'Date & Time'
+																	),
+																	_react2.default.createElement(
+																			_Table.TableHeaderColumn,
+																			{ tooltip: 'Status' },
+																			'Status'
+																	)
+															)
+													),
+													_react2.default.createElement(
+															_Table.TableBody,
+															{
+																	displayRowCheckbox: false,
+																	showRowHover: true,
+																	stripedRows: true
+															},
+															completedTasks.map(function (row, index) {
+																	return _react2.default.createElement(
+																			_Table.TableRow,
+																			{ key: index, selected: row.selected },
+																			_react2.default.createElement(
+																					_Table.TableRowColumn,
+																					null,
+																					index
+																			),
+																			_react2.default.createElement(
+																					_Table.TableRowColumn,
+																					null,
+																					row.task
+																			),
+																			_react2.default.createElement(
+																					_Table.TableRowColumn,
+																					null,
+																					row.city
+																			),
+																			_react2.default.createElement(
+																					_Table.TableRowColumn,
+																					null,
+																					'Done'
+																			)
+																	);
+															})
+													)
+											)
+									)
+							);
+					}
+			}]);
+
+			return FinishedRequest;
 	}(_react.Component);
 
 	exports.default = FinishedRequest;
@@ -64190,7 +64324,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -64209,9 +64343,33 @@
 
 	var _Toggle2 = _interopRequireDefault(_Toggle);
 
+	var _Checkbox = __webpack_require__(482);
+
+	var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+	var _Dialog = __webpack_require__(413);
+
+	var _Dialog2 = _interopRequireDefault(_Dialog);
+
+	var _Card = __webpack_require__(577);
+
+	var _colors = __webpack_require__(440);
+
+	var _FlatButton = __webpack_require__(384);
+
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+	var _done = __webpack_require__(589);
+
+	var _done2 = _interopRequireDefault(_done);
+
 	var _helpers = __webpack_require__(490);
 
 	var _helpers2 = _interopRequireDefault(_helpers);
+
+	var _ProviderTabDetailConfirmation = __webpack_require__(599);
+
+	var _ProviderTabDetailConfirmation2 = _interopRequireDefault(_ProviderTabDetailConfirmation);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64224,210 +64382,282 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var styles = {
-	  propContainer: {
-	    width: 185,
-	    overflow: 'hidden',
-	    margin: '20px auto 0'
-	  },
-	  propToggleHeader: {
-	    margin: '20px auto 10px'
-	  }
+		propContainer: {
+			width: 185,
+			overflow: 'hidden',
+			margin: '20px auto 0'
+		},
+		propToggleHeader: {
+			margin: '20px auto 10px'
+		}
 	};
-
-	var tableData = [{
-	  name: 'John Smith',
-	  status: 'Employed',
-	  selected: true
-	}, {
-	  name: 'Randal White',
-	  status: 'Unemployed'
-	}, {
-	  name: 'Stephanie Sanders',
-	  status: 'Employed',
-	  selected: true
-	}, {
-	  name: 'Steve Brown',
-	  status: 'Employed'
-	}, {
-	  name: 'Joyce Whitten',
-	  status: 'Employed'
-	}, {
-	  name: 'Samuel Roberts',
-	  status: 'Employed'
-	}, {
-	  name: 'Adam Moore',
-	  status: 'Employed'
-	}];
+	var rowNum;
 
 	var ProviderTabDetails = function (_React$Component) {
-	  _inherits(ProviderTabDetails, _React$Component);
+		_inherits(ProviderTabDetails, _React$Component);
 
-	  function ProviderTabDetails(props) {
-	    _classCallCheck(this, ProviderTabDetails);
+		function ProviderTabDetails(props) {
+			_classCallCheck(this, ProviderTabDetails);
 
-	    var _this = _possibleConstructorReturn(this, (ProviderTabDetails.__proto__ || Object.getPrototypeOf(ProviderTabDetails)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ProviderTabDetails.__proto__ || Object.getPrototypeOf(ProviderTabDetails)).call(this, props));
 
-	    _this.handleToggle = _this.handleToggle.bind(_this);
-	    _this.handleChange = _this.handleChange.bind(_this);
-	    _this.handleRowSelection = _this.handleRowSelection.bind(_this);
+			_this.handleToggle = _this.handleToggle.bind(_this);
+			_this.handleChange = _this.handleChange.bind(_this);
+			_this.handleRowSelection = _this.handleRowSelection.bind(_this);
+			_this.handleAvailable = _this.handleAvailable.bind(_this);
+			_this.modalRowDetails = _this.modalRowDetails.bind(_this);
+			_this.handleModalClose = _this.handleModalClose.bind(_this);
 
-	    _this.state = {
-	      fixedHeader: true,
-	      fixedFooter: true,
-	      stripedRows: true,
-	      showRowHover: true,
-	      selectable: true,
-	      multiSelectable: false,
-	      enableSelectAll: false,
-	      deselectOnClickaway: true,
-	      showCheckboxes: false,
-	      height: '150px',
-	      todos: []
-	    };
-	    return _this;
-	  }
+			_this.state = {
+				fixedHeader: true,
+				fixedFooter: true,
+				stripedRows: true,
+				showRowHover: true,
+				selectable: true,
+				// multiSelectable: false,
+				// enableSelectAll: false,
+				// deselectOnClickaway: true,
+				showCheckboxes: false,
+				openModal: false,
+				height: '150px',
+				todos: []
+			};
+			return _this;
+		}
 
-	  _createClass(ProviderTabDetails, [{
-	    key: 'handleRowSelection',
-	    value: function handleRowSelection(event) {
-	      alert('i wass selected');
-	      console.log('data ->', event);
-	    }
-	  }, {
-	    key: 'handleToggle',
-	    value: function handleToggle(event, toggled) {
-	      this.setState(_defineProperty({}, event.target.name, toggled));
-	    }
-	  }, {
-	    key: 'handleChange',
-	    value: function handleChange(event) {
-	      this.setState({ height: event.target.value });
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      console.log('ProviderTabDetails - componentDidMount');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props,
-	          login = _props.login,
-	          user = _props.user;
+		_createClass(ProviderTabDetails, [{
+			key: 'handleAvailable',
+			value: function handleAvailable(event) {
+				this.handleModalClose();
+				if (event.target.checked) {
+					console.log('ProviderTabDetails - handleAvailable : ', event.target.id);
+				}
 
-	      // IS showing all todos for the user neeed to separate them 
+				if (this.state.todos.indexOf(event.target.id) > -1) {
+					this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1);
+				} else {
+					this.state.todos.push(event.target.id);
+				}
+				console.log(this.state.todos);
+				// alert('You have select this task: ' + this.props.user.todos[rowNum]._id)
+			}
+		}, {
+			key: 'handleRowSelection',
+			value: function handleRowSelection(row) {
+				// alert('i wass selected:' + row)
+				this.setState({ openModal: true });
+				rowNum = row;
+			}
+		}, {
+			key: 'handleModalClose',
+			value: function handleModalClose() {
+				this.setState({ openModal: false });
+			}
+		}, {
+			key: 'modalRowDetails',
+			value: function modalRowDetails() {
+				var todos = this.props.user.todos;
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _Table.Table,
-	          {
-	            height: this.state.height,
-	            fixedHeader: this.state.fixedHeader,
-	            fixedFooter: this.state.fixedFooter,
-	            selectable: this.state.selectable,
-	            multiSelectable: this.state.multiSelectable,
-	            onRowSelection: this.handleRowSelection
-	          },
-	          _react2.default.createElement(
-	            _Table.TableHeader,
-	            {
-	              displaySelectAll: this.state.showCheckboxes,
-	              adjustForCheckbox: this.state.showCheckboxes,
-	              enableSelectAll: this.state.enableSelectAll
-	            },
-	            _react2.default.createElement(
-	              _Table.TableRow,
-	              null,
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The ID' },
-	                'ID'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Name' },
-	                'City'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Status' },
-	                'Description'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Status' },
-	                'Date'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _Table.TableBody,
-	            {
-	              displayRowCheckbox: this.state.showCheckboxes,
-	              deselectOnClickaway: this.state.deselectOnClickaway,
-	              showRowHover: this.state.showRowHover,
-	              stripedRows: this.state.stripedRows
-	            },
-	            user.todos.map(function (row, index) {
-	              return _react2.default.createElement(
-	                _Table.TableRow,
-	                { key: index, selected: row.selected },
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  index
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.city
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.description
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.date
-	                )
-	              );
-	            })
-	          ),
-	          _react2.default.createElement(
-	            _Table.TableFooter,
-	            {
-	              adjustForCheckbox: this.state.showCheckboxes
-	            },
-	            _react2.default.createElement(
-	              _Table.TableRow,
-	              null,
-	              _react2.default.createElement(
-	                _Table.TableRowColumn,
-	                null,
-	                'ID'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableRowColumn,
-	                null,
-	                'Name'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableRowColumn,
-	                null,
-	                'Status'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
 
-	  return ProviderTabDetails;
+				if (this.state.openModal === true) {
+					var actions = [_react2.default.createElement(_FlatButton2.default, {
+						label: 'OK',
+						primary: true,
+						disabled: false,
+						onTouchTap: this.handleModalClose
+					})];
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							_Dialog2.default,
+							{
+								title: 'Task Information for ' && todos[rowNum].status.receiver,
+								actions: actions,
+								modal: true,
+								open: this.state.openModal
+							},
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									_Card.Card,
+									null,
+									_react2.default.createElement(_Card.CardHeader, {
+										title: 'Category       Date',
+										subtitle: todos[rowNum].task + '  -  ' + todos[rowNum].date,
+										actAsExpander: true,
+										showExpandableButton: true
+									}),
+									_react2.default.createElement(
+										_Card.CardText,
+										{ expandable: true },
+										_react2.default.createElement(
+											'h4',
+											null,
+											'Description'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											todos[rowNum].description
+										),
+										_react2.default.createElement(
+											'h6',
+											{ style: { marginTop: 5 } },
+											'Status'
+										),
+										todos[rowNum].status.available ? _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 }) : _react2.default.createElement(
+											'span',
+											null,
+											'Unselected'
+										)
+									)
+								)
+							)
+						)
+					);
+				}
+			}
+		}, {
+			key: 'handleToggle',
+			value: function handleToggle(event, toggled) {
+				this.setState(_defineProperty({}, event.target.name, toggled));
+			}
+		}, {
+			key: 'handleChange',
+			value: function handleChange(event) {
+				this.setState({ height: event.target.value });
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate() {
+				console.log('ProviderTabDetails - componentDidMount');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
+
+				var _props = this.props,
+				    login = _props.login,
+				    user = _props.user;
+
+				// IS showing all todos for the user neeed to separate them 
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					this.modalRowDetails(),
+					_react2.default.createElement(
+						_Table.Table,
+						{
+							height: this.state.height,
+							fixedHeader: this.state.fixedHeader,
+							fixedFooter: this.state.fixedFooter,
+							selectable: this.state.selectable,
+							multiSelectable: this.state.multiSelectable,
+							onRowSelection: this.handleRowSelection
+						},
+						_react2.default.createElement(
+							_Table.TableHeader,
+							{
+								displaySelectAll: this.state.showCheckboxes,
+								adjustForCheckbox: this.state.showCheckboxes,
+								enableSelectAll: this.state.enableSelectAll
+							},
+							_react2.default.createElement(
+								_Table.TableRow,
+								null,
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Task' },
+									'Category'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Name' },
+									'Description'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'City'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Date'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Selected'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Receiver'
+								)
+							)
+						),
+						_react2.default.createElement(
+							_Table.TableBody,
+							{
+								displayRowCheckbox: this.state.showCheckboxes,
+								deselectOnClickaway: this.state.deselectOnClickaway,
+								showRowHover: this.state.showRowHover,
+								stripedRows: this.state.stripedRows
+							},
+							user.todos.map(function (row, index) {
+								return _react2.default.createElement(
+									_Table.TableRow,
+									{ key: index, selected: row.selected },
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.task
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.city
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.description
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.date.split('T')[0]
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										_react2.default.createElement(_Checkbox2.default, {
+											value: row.status.available
+											// checked = {row.status.available}
+											, onCheck: _this2.handleAvailable // TODO post to
+											, id: row._id // _id probably does not exist 
+										})
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.status.receiver
+									)
+								);
+							})
+						)
+					),
+					_react2.default.createElement(_ProviderTabDetailConfirmation2.default, { toBeDone: this.state.todos })
+				);
+			}
+		}]);
+
+		return ProviderTabDetails;
 	}(_react2.default.Component);
 
 	exports.default = ProviderTabDetails;
@@ -64436,8 +64666,787 @@
 /* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(600);
-	var defaultClickRejectionStrategy = __webpack_require__(601);
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Snackbar = __webpack_require__(600);
+
+	var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
+	var _RaisedButton = __webpack_require__(244);
+
+	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ProviderTabDetailConfirmation = function (_React$Component) {
+	  _inherits(ProviderTabDetailConfirmation, _React$Component);
+
+	  function ProviderTabDetailConfirmation(props) {
+	    _classCallCheck(this, ProviderTabDetailConfirmation);
+
+	    var _this = _possibleConstructorReturn(this, (ProviderTabDetailConfirmation.__proto__ || Object.getPrototypeOf(ProviderTabDetailConfirmation)).call(this, props));
+
+	    _this.handleTouchTap = _this.handleTouchTap.bind(_this);
+	    _this.handleRequestClose = _this.handleRequestClose.bind(_this);
+
+	    _this.state = {
+	      message: 'Please confirm ...',
+	      open: false
+	    };
+	    _this.timer = undefined;
+	    return _this;
+	  }
+
+	  _createClass(ProviderTabDetailConfirmation, [{
+	    key: 'componentWillUnMount',
+	    value: function componentWillUnMount() {
+	      clearTimeout(this.timer);
+	    }
+	  }, {
+	    key: 'handleActionTouchTap',
+	    value: function handleActionTouchTap() {
+	      alert('I was clicked');
+	    }
+	  }, {
+	    key: 'handleTouchTap',
+	    value: function handleTouchTap() {
+	      var _this2 = this;
+
+	      var toBeDone = this.props.toBeDone;
+
+	      this.setState({
+	        open: true
+	      });
+	      console.log('toBeDone', toBeDone);
+	      toBeDone.forEach(function (todo, index) {
+	        console.log('todo', todo);
+	        _this2.timer = setTimeout(function (todo) {
+	          // alert('todo' + todo)
+	          _this2.setState({
+	            message: 'This todo number: ' + index + ' was added' + todo
+	          });
+	        }, 1500);
+	      });
+
+	      // this.timer = setTimeout(() => {
+	      //   this.setState({
+	      //     message: `this.props.toBeDone[]` //`Event ${Math.round(Math.random() * 100)} added to your calendar`,
+	      //   });
+	      // }, 1500);
+	    }
+	  }, {
+	    key: 'handleRequestClose',
+	    value: function handleRequestClose() {
+	      this.setState({
+	        open: false
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var toBeDone = this.props.toBeDone;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_RaisedButton2.default, {
+	          onTouchTap: this.handleTouchTap,
+	          label: 'Add TODOS'
+	        }),
+	        _react2.default.createElement(_Snackbar2.default, {
+	          open: this.state.open,
+	          message: this.state.message,
+	          onActionTouchTap: this.handleActionTouchTap,
+	          action: 'undo',
+	          autoHideDuration: 3000,
+	          onRequestClose: this.handleRequestClose
+	        })
+	      );
+	    }
+	  }]);
+
+	  return ProviderTabDetailConfirmation;
+	}(_react2.default.Component);
+
+	exports.default = ProviderTabDetailConfirmation;
+
+/***/ },
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _Snackbar = __webpack_require__(601);
+
+	var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _Snackbar2.default;
+
+/***/ },
+/* 601 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends2 = __webpack_require__(246);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(284);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _getPrototypeOf = __webpack_require__(285);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(290);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(291);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(295);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(330);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _simpleAssign = __webpack_require__(338);
+
+	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _transitions = __webpack_require__(339);
+
+	var _transitions2 = _interopRequireDefault(_transitions);
+
+	var _ClickAwayListener = __webpack_require__(551);
+
+	var _ClickAwayListener2 = _interopRequireDefault(_ClickAwayListener);
+
+	var _SnackbarBody = __webpack_require__(602);
+
+	var _SnackbarBody2 = _interopRequireDefault(_SnackbarBody);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getStyles(props, context, state) {
+	  var _context$muiTheme = context.muiTheme;
+	  var desktopSubheaderHeight = _context$muiTheme.baseTheme.spacing.desktopSubheaderHeight;
+	  var zIndex = _context$muiTheme.zIndex;
+	  var open = state.open;
+
+
+	  var styles = {
+	    root: {
+	      position: 'fixed',
+	      left: '50%',
+	      display: 'flex',
+	      bottom: 0,
+	      zIndex: zIndex.snackbar,
+	      visibility: open ? 'visible' : 'hidden',
+	      transform: open ? 'translate(-50%, 0)' : 'translate(-50%, ' + desktopSubheaderHeight + 'px)',
+	      transition: _transitions2.default.easeOut('400ms', 'transform') + ', ' + _transitions2.default.easeOut('400ms', 'visibility')
+	    }
+	  };
+
+	  return styles;
+	}
+
+	var Snackbar = function (_Component) {
+	  (0, _inherits3.default)(Snackbar, _Component);
+
+	  function Snackbar() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    (0, _classCallCheck3.default)(this, Snackbar);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Snackbar.__proto__ || (0, _getPrototypeOf2.default)(Snackbar)).call.apply(_ref, [this].concat(args))), _this), _this.componentClickAway = function () {
+	      if (_this.timerTransitionId) {
+	        // If transitioning, don't close the snackbar.
+	        return;
+	      }
+
+	      if (_this.props.open !== null && _this.props.onRequestClose) {
+	        _this.props.onRequestClose('clickaway');
+	      } else {
+	        _this.setState({ open: false });
+	      }
+	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	  }
+
+	  (0, _createClass3.default)(Snackbar, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.setState({
+	        open: this.props.open,
+	        message: this.props.message,
+	        action: this.props.action
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.state.open) {
+	        this.setAutoHideTimer();
+	        this.setTransitionTimer();
+	      }
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      var _this2 = this;
+
+	      if (this.props.open && nextProps.open && (nextProps.message !== this.props.message || nextProps.action !== this.props.action)) {
+	        this.setState({
+	          open: false
+	        });
+
+	        clearTimeout(this.timerOneAtTheTimeId);
+	        this.timerOneAtTheTimeId = setTimeout(function () {
+	          _this2.setState({
+	            message: nextProps.message,
+	            action: nextProps.action,
+	            open: true
+	          });
+	        }, 400);
+	      } else {
+	        var open = nextProps.open;
+
+	        this.setState({
+	          open: open !== null ? open : this.state.open,
+	          message: nextProps.message,
+	          action: nextProps.action
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (prevState.open !== this.state.open) {
+	        if (this.state.open) {
+	          this.setAutoHideTimer();
+	          this.setTransitionTimer();
+	        } else {
+	          clearTimeout(this.timerAutoHideId);
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearTimeout(this.timerAutoHideId);
+	      clearTimeout(this.timerTransitionId);
+	      clearTimeout(this.timerOneAtTheTimeId);
+	    }
+	  }, {
+	    key: 'setAutoHideTimer',
+
+
+	    // Timer that controls delay before snackbar auto hides
+	    value: function setAutoHideTimer() {
+	      var _this3 = this;
+
+	      var autoHideDuration = this.props.autoHideDuration;
+
+	      if (autoHideDuration > 0) {
+	        clearTimeout(this.timerAutoHideId);
+	        this.timerAutoHideId = setTimeout(function () {
+	          if (_this3.props.open !== null && _this3.props.onRequestClose) {
+	            _this3.props.onRequestClose('timeout');
+	          } else {
+	            _this3.setState({ open: false });
+	          }
+	        }, autoHideDuration);
+	      }
+	    }
+
+	    // Timer that controls delay before click-away events are captured (based on when animation completes)
+
+	  }, {
+	    key: 'setTransitionTimer',
+	    value: function setTransitionTimer() {
+	      var _this4 = this;
+
+	      this.timerTransitionId = setTimeout(function () {
+	        _this4.timerTransitionId = undefined;
+	      }, 400);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var autoHideDuration = _props.autoHideDuration;
+	      var contentStyle = _props.contentStyle;
+	      var bodyStyle = _props.bodyStyle;
+	      var messageProp = _props.message;
+	      var onRequestClose = _props.onRequestClose;
+	      var onActionTouchTap = _props.onActionTouchTap;
+	      var style = _props.style;
+	      var other = (0, _objectWithoutProperties3.default)(_props, ['autoHideDuration', 'contentStyle', 'bodyStyle', 'message', 'onRequestClose', 'onActionTouchTap', 'style']);
+	      var _state = this.state;
+	      var action = _state.action;
+	      var message = _state.message;
+	      var open = _state.open;
+	      var prepareStyles = this.context.muiTheme.prepareStyles;
+
+	      var styles = getStyles(this.props, this.context, this.state);
+
+	      return _react2.default.createElement(
+	        _ClickAwayListener2.default,
+	        { onClickAway: open ? this.componentClickAway : null },
+	        _react2.default.createElement(
+	          'div',
+	          (0, _extends3.default)({}, other, { style: prepareStyles((0, _simpleAssign2.default)(styles.root, style)) }),
+	          _react2.default.createElement(_SnackbarBody2.default, {
+	            action: action,
+	            contentStyle: contentStyle,
+	            message: message,
+	            open: open,
+	            onActionTouchTap: onActionTouchTap,
+	            style: bodyStyle
+	          })
+	        )
+	      );
+	    }
+	  }]);
+	  return Snackbar;
+	}(_react.Component);
+
+	Snackbar.contextTypes = {
+	  muiTheme: _react.PropTypes.object.isRequired
+	};
+	process.env.NODE_ENV !== "production" ? Snackbar.propTypes = {
+	  /**
+	   * The label for the action on the snackbar.
+	   */
+	  action: _react.PropTypes.node,
+	  /**
+	   * The number of milliseconds to wait before automatically dismissing.
+	   * If no value is specified the snackbar will dismiss normally.
+	   * If a value is provided the snackbar can still be dismissed normally.
+	   * If a snackbar is dismissed before the timer expires, the timer will be cleared.
+	   */
+	  autoHideDuration: _react.PropTypes.number,
+	  /**
+	   * Override the inline-styles of the body element.
+	   */
+	  bodyStyle: _react.PropTypes.object,
+	  /**
+	   * The css class name of the root element.
+	   */
+	  className: _react.PropTypes.string,
+	  /**
+	   * Override the inline-styles of the content element.
+	   */
+	  contentStyle: _react.PropTypes.object,
+	  /**
+	   * The message to be displayed.
+	   *
+	   * (Note: If the message is an element or array, and the `Snackbar` may re-render while it is still open,
+	   * ensure that the same object remains as the `message` property if you want to avoid the `Snackbar` hiding and
+	   * showing again)
+	   */
+	  message: _react.PropTypes.node.isRequired,
+	  /**
+	   * Fired when the action button is touchtapped.
+	   *
+	   * @param {object} event Action button event.
+	   */
+	  onActionTouchTap: _react.PropTypes.func,
+	  /**
+	   * Fired when the `Snackbar` is requested to be closed by a click outside the `Snackbar`, or after the
+	   * `autoHideDuration` timer expires.
+	   *
+	   * Typically `onRequestClose` is used to set state in the parent component, which is used to control the `Snackbar`
+	   * `open` prop.
+	   *
+	   * The `reason` parameter can optionally be used to control the response to `onRequestClose`,
+	   * for example ignoring `clickaway`.
+	   *
+	   * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
+	   */
+	  onRequestClose: _react.PropTypes.func,
+	  /**
+	   * Controls whether the `Snackbar` is opened or not.
+	   */
+	  open: _react.PropTypes.bool.isRequired,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _react.PropTypes.object
+	} : void 0;
+	exports.default = Snackbar;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 602 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.SnackbarBody = undefined;
+
+	var _extends2 = __webpack_require__(246);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(284);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _simpleAssign = __webpack_require__(338);
+
+	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _transitions = __webpack_require__(339);
+
+	var _transitions2 = _interopRequireDefault(_transitions);
+
+	var _withWidth = __webpack_require__(603);
+
+	var _withWidth2 = _interopRequireDefault(_withWidth);
+
+	var _FlatButton = __webpack_require__(384);
+
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getStyles(props, context) {
+	  var open = props.open;
+	  var width = props.width;
+	  var _context$muiTheme = context.muiTheme;
+	  var _context$muiTheme$bas = _context$muiTheme.baseTheme;
+	  var _context$muiTheme$bas2 = _context$muiTheme$bas.spacing;
+	  var desktopGutter = _context$muiTheme$bas2.desktopGutter;
+	  var desktopSubheaderHeight = _context$muiTheme$bas2.desktopSubheaderHeight;
+	  var fontFamily = _context$muiTheme$bas.fontFamily;
+	  var _context$muiTheme$sna = _context$muiTheme.snackbar;
+	  var backgroundColor = _context$muiTheme$sna.backgroundColor;
+	  var textColor = _context$muiTheme$sna.textColor;
+	  var actionColor = _context$muiTheme$sna.actionColor;
+
+
+	  var isSmall = width === _withWidth.SMALL;
+
+	  var styles = {
+	    root: {
+	      fontFamily: fontFamily,
+	      backgroundColor: backgroundColor,
+	      padding: '0 ' + desktopGutter + 'px',
+	      height: desktopSubheaderHeight,
+	      lineHeight: desktopSubheaderHeight + 'px',
+	      borderRadius: isSmall ? 0 : 2,
+	      maxWidth: isSmall ? 'inherit' : 568,
+	      minWidth: isSmall ? 'inherit' : 288,
+	      width: isSmall ? 'calc(100vw - ' + desktopGutter * 2 + 'px)' : 'auto',
+	      flexGrow: isSmall ? 1 : 0
+	    },
+	    content: {
+	      fontSize: 14,
+	      color: textColor,
+	      opacity: open ? 1 : 0,
+	      transition: open ? _transitions2.default.easeOut('500ms', 'opacity', '100ms') : _transitions2.default.easeOut('400ms', 'opacity')
+	    },
+	    action: {
+	      color: actionColor,
+	      float: 'right',
+	      marginTop: 6,
+	      marginRight: -16,
+	      marginLeft: desktopGutter,
+	      backgroundColor: 'transparent'
+	    }
+	  };
+
+	  return styles;
+	}
+
+	var SnackbarBody = exports.SnackbarBody = function SnackbarBody(props, context) {
+	  var action = props.action;
+	  var contentStyle = props.contentStyle;
+	  var message = props.message;
+	  var open = props.open;
+	  var onActionTouchTap = props.onActionTouchTap;
+	  var style = props.style;
+	  var other = (0, _objectWithoutProperties3.default)(props, ['action', 'contentStyle', 'message', 'open', 'onActionTouchTap', 'style']);
+	  var prepareStyles = context.muiTheme.prepareStyles;
+
+	  var styles = getStyles(props, context);
+
+	  var actionButton = action && _react2.default.createElement(_FlatButton2.default, {
+	    style: styles.action,
+	    label: action,
+	    onTouchTap: onActionTouchTap
+	  });
+
+	  return _react2.default.createElement(
+	    'div',
+	    (0, _extends3.default)({}, other, { style: prepareStyles((0, _simpleAssign2.default)(styles.root, style)) }),
+	    _react2.default.createElement(
+	      'div',
+	      { style: prepareStyles((0, _simpleAssign2.default)(styles.content, contentStyle)) },
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        message
+	      ),
+	      actionButton
+	    )
+	  );
+	};
+
+	process.env.NODE_ENV !== "production" ? SnackbarBody.propTypes = {
+	  /**
+	   * The label for the action on the snackbar.
+	   */
+	  action: _react.PropTypes.node,
+	  /**
+	   * Override the inline-styles of the content element.
+	   */
+	  contentStyle: _react.PropTypes.object,
+	  /**
+	   * The message to be displayed.
+	   *
+	   * (Note: If the message is an element or array, and the `Snackbar` may re-render while it is still open,
+	   * ensure that the same object remains as the `message` property if you want to avoid the `Snackbar` hiding and
+	   * showing again)
+	   */
+	  message: _react.PropTypes.node.isRequired,
+	  /**
+	   * Fired when the action button is touchtapped.
+	   *
+	   * @param {object} event Action button event.
+	   */
+	  onActionTouchTap: _react.PropTypes.func,
+	  /**
+	   * @ignore
+	   * Controls whether the `Snackbar` is opened or not.
+	   */
+	  open: _react.PropTypes.bool.isRequired,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _react.PropTypes.object,
+	  /**
+	   * @ignore
+	   * Width of the screen.
+	   */
+	  width: _react.PropTypes.number.isRequired
+	} : void 0;
+
+	SnackbarBody.contextTypes = {
+	  muiTheme: _react.PropTypes.object.isRequired
+	};
+
+	exports.default = (0, _withWidth2.default)()(SnackbarBody);
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 603 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.LARGE = exports.MEDIUM = exports.SMALL = undefined;
+
+	var _extends2 = __webpack_require__(246);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _getPrototypeOf = __webpack_require__(285);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(290);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(291);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(295);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(330);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	exports.default = withWidth;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactEventListener = __webpack_require__(377);
+
+	var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SMALL = exports.SMALL = 1;
+	var MEDIUM = exports.MEDIUM = 2;
+	var LARGE = exports.LARGE = 3;
+
+	function withWidth() {
+	  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var _options$largeWidth = options.largeWidth;
+	  var largeWidth = _options$largeWidth === undefined ? 992 : _options$largeWidth;
+	  var _options$mediumWidth = options.mediumWidth;
+	  var mediumWidth = _options$mediumWidth === undefined ? 768 : _options$mediumWidth;
+	  var _options$resizeInterv = options.resizeInterval;
+	  var resizeInterval = _options$resizeInterv === undefined ? 166 : _options$resizeInterv;
+
+
+	  return function (MyComponent) {
+	    return function (_Component) {
+	      (0, _inherits3.default)(WithWidth, _Component);
+
+	      function WithWidth() {
+	        var _ref;
+
+	        var _temp, _this, _ret;
+
+	        (0, _classCallCheck3.default)(this, WithWidth);
+
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	          args[_key] = arguments[_key];
+	        }
+
+	        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = WithWidth.__proto__ || (0, _getPrototypeOf2.default)(WithWidth)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	          width: null
+	        }, _this.handleResize = function () {
+	          clearTimeout(_this.deferTimer);
+	          _this.deferTimer = setTimeout(function () {
+	            _this.updateWidth();
+	          }, resizeInterval);
+	        }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	      }
+
+	      (0, _createClass3.default)(WithWidth, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	          this.updateWidth();
+	        }
+	      }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	          clearTimeout(this.deferTimer);
+	        }
+	      }, {
+	        key: 'updateWidth',
+	        value: function updateWidth() {
+	          var innerWidth = window.innerWidth;
+	          var width = void 0;
+
+	          if (innerWidth >= largeWidth) {
+	            width = LARGE;
+	          } else if (innerWidth >= mediumWidth) {
+	            width = MEDIUM;
+	          } else {
+	            // innerWidth < 768
+	            width = SMALL;
+	          }
+
+	          if (width !== this.state.width) {
+	            this.setState({
+	              width: width
+	            });
+	          }
+	        }
+	      }, {
+	        key: 'render',
+	        value: function render() {
+	          var width = this.state.width;
+
+	          /**
+	           * When rendering the component on the server,
+	           * we have no idea about the screen width.
+	           * In order to prevent blinks and help the reconciliation
+	           * we are not rendering the component.
+	           *
+	           * A better alternative would be to send client hints.
+	           * But the browser support of this API is low:
+	           * http://caniuse.com/#search=client%20hint
+	           */
+	          if (width === null) {
+	            return null;
+	          }
+
+	          return _react2.default.createElement(
+	            _reactEventListener2.default,
+	            { target: 'window', onResize: this.handleResize },
+	            _react2.default.createElement(MyComponent, (0, _extends3.default)({
+	              width: width
+	            }, this.props))
+	          );
+	        }
+	      }]);
+	      return WithWidth;
+	    }(_react.Component);
+	  };
+	}
+
+/***/ },
+/* 604 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(605);
+	var defaultClickRejectionStrategy = __webpack_require__(606);
 
 	var alreadyInjected = false;
 
@@ -64459,14 +65468,14 @@
 	  alreadyInjected = true;
 
 	  __webpack_require__(43).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(602)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(607)(shouldRejectClick)
 	  });
 	};
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 600 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -64521,7 +65530,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 601 */
+/* 606 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -64532,7 +65541,7 @@
 
 
 /***/ },
-/* 602 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -64560,10 +65569,10 @@
 	var EventPluginUtils = __webpack_require__(45);
 	var EventPropagators = __webpack_require__(42);
 	var SyntheticUIEvent = __webpack_require__(76);
-	var TouchEventUtils = __webpack_require__(603);
+	var TouchEventUtils = __webpack_require__(608);
 	var ViewportMetrics = __webpack_require__(77);
 
-	var keyOf = __webpack_require__(604);
+	var keyOf = __webpack_require__(609);
 	var topLevelTypes = EventConstants.topLevelTypes;
 
 	var isStartish = EventPluginUtils.isStartish;
@@ -64708,7 +65717,7 @@
 
 
 /***/ },
-/* 603 */
+/* 608 */
 /***/ function(module, exports) {
 
 	/**
@@ -64756,7 +65765,7 @@
 
 
 /***/ },
-/* 604 */
+/* 609 */
 /***/ function(module, exports) {
 
 	/**
@@ -64794,157 +65803,6 @@
 	};
 
 	module.exports = keyOf;
-
-/***/ },
-/* 605 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Tabs = __webpack_require__(512);
-
-	var _Slider = __webpack_require__(517);
-
-	var _Slider2 = _interopRequireDefault(_Slider);
-
-	var _ReceiverInfoTest = __webpack_require__(521);
-
-	var _ReceiverInfoTest2 = _interopRequireDefault(_ReceiverInfoTest);
-
-	var _CurrentRequest = __webpack_require__(574);
-
-	var _CurrentRequest2 = _interopRequireDefault(_CurrentRequest);
-
-	var _FinishedRequest = __webpack_require__(591);
-
-	var _FinishedRequest2 = _interopRequireDefault(_FinishedRequest);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	//Style for MaterialUI Tabs
-	var styles = {
-		headline: {
-			fontSize: 24,
-			paddingTop: 16,
-			marginBottom: 12,
-			fontWeight: 400
-		}
-	};
-
-	var ReceiverMainPage = function (_Component) {
-		_inherits(ReceiverMainPage, _Component);
-
-		function ReceiverMainPage(props) {
-			_classCallCheck(this, ReceiverMainPage);
-
-			// this.getUserData=this.getUserData.bind(this)
-			var _this = _possibleConstructorReturn(this, (ReceiverMainPage.__proto__ || Object.getPrototypeOf(ReceiverMainPage)).call(this, props));
-
-			_this.state = {
-				show: false,
-				firstName: '',
-				lastName: '',
-				email: ''
-			};
-			return _this;
-		}
-
-		_createClass(ReceiverMainPage, [{
-			key: 'render',
-			value: function render() {
-				var _props = this.props,
-				    user = _props.user,
-				    login = _props.login,
-				    url = _props.url;
-
-
-				if (url !== 'receivers') {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'jumbotron' },
-						_react2.default.createElement(
-							'h2',
-							null,
-							'Welcome to the Receiver Page'
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							'Please log in or sign up to use this page'
-						)
-					);
-				} else {
-					if (login) {
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Welcome ',
-								user.userName
-							),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								_Tabs.Tabs,
-								null,
-								_react2.default.createElement(
-									_Tabs.Tab,
-									{ label: 'Current Requests' },
-									_react2.default.createElement(
-										'div',
-										null,
-										_react2.default.createElement(_CurrentRequest2.default, { user: user })
-									)
-								),
-								_react2.default.createElement(
-									_Tabs.Tab,
-									{ label: 'Fulfilled Request' },
-									_react2.default.createElement(
-										'div',
-										null,
-										_react2.default.createElement(_FinishedRequest2.default, { user: user })
-									)
-								),
-								_react2.default.createElement(
-									_Tabs.Tab,
-									{ label: 'Add New Task' },
-									_react2.default.createElement(
-										'div',
-										null,
-										_react2.default.createElement(_ReceiverInfoTest2.default, { user: user })
-									)
-								)
-							)
-						);
-					} else {
-
-						return _react2.default.createElement(_ReceiverInfoTest2.default, { user: user });
-					}
-				}
-			}
-		}]);
-
-		return ReceiverMainPage;
-	}(_react.Component);
-
-	exports.default = ReceiverMainPage;
 
 /***/ }
 /******/ ]);

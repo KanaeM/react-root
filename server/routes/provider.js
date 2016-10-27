@@ -88,7 +88,7 @@ provider
 				"status": {
 						"available": true,		//	since anytime=true
 						"confirmed": false,
-						"receiver": req.body.userName,	//"username",
+						"receiver": req.body._id,	//"username",
 						"done": false
 				}
 		}

@@ -65,7 +65,7 @@ class ReceiverMainPage extends Component {
 				)
 				} else {
 
-					return (<ReceiverInfoTest user={user}/>)
+					return (<ReceiverInfoTest user={user} login={login}/>)
 					
 				}				
 		}

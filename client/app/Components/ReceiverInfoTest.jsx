@@ -13,7 +13,9 @@ import TimePicker from 'material-ui/TimePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import helpers from '../receiverhelpers';
+import provHelpers from '../helpers'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+// import LoginAlertModule from './LoginAlertModule'
 
 var t, d 
 class ReceiverInfoPage extends Component {
@@ -25,13 +27,14 @@ class ReceiverInfoPage extends Component {
   this.handlePrev = this.handlePrev.bind(this);
   this.postInfo = this.postInfo.bind(this);
   this.handleDropdown = this.handleDropdown.bind(this);
+  this.checkLogin = this.checkLogin.bind(this);
 
   this.state ={
     loading: false,
     finished: false,
     stepIndex: 0,
     password: '',
-    task: '',
+    task: 'none',
     city: '',
     time: '',
     date: '',
@@ -39,49 +42,78 @@ class ReceiverInfoPage extends Component {
     login: false,
     modalOpen: false,
     modalLoading: false,
-    dropdownValue: "none",
-    available:[]
+    openAlert: false,
+    available:[],
+    chosenUser:"",
+    requestId:[]
   };
  }
 
  componentDidUpdate(prevProps, prevState){
+  const {requestId} = this.state;
   if (prevState.time !== this.state.time){
     console.log("Time has changed componentDidUpdate")
     helpers.getProvider()
       .then(function(providers){
-          this.setState({available: providers});
-          console.log(this.state.available)   
+          this.setState({available: providers.data});
+          console.log("the final state", this.state.available)   
       }.bind(this))
+  }
+  //This is where the request.ID connects to the code in providers
+  if (prevState.requestId !== this.state.requestId){
+    console.log("this is the requestID and the chosenUSer to send the info to", requestId)
+    helpers.postTodo(requestId)
+      .then(function(task){
+        console.log("POST.TODO-infoTest:", task)
+      }.bind(this))
+  }
+  if (prevProps.user.requests !== this.props.user.requests){
+    console.log("the requests has change")
   }
  }
 
 //  componentDidMount(){
-//     if (this.state.time !== "" && this.state.date !== ""){
-    
+//   const {user}=this.props
+//    this.setState({newRequests: user.requests})
+//    console.log("state after newRequests", this.state)
 //   }
 // }
 
+//this will check if the recieiver is logged in while trying to post a job
+checkLogin(row, id, value){
+  const {available} = this.state
+  console.log("available on table", available)
+  console.log("login props check", this.props)
+  this.setState({chosenUser: available[row].userName})
+  
+}
+
 //this will show a table with compatible providers on the "Post a Job" tab
  providerTable(){
+  let {available} = this.state
    if (this.state.time !== "" && this.state.date !== ""){  
     return(
       <div>
-        <h1 style={{marginTop:40, textAlign:"center"}}>Available users</h1>
-        <Table>
+        <h3 style={{marginTop:40, textAlign:"center"}}>Please choose an available user</h3>
+        <Table
+          onCellClick={this.checkLogin}
+        >
           <TableHeader>
             <TableRow>
-              <TableHeaderColumn>ID</TableHeaderColumn>
-              <TableHeaderColumn>Name</TableHeaderColumn>
+              <TableHeaderColumn></TableHeaderColumn>
+              <TableHeaderColumn>UserName</TableHeaderColumn>
               <TableHeaderColumn>Status</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody>
-            {
-              this.state.available.map( (row, index) => (
+          <TableBody
+            stripedRows={true}
+            showRowHover={true}
+          >
+            {available.map( (row, index) => (
               <TableRow key={index} selected={row.selected} >
-                <TableRowColumn>{index}</TableRowColumn>
-                <TableRowColumn>{row._Id}</TableRowColumn>
+                <TableRowColumn><img src={row.url} style={{width: 60, marginBottom: 10, marginTop: 10}}/></TableRowColumn>
                 <TableRowColumn>{row.userName}</TableRowColumn>
+                <TableRowColumn>Available</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>
@@ -90,7 +122,6 @@ class ReceiverInfoPage extends Component {
     )
   }
   } 
- 
 
   dummyAsync(cb){
     this.setState({loading: true}, () => {
@@ -110,7 +141,7 @@ class ReceiverInfoPage extends Component {
     }
   }
 
-    handlePrev() {
+  handlePrev() {
     const {stepIndex} = this.state;
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
@@ -118,20 +149,21 @@ class ReceiverInfoPage extends Component {
         stepIndex: stepIndex - 1,
       }));
     }
-  
   }
 
+  //Picks up all data from the table and saves it in this.state
   getServiceInfo(field, event){
     const receiverRequest = {};
     if (this.state.login === false && this.state.stepIndex === 2){
       receiverRequest[field] = event.target.value;
-      console.log("You are not logged in, but here is your job post", receiverRequest);
+      console.log("You are not logged in,Fs but here is your job post", receiverRequest);
 
     } else{
+      console.log(receiverRequest)
     this.setState(receiverRequest)
     console.log("Your data has been sent")
     }
-}
+  }
 
   getTime(blank, other, time){
     console.log(time);
@@ -160,22 +192,25 @@ class ReceiverInfoPage extends Component {
 //Once Logged in, this will post the new task to the Receiver table
  postInfo(){
   const {user}=this.props
+  let newRequestid=[]
   if (this.state.stepIndex === 2){
     console.log("The new state for task pushInfo()", this.state)
     var newTask = this.state
     console.log("newtasks in postInfo", newTask)
-    helpers.postTask(newTask, user)
+    helpers.postTask(newTask, user.userName)
       .then(function(data){
         console.log("saving receivers now from jsx", data)
-        console.log("this is the postTask user", user)
+        console.log("this is the postTask user", user.userName)
+        newRequestid= data.data.requests[data.data.requests.length -1]
+        console.log("newRequestID",newRequestid)
+        this.setState({requestId: newRequestid})
       }.bind(this))
   }
 }
 
-
   handleDropdown(event, index, value) {
     console.log(value)
-    this.setState({dropdownValue: value});
+    this.setState({task: value});
   }
 
   getStepContent(stepIndex) {
@@ -184,14 +219,7 @@ class ReceiverInfoPage extends Component {
         return (
           <div>
             <h4>Job Details</h4>
-            <TextField
-              id='text-field-controlled'
-              floatingLabelText="Task"
-              className = "task"
-              style={{marginRight: 40}}
-              onChange={this.getReceiverInfo.bind(this, "task")}
-            />
-            <DropDownMenu value={this.state.dropdownValue} onChange={this.handleDropdown}>
+            <DropDownMenu value={this.state.task} onChange={this.handleDropdown} style={{marginRight: 30}}>
               <MenuItem value="none" primaryText="Choose a category" />
               <MenuItem value="Mechanic" primaryText="Mechanic" />
               <MenuItem value="Cleaning" primaryText="Cleaning" />
@@ -200,15 +228,22 @@ class ReceiverInfoPage extends Component {
               <MenuItem value="Volunteer" primaryText="Volunteer" />
               <MenuItem value={7} primaryText="" />
             </DropDownMenu>
-             <TextField
+            <br />
+            <TextField
               id='text-field-controlled'
               floatingLabelText="City"
               className = "city"
               style={{marginRight: 20}}
               onChange={this.getReceiverInfo.bind(this, "city")}
             />
+            <TextField
+              id='text-field-controlled'
+              floatingLabelText="State"
+              className = "state"
+              style={{marginRight: 20}}
+            />
             <br />
-           
+            
             <TextField
               hintText="Job Description"
               floatingLabelText="Job Description"
@@ -236,23 +271,6 @@ class ReceiverInfoPage extends Component {
             />
           </div>
         );
-      // case 2:
-      //     return (
-      //       <div>
-      //         <TextField
-      //           id='text-field-controlled'
-      //           floatingLabelText="Username"
-      //           style={{marginRight: 20}}
-      //           onChange={this.getServiceInfo.bind(this, "userName")}
-      //         /><br />
-      //         <TextField
-      //           hintText="Password"
-      //           floatingLabelText="Password"
-      //           type="password"
-      //           onChange={this.getReceiverInfo.bind(this, "password")}
-      //         /><br />
-      //       </div>
-      //     );
         case 2:
           return (
             <div>

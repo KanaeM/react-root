@@ -3,44 +3,15 @@ import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow,
   from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
-
-const tableData = [
-  {
-    name: 'John Smith',
-    status: 'Employed',
-    selected: true,
-  },
-  {
-    name: 'Randal White',
-    status: 'Unemployed',
-  },
-  {
-    name: 'Stephanie Sanders',
-    status: 'Employed',
-    selected: true,
-  },
-  {
-    name: 'Steve Brown',
-    status: 'Employed',
-  },
-  {
-    name: 'Joyce Whitten',
-    status: 'Employed',
-  },
-  {
-    name: 'Samuel Roberts',
-    status: 'Employed',
-  },
-  {
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-];
+import helpers from '../receiverhelpers';
 
 class AvailableUsersTable extends Component {
 
   constructor(props) {
     super(props);
+    this.state={
+      providers:[]
+    }
   }
 
   handleToggle(event, toggled){
@@ -53,7 +24,31 @@ class AvailableUsersTable extends Component {
     this.setState({height: event.target.value});
   };
 
+  componentDidUpdate(prevProp, prevState){
+    if(prevState.providers !== this.state.providers){
+      console.log("the providers array has CHANGED")
+    }
+  }
+
+  componentDidMount(){
+    helpers.getProvider()
+      .then(function(providers){
+        console.log("providers gottern", providers.data)
+        // for (var i=0; i<providers.data.length; i++){
+          // console.log
+        //   if(providers[i].services.anytime === false){
+            this.setState({providers:providers.data});
+        //   }
+        // }
+        
+        
+        console.log("available user table",this.state.providers)
+      }.bind(this))
+  }
+
   render() {
+    let {providers} = this.state;
+    console.log("these are the providers available", this.state.providers)
     return (
       <div>
         <Table
@@ -66,15 +61,14 @@ class AvailableUsersTable extends Component {
               adjustForCheckbox={false}
             >
               <TableRow>
-                <TableHeaderColumn colSpan="5" style={{textAlign: 'center'}} >
+                <TableHeaderColumn colSpan="4" style={{textAlign: 'center'}} >
                   <h2 style={{marginTop:30}}>Available Users</h2>
                 </TableHeaderColumn>
               </TableRow>
               <TableRow>
-                <TableHeaderColumn tooltip="Username">User Name</TableHeaderColumn>
-                <TableHeaderColumn tooltip="Username">User Name</TableHeaderColumn>
-                <TableHeaderColumn tooltip="Name">Name</TableHeaderColumn>
-                <TableHeaderColumn tooltip="Assigned Date and Time">City</TableHeaderColumn>
+                <TableHeaderColumn></TableHeaderColumn>
+                <TableHeaderColumn tooltip="Profile Pic"></TableHeaderColumn>
+                <TableHeaderColumn tooltip="UserName">City</TableHeaderColumn>
                 <TableHeaderColumn tooltip="Status">Status</TableHeaderColumn>
               </TableRow>
             </TableHeader>
@@ -83,11 +77,10 @@ class AvailableUsersTable extends Component {
               showRowHover={true}
               stripedRows={true}
             >
-              {tableData.map( (row, index) => (
+              {providers.map( (row, index) => (
                 <TableRow key={index} selected={row.selected} >
-                  <TableRowColumn>{index}</TableRowColumn>
-                  <TableRowColumn>{row.name}</TableRowColumn>
-                  <TableRowColumn>{row.status}</TableRowColumn>
+                  <TableRowColumn><img src={row.url} style={{width: 60, marginBottom: 10, marginTop: 10}}/></TableRowColumn>
+                  <TableRowColumn>{row.userName}</TableRowColumn>
                   <TableRowColumn>Available</TableRowColumn>
                 </TableRow>
                 ))}

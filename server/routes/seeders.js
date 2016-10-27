@@ -1,10 +1,48 @@
 var pros =  
+    {
+        "firstName": "Fabiano",
+        "lastName": "Reeves",
+        "userName": "faviano",
+        "password": "password",
+        "email": "fabiano@mail.com",
+        "url": "https://avatars.githubusercontent.com/u/3?v=3",
+        "address1": "Jersey St",
+        "address2": "2 fl",
+        "city": "Hoboken",
+        "state": "NY",
+        "zip": "01207",
+        "phone": "201-322-0991",
+        "requests": [
+            {
+                "task": "Delivery",
+                "city": "Hoboken",
+                "date": "11/27/2016",
+                "time": "08:00",
+                "description": "Delivery furniture to Jersey City",
+                "status": { 
+                    "confirmed": false,
+                    "provider": "",
+                    "done": false
+                },
+                "providers": [
+                    {
+                        "provider": "",
+                        "available": true
+                    }
+                ]
+
+            }
+        ]
+    }
+
+
 	{
 		"firstName": "Elsa",
 		"lastName": "Jade",
 		"userName": "elsa",
 		"password": "password",
 		"email": "elsa@mail.com",
+        "url": "https://avatars.githubusercontent.com/u/5?v=3",
 		"address1": "Class St",
 		"address2": "1 fl",
 		"city": "Staten Island",
@@ -13,9 +51,9 @@ var pros =
 		"phone": "201-322-0991",
 		"requests": [
 			{
-				"task": "Mechanic-Auto",
+				"task": "Mechanic",
 				"city": "Leonia",
-				"date": "10/21/2016",
+				"date": "11/27/2016",
 				"time": "08:00",
 				"description": "Change Battery",
 				"status": { 
@@ -33,7 +71,7 @@ var pros =
 
 			}
 		]
-  }
+    }
 
 	{
 		"firstName": "Robin",
@@ -41,6 +79,7 @@ var pros =
 		"userName": "robin",
 		"password": "password",
 		"email": "robin@mail.com",
+        "url": "https://avatars.githubusercontent.com/u/1?v=3",
 		"address1": "His Place",
 		"address2": "BSMT",
 		"city": "Lyndhurts",
@@ -64,6 +103,7 @@ var pros =
 		"userName": "david",
 		"password": "password",
 		"email": "david@mail.com",
+        "url": "https://avatars.githubusercontent.com/u/21?v=3",
 		"address1": "Grand St",
 		"address2": "2 fl.",
 		"city": "Englewood",

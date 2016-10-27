@@ -66,14 +66,15 @@ receiver
 	//  This will push a request to receiver ONLY if he's login
 	//  ** <TODO> ** check if request already exist ..
 	.post('/request/:username', function(req, res){
-		Receiver.findOneAndUpdate({email: req.params.username}, {
+		console.log("these are the requests coming in to postrequest.js:", req.body.requests.task)
+		Receiver.findOneAndUpdate({userName: req.params.username}, {
 			$push: {
-				"request": {
-					task: req.body.task,
-					city: req.body.city,
-					date: req.body.date, 
-					time: req.body.time,
-					description: req.body.description
+				requests: {
+						task: req.body.requests.task,
+						city: req.body.requests.city,
+						date: req.body.requests.date, 
+						time: req.body.requests.time,
+						description: req.body.requests.description
 				}
 			}
 			}, {safe:true, upsert:true, new:true}, function(err, rec){
