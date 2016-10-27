@@ -80,6 +80,7 @@ class CurrentRequest extends Component {
 	          open={this.state.openModal}
             autoScrollBodyContent={true}
             autoDetectWindowHeight={true}
+            repositionOnUpdate={true}
 	        >
 	        	<div>
 	        		<Card>
