@@ -96,13 +96,13 @@ class Application extends Component {
 									<Link to="/" activeClassName="active"><span className="glyphicon glyphicon-home"></span></Link>
 								</li>
 								<div className="navbar-header">
-									<span className="navbar-brand" to="/">Opportunities Find something make a difference</span>
+									<span className="navbar-brand mainTitle" style={{fontSize: 35}}to="/">Jade</span><span className="navbar-brand mainTitle" style={{fontSize: 20}}>- Find Something and Make a Difference</span>
 								</div>
 							</ul>
 							<ul className="nav navbar-nav navbar-right">
 								{/*<li><MuiThemeProvider><div><RaisedButton backgroundColor= {'pink'} onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in" > {user.userName}</span>)} </RaisedButton> </div></MuiThemeProvider></li>*/}
-								<li><Link to="/receivers" activeClassName="active"> Receivers</Link></li>
-								<li><Link to="/providers" activeClassName="active"> Providers</Link></li>
+								<li><Link to="/receivers" activeClassName="active"> Post-a-Job</Link></li>
+								<li><Link to="/providers" activeClassName="active"> Helpers</Link></li>
 								<li><Link to ='' activeClassName="active" onTouchTap={this.handleOpenSignInModal}>{!this.state.login && 'login'} {this.state.login && (<span className="glyphicon glyphicon-log-in"> {user.userName} </span>)}</Link></li>
 							</ul>
 						</div>

@@ -60,7 +60,7 @@
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reactTapEventPlugin = __webpack_require__(589);
+	var _reactTapEventPlugin = __webpack_require__(591);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
@@ -27315,8 +27315,13 @@
 									{ className: 'navbar-header' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'navbar-brand', to: '/' },
-										'Opportunities Find something make a difference'
+										{ className: 'navbar-brand mainTitle', style: { fontSize: 35 }, to: '/' },
+										'Jade'
+									),
+									_react2.default.createElement(
+										'span',
+										{ className: 'navbar-brand mainTitle', style: { fontSize: 20 } },
+										'- Find Something and Make a Difference'
 									)
 								)
 							),
@@ -27329,7 +27334,7 @@
 									_react2.default.createElement(
 										_reactRouter.Link,
 										{ to: '/receivers', activeClassName: 'active' },
-										' Receivers'
+										' Post-a-Job'
 									)
 								),
 								_react2.default.createElement(
@@ -27338,7 +27343,7 @@
 									_react2.default.createElement(
 										_reactRouter.Link,
 										{ to: '/providers', activeClassName: 'active' },
-										' Providers'
+										' Helpers'
 									)
 								),
 								_react2.default.createElement(
@@ -45780,7 +45785,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -45846,472 +45851,472 @@
 	var t, d;
 
 	var ReceiverInfoPage = function (_Component) {
-		_inherits(ReceiverInfoPage, _Component);
+	  _inherits(ReceiverInfoPage, _Component);
 
-		function ReceiverInfoPage(props) {
-			_classCallCheck(this, ReceiverInfoPage);
+	  function ReceiverInfoPage(props) {
+	    _classCallCheck(this, ReceiverInfoPage);
 
-			var _this = _possibleConstructorReturn(this, (ReceiverInfoPage.__proto__ || Object.getPrototypeOf(ReceiverInfoPage)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ReceiverInfoPage.__proto__ || Object.getPrototypeOf(ReceiverInfoPage)).call(this, props));
 
-			_this.handleNext = _this.handleNext.bind(_this);
-			_this.handlePrev = _this.handlePrev.bind(_this);
-			_this.postInfo = _this.postInfo.bind(_this);
-			_this.handleDropdown = _this.handleDropdown.bind(_this);
-			_this.checkLogin = _this.checkLogin.bind(_this);
+	    _this.handleNext = _this.handleNext.bind(_this);
+	    _this.handlePrev = _this.handlePrev.bind(_this);
+	    _this.postInfo = _this.postInfo.bind(_this);
+	    _this.handleDropdown = _this.handleDropdown.bind(_this);
+	    _this.checkLogin = _this.checkLogin.bind(_this);
 
-			_this.state = {
-				loading: false,
-				finished: false,
-				stepIndex: 0,
-				password: '',
-				task: 'none',
-				city: '',
-				time: '',
-				date: '',
-				description: '',
-				login: false,
-				modalOpen: false,
-				modalLoading: false,
-				openAlert: false,
-				available: [],
-				chosenUser: "",
-				requestId: []
-			};
-			return _this;
-		}
+	    _this.state = {
+	      loading: false,
+	      finished: false,
+	      stepIndex: 0,
+	      password: '',
+	      task: 'none',
+	      city: '',
+	      time: '',
+	      date: '',
+	      description: '',
+	      login: false,
+	      modalOpen: false,
+	      modalLoading: false,
+	      openAlert: false,
+	      available: [],
+	      chosenUser: "",
+	      requestId: []
+	    };
+	    return _this;
+	  }
 
-		_createClass(ReceiverInfoPage, [{
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate(prevProps, prevState) {
-				var requestId = this.state.requestId;
+	  _createClass(ReceiverInfoPage, [{
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      var requestId = this.state.requestId;
 
-				if (prevState.time !== this.state.time) {
-					console.log("Time has changed componentDidUpdate");
-					_receiverhelpers2.default.getProvider().then(function (providers) {
-						this.setState({ available: providers.data });
-						console.log("the final state", this.state.available);
-					}.bind(this));
-				}
-				//This is where the request.ID connects to the code in providers
-				if (prevState.requestId !== this.state.requestId) {
-					console.log("this is the requestID and the chosenUSer to send the info to", requestId);
-					_receiverhelpers2.default.postTodo(requestId).then(function (task) {
-						console.log("POST.TODO-infoTest:", task);
-					}.bind(this));
-				}
-				if (prevProps.user.requests !== this.props.user.requests) {
-					console.log("the requests has change");
-				}
-			}
+	      if (prevState.time !== this.state.time) {
+	        console.log("Time has changed componentDidUpdate");
+	        _receiverhelpers2.default.getProvider().then(function (providers) {
+	          this.setState({ available: providers.data });
+	          console.log("the final state", this.state.available);
+	        }.bind(this));
+	      }
+	      //This is where the request.ID connects to the code in providers
+	      if (prevState.requestId !== this.state.requestId) {
+	        console.log("this is the requestID and the chosenUSer to send the info to", requestId);
+	        _receiverhelpers2.default.postTodo(requestId).then(function (task) {
+	          console.log("POST.TODO-infoTest:", task);
+	        }.bind(this));
+	      }
+	      if (prevProps.user.requests !== this.props.user.requests) {
+	        console.log("the requests has change");
+	      }
+	    }
 
-			//  componentDidMount(){
-			//   const {user}=this.props
-			//    this.setState({newRequests: user.requests})
-			//    console.log("state after newRequests", this.state)
-			//   }
-			// }
+	    //  componentDidMount(){
+	    //   const {user}=this.props
+	    //    this.setState({newRequests: user.requests})
+	    //    console.log("state after newRequests", this.state)
+	    //   }
+	    // }
 
-			//this will check if the recieiver is logged in while trying to post a job
+	    //this will check if the recieiver is logged in while trying to post a job
 
-		}, {
-			key: 'checkLogin',
-			value: function checkLogin(row, id, value) {
-				var available = this.state.available;
+	  }, {
+	    key: 'checkLogin',
+	    value: function checkLogin(row, id, value) {
+	      var available = this.state.available;
 
-				console.log("available on table", available);
-				console.log("login props check", this.props);
-				this.setState({ chosenUser: available[row].userName });
-			}
+	      console.log("available on table", available);
+	      console.log("login props check", this.props);
+	      this.setState({ chosenUser: available[row].userName });
+	    }
 
-			//this will show a table with compatible providers on the "Post a Job" tab
+	    //this will show a table with compatible providers on the "Post a Job" tab
 
-		}, {
-			key: 'providerTable',
-			value: function providerTable() {
-				var available = this.state.available;
+	  }, {
+	    key: 'providerTable',
+	    value: function providerTable() {
+	      var available = this.state.available;
 
-				if (this.state.time !== "" && this.state.date !== "") {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'h3',
-							{ style: { marginTop: 40, textAlign: "center" } },
-							'Please choose an available user'
-						),
-						_react2.default.createElement(
-							_Table.Table,
-							{
-								onCellClick: this.checkLogin
-							},
-							_react2.default.createElement(
-								_Table.TableHeader,
-								null,
-								_react2.default.createElement(
-									_Table.TableRow,
-									null,
-									_react2.default.createElement(_Table.TableHeaderColumn, null),
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										null,
-										'UserName'
-									),
-									_react2.default.createElement(
-										_Table.TableHeaderColumn,
-										null,
-										'Status'
-									)
-								)
-							),
-							_react2.default.createElement(
-								_Table.TableBody,
-								{
-									stripedRows: true,
-									showRowHover: true
-								},
-								available.map(function (row, index) {
-									return _react2.default.createElement(
-										_Table.TableRow,
-										{ key: index, selected: row.selected },
-										_react2.default.createElement(
-											_Table.TableRowColumn,
-											null,
-											_react2.default.createElement('img', { src: row.url, style: { width: 60, marginBottom: 10, marginTop: 10 } })
-										),
-										_react2.default.createElement(
-											_Table.TableRowColumn,
-											null,
-											row.userName
-										),
-										_react2.default.createElement(
-											_Table.TableRowColumn,
-											null,
-											'Available'
-										)
-									);
-								})
-							)
-						)
-					);
-				}
-			}
-		}, {
-			key: 'dummyAsync',
-			value: function dummyAsync(cb) {
-				var _this2 = this;
+	      if (this.state.time !== "" && this.state.date !== "") {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h3',
+	            { style: { marginTop: 40, textAlign: "center" } },
+	            'Please choose an available user'
+	          ),
+	          _react2.default.createElement(
+	            _Table.Table,
+	            {
+	              onCellClick: this.checkLogin
+	            },
+	            _react2.default.createElement(
+	              _Table.TableHeader,
+	              null,
+	              _react2.default.createElement(
+	                _Table.TableRow,
+	                null,
+	                _react2.default.createElement(_Table.TableHeaderColumn, null),
+	                _react2.default.createElement(
+	                  _Table.TableHeaderColumn,
+	                  null,
+	                  'UserName'
+	                ),
+	                _react2.default.createElement(
+	                  _Table.TableHeaderColumn,
+	                  null,
+	                  'Status'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _Table.TableBody,
+	              {
+	                stripedRows: true,
+	                showRowHover: true
+	              },
+	              available.map(function (row, index) {
+	                return _react2.default.createElement(
+	                  _Table.TableRow,
+	                  { key: index, selected: row.selected },
+	                  _react2.default.createElement(
+	                    _Table.TableRowColumn,
+	                    null,
+	                    _react2.default.createElement('img', { src: row.url, style: { width: 60, marginBottom: 10, marginTop: 10 } })
+	                  ),
+	                  _react2.default.createElement(
+	                    _Table.TableRowColumn,
+	                    null,
+	                    row.userName
+	                  ),
+	                  _react2.default.createElement(
+	                    _Table.TableRowColumn,
+	                    null,
+	                    'Available'
+	                  )
+	                );
+	              })
+	            )
+	          )
+	        );
+	      }
+	    }
+	  }, {
+	    key: 'dummyAsync',
+	    value: function dummyAsync(cb) {
+	      var _this2 = this;
 
-				this.setState({ loading: true }, function () {
-					_this2.asyncTimer = setTimeout(cb, 500);
-				});
-			}
+	      this.setState({ loading: true }, function () {
+	        _this2.asyncTimer = setTimeout(cb, 500);
+	      });
+	    }
 
-			//For Material UI Stepper
+	    //For Material UI Stepper
 
-		}, {
-			key: 'handleNext',
-			value: function handleNext() {
-				var _this3 = this;
+	  }, {
+	    key: 'handleNext',
+	    value: function handleNext() {
+	      var _this3 = this;
 
-				var stepIndex = this.state.stepIndex;
+	      var stepIndex = this.state.stepIndex;
 
-				if (!this.state.loading) {
-					this.dummyAsync(function () {
-						return _this3.setState({
-							loading: false,
-							stepIndex: stepIndex + 1,
-							finished: stepIndex >= 2
-						});
-					});
-				}
-			}
-		}, {
-			key: 'handlePrev',
-			value: function handlePrev() {
-				var _this4 = this;
+	      if (!this.state.loading) {
+	        this.dummyAsync(function () {
+	          return _this3.setState({
+	            loading: false,
+	            stepIndex: stepIndex + 1,
+	            finished: stepIndex >= 2
+	          });
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'handlePrev',
+	    value: function handlePrev() {
+	      var _this4 = this;
 
-				var stepIndex = this.state.stepIndex;
+	      var stepIndex = this.state.stepIndex;
 
-				if (!this.state.loading) {
-					this.dummyAsync(function () {
-						return _this4.setState({
-							loading: false,
-							stepIndex: stepIndex - 1
-						});
-					});
-				}
-			}
+	      if (!this.state.loading) {
+	        this.dummyAsync(function () {
+	          return _this4.setState({
+	            loading: false,
+	            stepIndex: stepIndex - 1
+	          });
+	        });
+	      }
+	    }
 
-			//Picks up all data from the table and saves it in this.state
+	    //Picks up all data from the table and saves it in this.state
 
-		}, {
-			key: 'getServiceInfo',
-			value: function getServiceInfo(field, event) {
-				var receiverRequest = {};
-				if (this.state.login === false && this.state.stepIndex === 2) {
-					receiverRequest[field] = event.target.value;
-					console.log("You are not logged in,Fs but here is your job post", receiverRequest);
-				} else {
-					console.log(receiverRequest);
-					this.setState(receiverRequest);
-					console.log("Your data has been sent");
-				}
-			}
-		}, {
-			key: 'getTime',
-			value: function getTime(blank, other, time) {
-				console.log(time);
-				t = time;
-				// this.setState({time: time})
-			}
-		}, {
-			key: 'getDate',
-			value: function getDate(blank, other, date) {
-				console.log(date);
-				d = date;
-				this.updatetimedate(t, d);
-			}
-		}, {
-			key: 'updatetimedate',
-			value: function updatetimedate(t, d) {
-				this.setState({ time: t, date: d });
-			}
-		}, {
-			key: 'getReceiverInfo',
-			value: function getReceiverInfo(field, event) {
-				var receiverInfo = {};
+	  }, {
+	    key: 'getServiceInfo',
+	    value: function getServiceInfo(field, event) {
+	      var receiverRequest = {};
+	      if (this.state.login === false && this.state.stepIndex === 2) {
+	        receiverRequest[field] = event.target.value;
+	        console.log("You are not logged in,Fs but here is your job post", receiverRequest);
+	      } else {
+	        console.log(receiverRequest);
+	        this.setState(receiverRequest);
+	        console.log("Your data has been sent");
+	      }
+	    }
+	  }, {
+	    key: 'getTime',
+	    value: function getTime(blank, other, time) {
+	      console.log(time);
+	      t = time;
+	      // this.setState({time: time})
+	    }
+	  }, {
+	    key: 'getDate',
+	    value: function getDate(blank, other, date) {
+	      console.log(date);
+	      d = date;
+	      this.updatetimedate(t, d);
+	    }
+	  }, {
+	    key: 'updatetimedate',
+	    value: function updatetimedate(t, d) {
+	      this.setState({ time: t, date: d });
+	    }
+	  }, {
+	    key: 'getReceiverInfo',
+	    value: function getReceiverInfo(field, event) {
+	      var receiverInfo = {};
 
-				receiverInfo[field] = event.target.value;
-				console.log(receiverInfo);
-				this.setState(receiverInfo);
-			}
+	      receiverInfo[field] = event.target.value;
+	      console.log(receiverInfo);
+	      this.setState(receiverInfo);
+	    }
 
-			//Once Logged in, this will post the new task to the Receiver table
+	    //Once Logged in, this will post the new task to the Receiver table
 
-		}, {
-			key: 'postInfo',
-			value: function postInfo() {
-				var user = this.props.user;
+	  }, {
+	    key: 'postInfo',
+	    value: function postInfo() {
+	      var user = this.props.user;
 
-				var newRequestid = [];
-				if (this.state.stepIndex === 2) {
-					console.log("The new state for task pushInfo()", this.state);
-					var newTask = this.state;
-					console.log("newtasks in postInfo", newTask);
-					_receiverhelpers2.default.postTask(newTask, user.userName).then(function (data) {
-						console.log("saving receivers now from jsx", data);
-						console.log("this is the postTask user", user.userName);
-						newRequestid = data.data.requests[data.data.requests.length - 1];
-						console.log("newRequestID", newRequestid);
-						this.setState({ requestId: newRequestid });
-					}.bind(this));
-				}
-			}
-		}, {
-			key: 'handleDropdown',
-			value: function handleDropdown(event, index, value) {
-				console.log(value);
-				this.setState({ task: value });
-			}
-		}, {
-			key: 'getStepContent',
-			value: function getStepContent(stepIndex) {
-				switch (stepIndex) {
-					case 0:
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(
-								'h4',
-								null,
-								'Job Details'
-							),
-							_react2.default.createElement(
-								_DropDownMenu2.default,
-								{ value: this.state.task, onChange: this.handleDropdown, style: { marginRight: 30 } },
-								_react2.default.createElement(_MenuItem2.default, { value: 'none', primaryText: 'Choose a category' }),
-								_react2.default.createElement(_MenuItem2.default, { value: 'Mechanic', primaryText: 'Mechanic' }),
-								_react2.default.createElement(_MenuItem2.default, { value: 'Cleaning', primaryText: 'Cleaning' }),
-								_react2.default.createElement(_MenuItem2.default, { value: 'Office', primaryText: 'Office Help' }),
-								_react2.default.createElement(_MenuItem2.default, { value: 'Delivery', primaryText: 'Delivery' }),
-								_react2.default.createElement(_MenuItem2.default, { value: 'Volunteer', primaryText: 'Volunteer' }),
-								_react2.default.createElement(_MenuItem2.default, { value: 7, primaryText: '' })
-							),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(_TextField2.default, {
-								id: 'text-field-controlled',
-								floatingLabelText: 'City',
-								className: 'city',
-								style: { marginRight: 20 },
-								onChange: this.getReceiverInfo.bind(this, "city")
-							}),
-							_react2.default.createElement(_TextField2.default, {
-								id: 'text-field-controlled',
-								floatingLabelText: 'State',
-								className: 'state',
-								style: { marginRight: 20 }
-							}),
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(_TextField2.default, {
-								hintText: 'Job Description',
-								floatingLabelText: 'Job Description',
-								fullWidth: true,
-								multiLine: true,
-								rows: 4,
-								rowsMax: 10,
-								onChange: this.getServiceInfo.bind(this, "description")
-							}),
-							_react2.default.createElement('br', null)
-						);
-					case 1:
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(_TimePicker2.default, {
-								hintText: 'Assignment Time',
-								onChange: this.getTime.bind(this, "time"),
-								format: 'ampm'
-							}),
-							_react2.default.createElement(_DatePicker2.default, {
-								hintText: 'Assignment Date',
-								onChange: this.getDate.bind(this, "date"),
-								formatDate: this.formatDate
-							})
-						);
-					case 2:
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(
-								'h3',
-								null,
-								'Great! Press Submit to post your job!'
-							)
-						);
-					default:
-						return 'You\'re a long way from home sonny jim!';
-				}
-			}
-		}, {
-			key: 'renderContent',
-			value: function renderContent() {
-				var _this5 = this;
+	      var newRequestid = [];
+	      if (this.state.stepIndex === 2) {
+	        console.log("The new state for task pushInfo()", this.state);
+	        var newTask = this.state;
+	        console.log("newtasks in postInfo", newTask);
+	        _receiverhelpers2.default.postTask(newTask, user.userName).then(function (data) {
+	          console.log("saving receivers now from jsx", data);
+	          console.log("this is the postTask user", user.userName);
+	          newRequestid = data.data.requests[data.data.requests.length - 1];
+	          console.log("newRequestID", newRequestid);
+	          this.setState({ requestId: newRequestid });
+	        }.bind(this));
+	      }
+	    }
+	  }, {
+	    key: 'handleDropdown',
+	    value: function handleDropdown(event, index, value) {
+	      console.log(value);
+	      this.setState({ task: value });
+	    }
+	  }, {
+	    key: 'getStepContent',
+	    value: function getStepContent(stepIndex) {
+	      switch (stepIndex) {
+	        case 0:
+	          return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Job Details'
+	            ),
+	            _react2.default.createElement(
+	              _DropDownMenu2.default,
+	              { value: this.state.task, onChange: this.handleDropdown, style: { marginRight: 30 } },
+	              _react2.default.createElement(_MenuItem2.default, { value: 'none', primaryText: 'Choose a category' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'Mechanic', primaryText: 'Mechanic' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'Handyperson', primaryText: 'Handyperson' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'Office', primaryText: 'Office' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'Delivery', primaryText: 'Delivery' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'Volunteer', primaryText: 'Volunteer' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 7, primaryText: '' })
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(_TextField2.default, {
+	              id: 'text-field-controlled',
+	              floatingLabelText: 'City',
+	              className: 'city',
+	              style: { marginRight: 20 },
+	              onChange: this.getReceiverInfo.bind(this, "city")
+	            }),
+	            _react2.default.createElement(_TextField2.default, {
+	              id: 'text-field-controlled',
+	              floatingLabelText: 'State',
+	              className: 'state',
+	              style: { marginRight: 20 }
+	            }),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(_TextField2.default, {
+	              hintText: 'Job Description',
+	              floatingLabelText: 'Job Description',
+	              fullWidth: true,
+	              multiLine: true,
+	              rows: 4,
+	              rowsMax: 10,
+	              onChange: this.getServiceInfo.bind(this, "description")
+	            }),
+	            _react2.default.createElement('br', null)
+	          );
+	        case 1:
+	          return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_TimePicker2.default, {
+	              hintText: 'Assignment Time',
+	              onChange: this.getTime.bind(this, "time"),
+	              format: 'ampm'
+	            }),
+	            _react2.default.createElement(_DatePicker2.default, {
+	              hintText: 'Assignment Date',
+	              onChange: this.getDate.bind(this, "date"),
+	              formatDate: this.formatDate
+	            })
+	          );
+	        case 2:
+	          return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Great! Press Submit to post your job!'
+	            )
+	          );
+	        default:
+	          return 'You\'re a long way from home sonny jim!';
+	      }
+	    }
+	  }, {
+	    key: 'renderContent',
+	    value: function renderContent() {
+	      var _this5 = this;
 
-				var _state = this.state,
-				    finished = _state.finished,
-				    stepIndex = _state.stepIndex;
+	      var _state = this.state,
+	          finished = _state.finished,
+	          stepIndex = _state.stepIndex;
 
-				var contentStyle = { margin: '0 16px', overflow: 'hidden' };
+	      var contentStyle = { margin: '0 16px', overflow: 'hidden' };
 
-				if (finished) {
-					return _react2.default.createElement(
-						'div',
-						{ style: contentStyle },
-						_react2.default.createElement(
-							'h3',
-							{ style: { marginBottom: 20 } },
-							'Thank you for filling out the job post! We will contact you once you are connected with a candidate.'
-						),
-						_react2.default.createElement(
-							_RaisedButton2.default,
-							{
-								href: '#',
-								onClick: function onClick(event) {
-									event.preventDefault();
-									_this5.setState({ stepIndex: 0, finished: false });
-								}
-							},
-							'Add Another'
-						)
-					);
-				}
+	      if (finished) {
+	        return _react2.default.createElement(
+	          'div',
+	          { style: contentStyle },
+	          _react2.default.createElement(
+	            'h3',
+	            { style: { marginBottom: 20 } },
+	            'Thank you for filling out the job post! We will contact you once you are connected with a candidate.'
+	          ),
+	          _react2.default.createElement(
+	            _RaisedButton2.default,
+	            {
+	              href: '#',
+	              onClick: function onClick(event) {
+	                event.preventDefault();
+	                _this5.setState({ stepIndex: 0, finished: false });
+	              }
+	            },
+	            'Add Another'
+	          )
+	        );
+	      }
 
-				return _react2.default.createElement(
-					'div',
-					{ style: contentStyle },
-					_react2.default.createElement(
-						'div',
-						null,
-						this.getStepContent(stepIndex)
-					),
-					_react2.default.createElement(
-						'div',
-						{ style: { marginTop: 24, marginBottom: 12 } },
-						_react2.default.createElement(_FlatButton2.default, {
-							label: 'Back',
-							disabled: stepIndex === 0,
-							onTouchTap: this.handlePrev,
-							style: { marginRight: 12 }
-						}),
-						_react2.default.createElement(_RaisedButton2.default, {
-							label: stepIndex === 2 ? 'Submit' : 'Next',
-							primary: true,
-							onTouchTap: this.handleNext,
-							onClick: this.postInfo
-						})
-					)
-				);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _state2 = this.state,
-				    loading = _state2.loading,
-				    stepIndex = _state2.stepIndex;
+	      return _react2.default.createElement(
+	        'div',
+	        { style: contentStyle },
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.getStepContent(stepIndex)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { marginTop: 24, marginBottom: 12 } },
+	          _react2.default.createElement(_FlatButton2.default, {
+	            label: 'Back',
+	            disabled: stepIndex === 0,
+	            onTouchTap: this.handlePrev,
+	            style: { marginRight: 12 }
+	          }),
+	          _react2.default.createElement(_RaisedButton2.default, {
+	            label: stepIndex === 2 ? 'Submit' : 'Next',
+	            primary: true,
+	            onTouchTap: this.handleNext,
+	            onClick: this.postInfo
+	          })
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _state2 = this.state,
+	          loading = _state2.loading,
+	          stepIndex = _state2.stepIndex;
 
 
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'div',
-						{ className: 'well', style: { width: '100%', maxWidth: 700, margin: 'auto' } },
-						_react2.default.createElement(
-							_Stepper.Stepper,
-							{ activeStep: stepIndex },
-							_react2.default.createElement(
-								_Stepper.Step,
-								{ completed: false },
-								_react2.default.createElement(
-									_Stepper.StepLabel,
-									null,
-									'Job Details'
-								)
-							),
-							_react2.default.createElement(
-								_Stepper.Step,
-								null,
-								_react2.default.createElement(
-									_Stepper.StepLabel,
-									null,
-									'Time'
-								)
-							),
-							_react2.default.createElement(
-								_Stepper.Step,
-								null,
-								_react2.default.createElement(
-									_Stepper.StepLabel,
-									null,
-									'Submit'
-								)
-							)
-						),
-						_react2.default.createElement(
-							_ExpandTransition2.default,
-							{ loading: loading, open: true },
-							this.renderContent()
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						this.providerTable()
-					)
-				);
-			}
-		}]);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'well', style: { width: '100%', maxWidth: 700, margin: 'auto' } },
+	          _react2.default.createElement(
+	            _Stepper.Stepper,
+	            { activeStep: stepIndex },
+	            _react2.default.createElement(
+	              _Stepper.Step,
+	              { completed: false },
+	              _react2.default.createElement(
+	                _Stepper.StepLabel,
+	                null,
+	                'Job Details'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _Stepper.Step,
+	              null,
+	              _react2.default.createElement(
+	                _Stepper.StepLabel,
+	                null,
+	                'Time'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _Stepper.Step,
+	              null,
+	              _react2.default.createElement(
+	                _Stepper.StepLabel,
+	                null,
+	                'Submit'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _ExpandTransition2.default,
+	            { loading: loading, open: true },
+	            this.renderContent()
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.providerTable()
+	        )
+	      );
+	    }
+	  }]);
 
-		return ReceiverInfoPage;
+	  return ReceiverInfoPage;
 	}(_react.Component);
 
 	exports.default = ReceiverInfoPage;
@@ -59539,10 +59544,7 @@
 								title: 'More Information',
 								actions: actions,
 								modal: true,
-								open: this.state.openModal,
-								autoScrollBodyContent: true,
-								autoDetectWindowHeight: true,
-								repositionOnUpdate: true
+								open: this.state.openModal
 							},
 							_react2.default.createElement(
 								'div',
@@ -59623,10 +59625,13 @@
 					);
 				}
 			}
-			// componentDidUpdate(){
-
-			// }
-
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProp, prevState) {
+				if (prevState.incompleteTasks !== this.state.incompleteTasks) {
+					this.componentDidMount();
+				}
+			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
@@ -59647,6 +59652,7 @@
 			key: 'render',
 			value: function render() {
 				var user = this.props.user;
+				var incompleteTasks = this.state.incompleteTasks;
 
 				return _react2.default.createElement(
 					'div',
@@ -62837,11 +62843,11 @@
 
 	var _ProviderTabQueue2 = _interopRequireDefault(_ProviderTabQueue);
 
-	var _ProviderTabPending = __webpack_require__(595);
+	var _ProviderTabPending = __webpack_require__(589);
 
 	var _ProviderTabPending2 = _interopRequireDefault(_ProviderTabPending);
 
-	var _ProviderTabCompleted = __webpack_require__(596);
+	var _ProviderTabCompleted = __webpack_require__(590);
 
 	var _ProviderTabCompleted2 = _interopRequireDefault(_ProviderTabCompleted);
 
@@ -63180,18 +63186,18 @@
 										_react2.default.createElement(
 											'p',
 											null,
-											'Description: ' + todos[rowNum].description
+											'Description:  ' + todos[rowNum].description
 										),
 										_react2.default.createElement(
 											'span',
 											null,
-											'Date' + todos[rowNum].date
+											'Date:  ' + todos[rowNum].date.split('T')[0]
 										),
 										_react2.default.createElement('br', null),
 										_react2.default.createElement(
 											'span',
 											null,
-											'Status: '
+											'Status:  '
 										),
 										todos[rowNum].status.available ? _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 }) : _react2.default.createElement(
 											'span',
@@ -64143,373 +64149,10 @@
 /* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(590);
-	var defaultClickRejectionStrategy = __webpack_require__(591);
-
-	var alreadyInjected = false;
-
-	module.exports = function injectTapEventPlugin (strategyOverrides) {
-	  strategyOverrides = strategyOverrides || {}
-	  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
-
-	  if (process.env.NODE_ENV !== 'production') {
-	    invariant(
-	      !alreadyInjected,
-	      'injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
-	It is recommended to call injectTapEventPlugin() just before you call \
-	ReactDOM.render(). If you are using an external library which calls injectTapEventPlugin() \
-	itself, please contact the maintainer as it shouldn\'t be called in library code and \
-	should be injected by the application.'
-	    )
-	  }
-
-	  alreadyInjected = true;
-
-	  __webpack_require__(43).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(592)(shouldRejectClick)
-	  });
-	};
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 590 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule invariant
-	 */
-
-	"use strict";
-
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
-
-	var invariant = function (condition, format, a, b, c, d, e, f) {
-	  if (process.env.NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
-	    }
-	  }
-
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      }));
-	    }
-
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
-
-	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 591 */
-/***/ function(module, exports) {
-
-	module.exports = function(lastTouchEvent, clickTimestamp) {
-	  if (lastTouchEvent && (clickTimestamp - lastTouchEvent) < 750) {
-	    return true;
-	  }
-	};
-
-
-/***/ },
-/* 592 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 * @providesModule TapEventPlugin
-	 * @typechecks static-only
-	 */
-
-	"use strict";
-
-	var EventConstants = __webpack_require__(41);
-	var EventPluginUtils = __webpack_require__(45);
-	var EventPropagators = __webpack_require__(42);
-	var SyntheticUIEvent = __webpack_require__(76);
-	var TouchEventUtils = __webpack_require__(593);
-	var ViewportMetrics = __webpack_require__(77);
-
-	var keyOf = __webpack_require__(594);
-	var topLevelTypes = EventConstants.topLevelTypes;
-
-	var isStartish = EventPluginUtils.isStartish;
-	var isEndish = EventPluginUtils.isEndish;
-
-	var isTouch = function(topLevelType) {
-	  var touchTypes = [
-	    topLevelTypes.topTouchCancel,
-	    topLevelTypes.topTouchEnd,
-	    topLevelTypes.topTouchStart,
-	    topLevelTypes.topTouchMove
-	  ];
-	  return touchTypes.indexOf(topLevelType) >= 0;
-	}
-
-	/**
-	 * Number of pixels that are tolerated in between a `touchStart` and `touchEnd`
-	 * in order to still be considered a 'tap' event.
-	 */
-	var tapMoveThreshold = 10;
-	var ignoreMouseThreshold = 750;
-	var startCoords = {x: null, y: null};
-	var lastTouchEvent = null;
-
-	var Axis = {
-	  x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
-	  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
-	};
-
-	function getAxisCoordOfEvent(axis, nativeEvent) {
-	  var singleTouch = TouchEventUtils.extractSingleTouch(nativeEvent);
-	  if (singleTouch) {
-	    return singleTouch[axis.page];
-	  }
-	  return axis.page in nativeEvent ?
-	    nativeEvent[axis.page] :
-	    nativeEvent[axis.client] + ViewportMetrics[axis.envScroll];
-	}
-
-	function getDistance(coords, nativeEvent) {
-	  var pageX = getAxisCoordOfEvent(Axis.x, nativeEvent);
-	  var pageY = getAxisCoordOfEvent(Axis.y, nativeEvent);
-	  return Math.pow(
-	    Math.pow(pageX - coords.x, 2) + Math.pow(pageY - coords.y, 2),
-	    0.5
-	  );
-	}
-
-	var touchEvents = [
-	  topLevelTypes.topTouchStart,
-	  topLevelTypes.topTouchCancel,
-	  topLevelTypes.topTouchEnd,
-	  topLevelTypes.topTouchMove,
-	];
-
-	var dependencies = [
-	  topLevelTypes.topMouseDown,
-	  topLevelTypes.topMouseMove,
-	  topLevelTypes.topMouseUp,
-	].concat(touchEvents);
-
-	var eventTypes = {
-	  touchTap: {
-	    phasedRegistrationNames: {
-	      bubbled: keyOf({onTouchTap: null}),
-	      captured: keyOf({onTouchTapCapture: null})
-	    },
-	    dependencies: dependencies
-	  }
-	};
-
-	var now = (function() {
-	  if (Date.now) {
-	    return Date.now;
-	  } else {
-	    // IE8 support: http://stackoverflow.com/questions/9430357/please-explain-why-and-how-new-date-works-as-workaround-for-date-now-in
-	    return function () {
-	      return +new Date;
-	    }
-	  }
-	})();
-
-	function createTapEventPlugin(shouldRejectClick) {
-	  return {
-
-	    tapMoveThreshold: tapMoveThreshold,
-
-	    ignoreMouseThreshold: ignoreMouseThreshold,
-
-	    eventTypes: eventTypes,
-
-	    /**
-	     * @param {string} topLevelType Record from `EventConstants`.
-	     * @param {DOMEventTarget} targetInst The listening component root node.
-	     * @param {object} nativeEvent Native browser event.
-	     * @return {*} An accumulation of synthetic events.
-	     * @see {EventPluginHub.extractEvents}
-	     */
-	    extractEvents: function(
-	      topLevelType,
-	      targetInst,
-	      nativeEvent,
-	      nativeEventTarget
-	    ) {
-
-	      if (isTouch(topLevelType)) {
-	        lastTouchEvent = now();
-	      } else {
-	        if (shouldRejectClick(lastTouchEvent, now())) {
-	          return null;
-	        }
-	      }
-
-	      if (!isStartish(topLevelType) && !isEndish(topLevelType)) {
-	        return null;
-	      }
-	      var event = null;
-	      var distance = getDistance(startCoords, nativeEvent);
-	      if (isEndish(topLevelType) && distance < tapMoveThreshold) {
-	        event = SyntheticUIEvent.getPooled(
-	          eventTypes.touchTap,
-	          targetInst,
-	          nativeEvent,
-	          nativeEventTarget
-	        );
-	      }
-	      if (isStartish(topLevelType)) {
-	        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
-	        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
-	      } else if (isEndish(topLevelType)) {
-	        startCoords.x = 0;
-	        startCoords.y = 0;
-	      }
-	      EventPropagators.accumulateTwoPhaseDispatches(event);
-	      return event;
-	    }
-
-	  };
-	}
-
-	module.exports = createTapEventPlugin;
-
-
-/***/ },
-/* 593 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 * @providesModule TouchEventUtils
-	 */
-
-	var TouchEventUtils = {
-	  /**
-	   * Utility function for common case of extracting out the primary touch from a
-	   * touch event.
-	   * - `touchEnd` events usually do not have the `touches` property.
-	   *   http://stackoverflow.com/questions/3666929/
-	   *   mobile-sarai-touchend-event-not-firing-when-last-touch-is-removed
-	   *
-	   * @param {Event} nativeEvent Native event that may or may not be a touch.
-	   * @return {TouchesObject?} an object with pageX and pageY or null.
-	   */
-	  extractSingleTouch: function(nativeEvent) {
-	    var touches = nativeEvent.touches;
-	    var changedTouches = nativeEvent.changedTouches;
-	    var hasTouches = touches && touches.length > 0;
-	    var hasChangedTouches = changedTouches && changedTouches.length > 0;
-
-	    return !hasTouches && hasChangedTouches ? changedTouches[0] :
-	           hasTouches ? touches[0] :
-	           nativeEvent;
-	  }
-	};
-
-	module.exports = TouchEventUtils;
-
-
-/***/ },
-/* 594 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule keyOf
-	 */
-
-	/**
-	 * Allows extraction of a minified key. Let's the build system minify keys
-	 * without losing the ability to dynamically use key strings as values
-	 * themselves. Pass in an object with a single key/val pair and it will return
-	 * you the string key of that single record. Suppose you want to grab the
-	 * value for a key 'className' inside of an object. Key/val minification may
-	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
-	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
-	 * reuse those resolutions.
-	 */
-	"use strict";
-
-	var keyOf = function (oneKeyObj) {
-	  var key;
-	  for (key in oneKeyObj) {
-	    if (!oneKeyObj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    return key;
-	  }
-	  return null;
-	};
-
-	module.exports = keyOf;
-
-/***/ },
-/* 595 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -64565,330 +64208,328 @@
 
 
 	var styles = {
-	  propContainer: {
-	    width: 185,
-	    overflow: 'hidden',
-	    margin: '20px auto 0'
-	  },
-	  propToggleHeader: {
-	    margin: '20px auto 10px'
-	  }
+		propContainer: {
+			width: 185,
+			overflow: 'hidden',
+			margin: '20px auto 0'
+		},
+		propToggleHeader: {
+			margin: '20px auto 10px'
+		}
 	};
 	var rowNum;
 
 	var ProviderTabPending = function (_React$Component) {
-	  _inherits(ProviderTabPending, _React$Component);
+		_inherits(ProviderTabPending, _React$Component);
 
-	  function ProviderTabPending(props) {
-	    _classCallCheck(this, ProviderTabPending);
+		function ProviderTabPending(props) {
+			_classCallCheck(this, ProviderTabPending);
 
-	    var _this = _possibleConstructorReturn(this, (ProviderTabPending.__proto__ || Object.getPrototypeOf(ProviderTabPending)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ProviderTabPending.__proto__ || Object.getPrototypeOf(ProviderTabPending)).call(this, props));
 
-	    _this.handleToggle = _this.handleToggle.bind(_this);
-	    _this.handleChange = _this.handleChange.bind(_this);
-	    _this.handleRowSelection = _this.handleRowSelection.bind(_this);
-	    _this.handleAvailable = _this.handleAvailable.bind(_this);
-	    _this.modalRowDetails = _this.modalRowDetails.bind(_this);
-	    _this.handleModalClose = _this.handleModalClose.bind(_this);
+			_this.handleToggle = _this.handleToggle.bind(_this);
+			_this.handleChange = _this.handleChange.bind(_this);
+			_this.handleRowSelection = _this.handleRowSelection.bind(_this);
+			_this.handleAvailable = _this.handleAvailable.bind(_this);
+			_this.modalRowDetails = _this.modalRowDetails.bind(_this);
+			_this.handleModalClose = _this.handleModalClose.bind(_this);
 
-	    _this.state = {
-	      fixedHeader: true,
-	      fixedFooter: true,
-	      stripedRows: true,
-	      showRowHover: true,
-	      selectable: true,
-	      // multiSelectable: false,
-	      // enableSelectAll: false,
-	      // deselectOnClickaway: true,
-	      showCheckboxes: false,
-	      openModal: false,
-	      height: '450px',
-	      todos: []
-	    };
-	    return _this;
-	  }
+			_this.state = {
+				fixedHeader: true,
+				fixedFooter: true,
+				stripedRows: true,
+				showRowHover: true,
+				selectable: true,
+				// multiSelectable: false,
+				// enableSelectAll: false,
+				// deselectOnClickaway: true,
+				showCheckboxes: false,
+				openModal: false,
+				height: '450px',
+				todos: []
+			};
+			return _this;
+		}
 
-	  _createClass(ProviderTabPending, [{
-	    key: 'handleAvailable',
-	    value: function handleAvailable(event) {
-	      this.handleModalClose();
-	      if (event.target.checked) {
-	        console.log('ProviderTabQueue - handleAvailable : ', event.target.id);
-	      }
-	      var valid = this.state.todos.filter(function (todo) {
-	        return todo._id === event.target.id;
-	      })[0];
-	      console.log('valid', valid);
-	      if (valid) {
-	        this.state.todos = this.state.todos.filter(function (todo) {
-	          return todo._id !== event.target.id;
-	        });
-	        // this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1)
-	      } else {
-	        var temp = this.props.user.todos[rowNum];
-	        temp.status.available = true;
-	        this.state.todos.push(temp);
-	        // this.state.todos.push(this.props.user.todos[rowNum])
-	      }
-	      console.log(this.state.todos);
-	      // alert('You have select this task: ' + this.props.user.todos[rowNum]._id)
-	    }
-	  }, {
-	    key: 'handleRowSelection',
-	    value: function handleRowSelection(row) {
-	      // alert('i wass selected:' + row)
-	      this.setState({ openModal: true });
-	      rowNum = row;
-	    }
-	  }, {
-	    key: 'handleModalClose',
-	    value: function handleModalClose() {
-	      this.setState({ openModal: false });
-	    }
-	  }, {
-	    key: 'modalRowDetails',
-	    value: function modalRowDetails() {
-	      var todos = this.props.user.todos;
+		_createClass(ProviderTabPending, [{
+			key: 'handleAvailable',
+			value: function handleAvailable(event) {
+				this.handleModalClose();
+				if (event.target.checked) {
+					console.log('ProviderTabQueue - handleAvailable : ', event.target.id);
+				}
+				var valid = this.state.todos.filter(function (todo) {
+					return todo._id === event.target.id;
+				})[0];
+				console.log('valid', valid);
+				if (valid) {
+					this.state.todos = this.state.todos.filter(function (todo) {
+						return todo._id !== event.target.id;
+					});
+					// this.state.todos.splice(this.state.todos.indexOf(event.target.id), 1)
+				} else {
+					var temp = this.props.user.todos[rowNum];
+					temp.status.available = true;
+					this.state.todos.push(temp);
+					// this.state.todos.push(this.props.user.todos[rowNum])
+				}
+				console.log(this.state.todos);
+				// alert('You have select this task: ' + this.props.user.todos[rowNum]._id)
+			}
+		}, {
+			key: 'handleRowSelection',
+			value: function handleRowSelection(row) {
+				// alert('i wass selected:' + row)
+				this.setState({ openModal: true });
+				rowNum = row;
+			}
+		}, {
+			key: 'handleModalClose',
+			value: function handleModalClose() {
+				this.setState({ openModal: false });
+			}
+		}, {
+			key: 'modalRowDetails',
+			value: function modalRowDetails() {
+				var todos = this.props.user.todos;
 
 
-	      if (this.state.openModal === true) {
-	        var actions = [_react2.default.createElement(_RaisedButton2.default, {
-	          label: 'OK',
-	          primary: true,
-	          disabled: false,
-	          onTouchTap: this.handleModalClose
-	        })];
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            _Dialog2.default,
-	            {
-	              title: 'Task Information for ' + todos[rowNum].status.receiver,
-	              actions: actions,
-	              modal: true,
-	              open: this.state.openModal
-	            },
-	            _react2.default.createElement(
-	              'div',
-	              null,
-	              _react2.default.createElement(
-	                _Card.Card,
-	                null,
-	                _react2.default.createElement(
-	                  _Card.CardHeader
-	                  // title={'Category' + todos[rowNum].task}
-	                  // subtitle=
-	                  ,
-	                  { actAsExpander: true,
-	                    showExpandableButton: true
-	                  },
-	                  _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Category: ' + todos[rowNum].task
-	                  ),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { style: { 'paddingLeft': '50px' } },
-	                    'City: ' + todos[rowNum].city
-	                  ),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { style: { 'paddingLeft': '50px' } },
-	                    'Date: ' + todos[rowNum].date.split('T')[0]
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  _Card.CardText,
-	                  { expandable: true },
-	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
-	                    'Details'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Description: ' + todos[rowNum].description
-	                  ),
-	                  _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Date' + todos[rowNum].date
-	                  ),
-	                  _react2.default.createElement('br', null),
-	                  _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Status: '
-	                  ),
-	                  todos[rowNum].status.available ? _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 }) : _react2.default.createElement(
-	                    'span',
-	                    null,
-	                    'Unselected'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'handleToggle',
-	    value: function handleToggle(event, toggled) {
-	      this.setState(_defineProperty({}, event.target.name, toggled));
-	    }
-	  }, {
-	    key: 'handleChange',
-	    value: function handleChange(event) {
-	      this.setState({ height: event.target.value });
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      console.log('ProviderTabQueue - componentDidMount');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
+				if (this.state.openModal === true) {
+					var actions = [_react2.default.createElement(_RaisedButton2.default, {
+						label: 'OK',
+						primary: true,
+						disabled: false,
+						onTouchTap: this.handleModalClose
+					})];
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							_Dialog2.default,
+							{
+								title: 'Task Information for ' + todos[rowNum].status.receiver,
+								actions: actions,
+								modal: true,
+								open: this.state.openModal
+							},
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									_Card.Card,
+									null,
+									_react2.default.createElement(
+										_Card.CardHeader
+										// title={'Category' + todos[rowNum].task}
+										// subtitle=
+										,
+										{ actAsExpander: true,
+											showExpandableButton: true
+										},
+										_react2.default.createElement(
+											'span',
+											null,
+											'Category: ' + todos[rowNum].task
+										),
+										_react2.default.createElement(
+											'span',
+											{ style: { 'paddingLeft': '50px' } },
+											'City: ' + todos[rowNum].city
+										),
+										_react2.default.createElement(
+											'span',
+											{ style: { 'paddingLeft': '50px' } },
+											'Date: ' + todos[rowNum].date.split('T')[0]
+										)
+									),
+									_react2.default.createElement(
+										_Card.CardText,
+										{ expandable: true },
+										_react2.default.createElement(
+											'h4',
+											null,
+											'Details'
+										),
+										_react2.default.createElement(
+											'p',
+											null,
+											'Description:  ' + todos[rowNum].description
+										),
+										_react2.default.createElement(
+											'span',
+											null,
+											'Date:  ' + todos[rowNum].date.split('T')[0]
+										),
+										_react2.default.createElement('br', null),
+										_react2.default.createElement(
+											'span',
+											null,
+											'Status:  '
+										),
+										todos[rowNum].status.available ? _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 }) : _react2.default.createElement(
+											'span',
+											null,
+											'Unselected'
+										)
+									)
+								)
+							)
+						)
+					);
+				}
+			}
+		}, {
+			key: 'handleToggle',
+			value: function handleToggle(event, toggled) {
+				this.setState(_defineProperty({}, event.target.name, toggled));
+			}
+		}, {
+			key: 'handleChange',
+			value: function handleChange(event) {
+				this.setState({ height: event.target.value });
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate() {
+				console.log('ProviderTabQueue - componentDidMount');
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _props = this.props,
+				    login = _props.login,
+				    user = _props.user;
 
-	      var _props = this.props,
-	          login = _props.login,
-	          user = _props.user;
+				// IS showing all todos for the user neeed to separate them 
 
-	      // IS showing all todos for the user neeed to separate them 
+				return _react2.default.createElement(
+					'div',
+					null,
+					this.modalRowDetails(),
+					_react2.default.createElement(
+						_Table.Table,
+						{
+							height: this.state.height,
+							fixedHeader: this.state.fixedHeader,
+							fixedFooter: this.state.fixedFooter,
+							selectable: this.state.selectable,
+							multiSelectable: this.state.multiSelectable,
+							onRowSelection: this.handleRowSelection
+						},
+						_react2.default.createElement(
+							_Table.TableHeader,
+							{
+								displaySelectAll: this.state.showCheckboxes,
+								adjustForCheckbox: this.state.showCheckboxes,
+								enableSelectAll: this.state.enableSelectAll
+							},
+							_react2.default.createElement(
+								_Table.TableRow,
+								null,
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Task' },
+									'Number'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Task' },
+									'Category'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'City'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Name' },
+									'Description'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Date'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Selected'
+								),
+								_react2.default.createElement(
+									_Table.TableHeaderColumn,
+									{ tooltip: 'The Status' },
+									'Receiver'
+								)
+							)
+						),
+						_react2.default.createElement(
+							_Table.TableBody,
+							{
+								displayRowCheckbox: this.state.showCheckboxes,
+								deselectOnClickaway: this.state.deselectOnClickaway,
+								showRowHover: this.state.showRowHover,
+								stripedRows: this.state.stripedRows
+							},
+							user.todos.map(function (row, index) {
+								return _react2.default.createElement(
+									_Table.TableRow,
+									{ key: index, selected: row.selected },
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										index
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.task
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.city
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.description
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.date.split('T')[0]
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										_react2.default.createElement(_Checkbox2.default, {
+											value: row.status.available,
+											checked: true
+											//onCheck = {this.handleAvailable} // TODO post to
+											, id: row._id // _id probably does not exist 
+										})
+									),
+									_react2.default.createElement(
+										_Table.TableRowColumn,
+										null,
+										row.status.receiver
+									)
+								);
+							})
+						)
+					)
+				);
+			}
+		}]);
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        this.modalRowDetails(),
-	        _react2.default.createElement(
-	          _Table.Table,
-	          {
-	            height: this.state.height,
-	            fixedHeader: this.state.fixedHeader,
-	            fixedFooter: this.state.fixedFooter,
-	            selectable: this.state.selectable,
-	            multiSelectable: this.state.multiSelectable,
-	            onRowSelection: this.handleRowSelection
-	          },
-	          _react2.default.createElement(
-	            _Table.TableHeader,
-	            {
-	              displaySelectAll: this.state.showCheckboxes,
-	              adjustForCheckbox: this.state.showCheckboxes,
-	              enableSelectAll: this.state.enableSelectAll
-	            },
-	            _react2.default.createElement(
-	              _Table.TableRow,
-	              null,
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Task' },
-	                'Number'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Task' },
-	                'Category'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Status' },
-	                'City'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Name' },
-	                'Description'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Status' },
-	                'Date'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Status' },
-	                'Selected'
-	              ),
-	              _react2.default.createElement(
-	                _Table.TableHeaderColumn,
-	                { tooltip: 'The Status' },
-	                'Receiver'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _Table.TableBody,
-	            {
-	              displayRowCheckbox: this.state.showCheckboxes,
-	              deselectOnClickaway: this.state.deselectOnClickaway,
-	              showRowHover: this.state.showRowHover,
-	              stripedRows: this.state.stripedRows
-	            },
-	            user.todos.map(function (row, index) {
-	              return _react2.default.createElement(
-	                _Table.TableRow,
-	                { key: index, selected: row.selected },
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  index
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.task
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.city
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.description
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.date.split('T')[0]
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  _react2.default.createElement(_Checkbox2.default, {
-	                    value: row.status.available
-	                    // checked = {row.status.available}
-	                    , onCheck: _this2.handleAvailable // TODO post to
-	                    , id: row._id // _id probably does not exist 
-	                  })
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableRowColumn,
-	                  null,
-	                  row.status.receiver
-	                )
-	              );
-	            })
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return ProviderTabPending;
+		return ProviderTabPending;
 	}(_react2.default.Component);
 
 	exports.default = ProviderTabPending;
 
 /***/ },
-/* 596 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65095,18 +64736,18 @@
 	                  _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    'Description: ' + todos[rowNum].description
+	                    'Description:  ' + todos[rowNum].description
 	                  ),
 	                  _react2.default.createElement(
 	                    'span',
 	                    null,
-	                    'Date' + todos[rowNum].date
+	                    'Date:  ' + todos[rowNum].date.split('T')[0]
 	                  ),
 	                  _react2.default.createElement('br', null),
 	                  _react2.default.createElement(
 	                    'span',
 	                    null,
-	                    'Status: '
+	                    'Status:  '
 	                  ),
 	                  _react2.default.createElement(_done2.default, { style: { size: 50 }, color: _colors.lightGreenA700 })
 	                )
@@ -65260,6 +64901,369 @@
 	}(_react2.default.Component);
 
 	exports.default = ProviderTabCompleted;
+
+/***/ },
+/* 591 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(592);
+	var defaultClickRejectionStrategy = __webpack_require__(593);
+
+	var alreadyInjected = false;
+
+	module.exports = function injectTapEventPlugin (strategyOverrides) {
+	  strategyOverrides = strategyOverrides || {}
+	  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
+
+	  if (process.env.NODE_ENV !== 'production') {
+	    invariant(
+	      !alreadyInjected,
+	      'injectTapEventPlugin(): Can only be called once per application lifecycle.\n\n\
+	It is recommended to call injectTapEventPlugin() just before you call \
+	ReactDOM.render(). If you are using an external library which calls injectTapEventPlugin() \
+	itself, please contact the maintainer as it shouldn\'t be called in library code and \
+	should be injected by the application.'
+	    )
+	  }
+
+	  alreadyInjected = true;
+
+	  __webpack_require__(43).injection.injectEventPluginsByName({
+	    'TapEventPlugin':       __webpack_require__(594)(shouldRejectClick)
+	  });
+	};
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 592 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule invariant
+	 */
+
+	"use strict";
+
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+
+	var invariant = function (condition, format, a, b, c, d, e, f) {
+	  if (process.env.NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error('Invariant Violation: ' + format.replace(/%s/g, function () {
+	        return args[argIndex++];
+	      }));
+	    }
+
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+
+	module.exports = invariant;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 593 */
+/***/ function(module, exports) {
+
+	module.exports = function(lastTouchEvent, clickTimestamp) {
+	  if (lastTouchEvent && (clickTimestamp - lastTouchEvent) < 750) {
+	    return true;
+	  }
+	};
+
+
+/***/ },
+/* 594 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 * @providesModule TapEventPlugin
+	 * @typechecks static-only
+	 */
+
+	"use strict";
+
+	var EventConstants = __webpack_require__(41);
+	var EventPluginUtils = __webpack_require__(45);
+	var EventPropagators = __webpack_require__(42);
+	var SyntheticUIEvent = __webpack_require__(76);
+	var TouchEventUtils = __webpack_require__(595);
+	var ViewportMetrics = __webpack_require__(77);
+
+	var keyOf = __webpack_require__(596);
+	var topLevelTypes = EventConstants.topLevelTypes;
+
+	var isStartish = EventPluginUtils.isStartish;
+	var isEndish = EventPluginUtils.isEndish;
+
+	var isTouch = function(topLevelType) {
+	  var touchTypes = [
+	    topLevelTypes.topTouchCancel,
+	    topLevelTypes.topTouchEnd,
+	    topLevelTypes.topTouchStart,
+	    topLevelTypes.topTouchMove
+	  ];
+	  return touchTypes.indexOf(topLevelType) >= 0;
+	}
+
+	/**
+	 * Number of pixels that are tolerated in between a `touchStart` and `touchEnd`
+	 * in order to still be considered a 'tap' event.
+	 */
+	var tapMoveThreshold = 10;
+	var ignoreMouseThreshold = 750;
+	var startCoords = {x: null, y: null};
+	var lastTouchEvent = null;
+
+	var Axis = {
+	  x: {page: 'pageX', client: 'clientX', envScroll: 'currentPageScrollLeft'},
+	  y: {page: 'pageY', client: 'clientY', envScroll: 'currentPageScrollTop'}
+	};
+
+	function getAxisCoordOfEvent(axis, nativeEvent) {
+	  var singleTouch = TouchEventUtils.extractSingleTouch(nativeEvent);
+	  if (singleTouch) {
+	    return singleTouch[axis.page];
+	  }
+	  return axis.page in nativeEvent ?
+	    nativeEvent[axis.page] :
+	    nativeEvent[axis.client] + ViewportMetrics[axis.envScroll];
+	}
+
+	function getDistance(coords, nativeEvent) {
+	  var pageX = getAxisCoordOfEvent(Axis.x, nativeEvent);
+	  var pageY = getAxisCoordOfEvent(Axis.y, nativeEvent);
+	  return Math.pow(
+	    Math.pow(pageX - coords.x, 2) + Math.pow(pageY - coords.y, 2),
+	    0.5
+	  );
+	}
+
+	var touchEvents = [
+	  topLevelTypes.topTouchStart,
+	  topLevelTypes.topTouchCancel,
+	  topLevelTypes.topTouchEnd,
+	  topLevelTypes.topTouchMove,
+	];
+
+	var dependencies = [
+	  topLevelTypes.topMouseDown,
+	  topLevelTypes.topMouseMove,
+	  topLevelTypes.topMouseUp,
+	].concat(touchEvents);
+
+	var eventTypes = {
+	  touchTap: {
+	    phasedRegistrationNames: {
+	      bubbled: keyOf({onTouchTap: null}),
+	      captured: keyOf({onTouchTapCapture: null})
+	    },
+	    dependencies: dependencies
+	  }
+	};
+
+	var now = (function() {
+	  if (Date.now) {
+	    return Date.now;
+	  } else {
+	    // IE8 support: http://stackoverflow.com/questions/9430357/please-explain-why-and-how-new-date-works-as-workaround-for-date-now-in
+	    return function () {
+	      return +new Date;
+	    }
+	  }
+	})();
+
+	function createTapEventPlugin(shouldRejectClick) {
+	  return {
+
+	    tapMoveThreshold: tapMoveThreshold,
+
+	    ignoreMouseThreshold: ignoreMouseThreshold,
+
+	    eventTypes: eventTypes,
+
+	    /**
+	     * @param {string} topLevelType Record from `EventConstants`.
+	     * @param {DOMEventTarget} targetInst The listening component root node.
+	     * @param {object} nativeEvent Native browser event.
+	     * @return {*} An accumulation of synthetic events.
+	     * @see {EventPluginHub.extractEvents}
+	     */
+	    extractEvents: function(
+	      topLevelType,
+	      targetInst,
+	      nativeEvent,
+	      nativeEventTarget
+	    ) {
+
+	      if (isTouch(topLevelType)) {
+	        lastTouchEvent = now();
+	      } else {
+	        if (shouldRejectClick(lastTouchEvent, now())) {
+	          return null;
+	        }
+	      }
+
+	      if (!isStartish(topLevelType) && !isEndish(topLevelType)) {
+	        return null;
+	      }
+	      var event = null;
+	      var distance = getDistance(startCoords, nativeEvent);
+	      if (isEndish(topLevelType) && distance < tapMoveThreshold) {
+	        event = SyntheticUIEvent.getPooled(
+	          eventTypes.touchTap,
+	          targetInst,
+	          nativeEvent,
+	          nativeEventTarget
+	        );
+	      }
+	      if (isStartish(topLevelType)) {
+	        startCoords.x = getAxisCoordOfEvent(Axis.x, nativeEvent);
+	        startCoords.y = getAxisCoordOfEvent(Axis.y, nativeEvent);
+	      } else if (isEndish(topLevelType)) {
+	        startCoords.x = 0;
+	        startCoords.y = 0;
+	      }
+	      EventPropagators.accumulateTwoPhaseDispatches(event);
+	      return event;
+	    }
+
+	  };
+	}
+
+	module.exports = createTapEventPlugin;
+
+
+/***/ },
+/* 595 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 * @providesModule TouchEventUtils
+	 */
+
+	var TouchEventUtils = {
+	  /**
+	   * Utility function for common case of extracting out the primary touch from a
+	   * touch event.
+	   * - `touchEnd` events usually do not have the `touches` property.
+	   *   http://stackoverflow.com/questions/3666929/
+	   *   mobile-sarai-touchend-event-not-firing-when-last-touch-is-removed
+	   *
+	   * @param {Event} nativeEvent Native event that may or may not be a touch.
+	   * @return {TouchesObject?} an object with pageX and pageY or null.
+	   */
+	  extractSingleTouch: function(nativeEvent) {
+	    var touches = nativeEvent.touches;
+	    var changedTouches = nativeEvent.changedTouches;
+	    var hasTouches = touches && touches.length > 0;
+	    var hasChangedTouches = changedTouches && changedTouches.length > 0;
+
+	    return !hasTouches && hasChangedTouches ? changedTouches[0] :
+	           hasTouches ? touches[0] :
+	           nativeEvent;
+	  }
+	};
+
+	module.exports = TouchEventUtils;
+
+
+/***/ },
+/* 596 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule keyOf
+	 */
+
+	/**
+	 * Allows extraction of a minified key. Let's the build system minify keys
+	 * without losing the ability to dynamically use key strings as values
+	 * themselves. Pass in an object with a single key/val pair and it will return
+	 * you the string key of that single record. Suppose you want to grab the
+	 * value for a key 'className' inside of an object. Key/val minification may
+	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
+	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
+	 * reuse those resolutions.
+	 */
+	"use strict";
+
+	var keyOf = function (oneKeyObj) {
+	  var key;
+	  for (key in oneKeyObj) {
+	    if (!oneKeyObj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    return key;
+	  }
+	  return null;
+	};
+
+	module.exports = keyOf;
 
 /***/ }
 /******/ ]);

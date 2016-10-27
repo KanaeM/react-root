@@ -122,10 +122,10 @@ class ProviderTabCompleted extends React.Component {
                 </CardHeader>
                 <CardText expandable={true}>
                   <h4>Details</h4>
-                  <p>{'Description: ' + todos[rowNum].description}</p>
-                  <span>{'Date' + todos[rowNum].date}</span>
+                  <p>{'Description:  ' + todos[rowNum].description}</p>
+                  <span>{'Date:  ' + todos[rowNum].date.split('T')[0]}</span>
                   <br/>
-                  <span>{'Status: '}</span>
+                  <span>{'Status:  '}</span>
                   <CheckMark style={{size: 50}} color={lightGreenA700} />
                 </CardText>
               </Card>             
