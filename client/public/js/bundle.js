@@ -52084,7 +52084,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -52150,472 +52150,472 @@
 	var t, d;
 
 	var ReceiverInfoPage = function (_Component) {
-	  _inherits(ReceiverInfoPage, _Component);
+		_inherits(ReceiverInfoPage, _Component);
 
-	  function ReceiverInfoPage(props) {
-	    _classCallCheck(this, ReceiverInfoPage);
+		function ReceiverInfoPage(props) {
+			_classCallCheck(this, ReceiverInfoPage);
 
-	    var _this = _possibleConstructorReturn(this, (ReceiverInfoPage.__proto__ || Object.getPrototypeOf(ReceiverInfoPage)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ReceiverInfoPage.__proto__ || Object.getPrototypeOf(ReceiverInfoPage)).call(this, props));
 
-	    _this.handleNext = _this.handleNext.bind(_this);
-	    _this.handlePrev = _this.handlePrev.bind(_this);
-	    _this.postInfo = _this.postInfo.bind(_this);
-	    _this.handleDropdown = _this.handleDropdown.bind(_this);
-	    _this.checkLogin = _this.checkLogin.bind(_this);
+			_this.handleNext = _this.handleNext.bind(_this);
+			_this.handlePrev = _this.handlePrev.bind(_this);
+			_this.postInfo = _this.postInfo.bind(_this);
+			_this.handleDropdown = _this.handleDropdown.bind(_this);
+			_this.checkLogin = _this.checkLogin.bind(_this);
 
-	    _this.state = {
-	      loading: false,
-	      finished: false,
-	      stepIndex: 0,
-	      password: '',
-	      task: 'none',
-	      city: '',
-	      time: '',
-	      date: '',
-	      description: '',
-	      login: false,
-	      modalOpen: false,
-	      modalLoading: false,
-	      openAlert: false,
-	      available: [],
-	      chosenUser: "",
-	      requestId: []
-	    };
-	    return _this;
-	  }
+			_this.state = {
+				loading: false,
+				finished: false,
+				stepIndex: 0,
+				password: '',
+				task: 'none',
+				city: '',
+				time: '',
+				date: '',
+				description: '',
+				login: false,
+				modalOpen: false,
+				modalLoading: false,
+				openAlert: false,
+				available: [],
+				chosenUser: "",
+				requestId: []
+			};
+			return _this;
+		}
 
-	  _createClass(ReceiverInfoPage, [{
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate(prevProps, prevState) {
-	      var requestId = this.state.requestId;
+		_createClass(ReceiverInfoPage, [{
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps, prevState) {
+				var requestId = this.state.requestId;
 
-	      if (prevState.time !== this.state.time) {
-	        console.log("Time has changed componentDidUpdate");
-	        _receiverhelpers2.default.getProvider().then(function (providers) {
-	          this.setState({ available: providers.data });
-	          console.log("the final state", this.state.available);
-	        }.bind(this));
-	      }
-	      //This is where the request.ID connects to the code in providers
-	      if (prevState.requestId !== this.state.requestId) {
-	        console.log("this is the requestID and the chosenUSer to send the info to", requestId);
-	        _receiverhelpers2.default.postTodo(requestId).then(function (task) {
-	          console.log("POST.TODO-infoTest:", task);
-	        }.bind(this));
-	      }
-	      if (prevProps.user.requests !== this.props.user.requests) {
-	        console.log("the requests has change");
-	      }
-	    }
+				if (prevState.time !== this.state.time) {
+					console.log("Time has changed componentDidUpdate");
+					_receiverhelpers2.default.getProvider().then(function (providers) {
+						this.setState({ available: providers.data });
+						console.log("the final state", this.state.available);
+					}.bind(this));
+				}
+				//This is where the request.ID connects to the code in providers
+				if (prevState.requestId !== this.state.requestId) {
+					console.log("this is the requestID and the chosenUSer to send the info to", requestId);
+					_receiverhelpers2.default.postTodo(requestId).then(function (task) {
+						console.log("POST.TODO-infoTest:", task);
+					}.bind(this));
+				}
+				if (prevProps.user.requests !== this.props.user.requests) {
+					console.log("the requests has change");
+				}
+			}
 
-	    //  componentDidMount(){
-	    //   const {user}=this.props
-	    //    this.setState({newRequests: user.requests})
-	    //    console.log("state after newRequests", this.state)
-	    //   }
-	    // }
+			//  componentDidMount(){
+			//   const {user}=this.props
+			//    this.setState({newRequests: user.requests})
+			//    console.log("state after newRequests", this.state)
+			//   }
+			// }
 
-	    //this will check if the recieiver is logged in while trying to post a job
+			//this will check if the recieiver is logged in while trying to post a job
 
-	  }, {
-	    key: 'checkLogin',
-	    value: function checkLogin(row, id, value) {
-	      var available = this.state.available;
+		}, {
+			key: 'checkLogin',
+			value: function checkLogin(row, id, value) {
+				var available = this.state.available;
 
-	      console.log("available on table", available);
-	      console.log("login props check", this.props);
-	      this.setState({ chosenUser: available[row].userName });
-	    }
+				console.log("available on table", available);
+				console.log("login props check", this.props);
+				this.setState({ chosenUser: available[row].userName });
+			}
 
-	    //this will show a table with compatible providers on the "Post a Job" tab
+			//this will show a table with compatible providers on the "Post a Job" tab
 
-	  }, {
-	    key: 'providerTable',
-	    value: function providerTable() {
-	      var available = this.state.available;
+		}, {
+			key: 'providerTable',
+			value: function providerTable() {
+				var available = this.state.available;
 
-	      if (this.state.time !== "" && this.state.date !== "") {
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'h3',
-	            { style: { marginTop: 40, textAlign: "center" } },
-	            'Please choose an available user'
-	          ),
-	          _react2.default.createElement(
-	            _Table.Table,
-	            {
-	              onCellClick: this.checkLogin
-	            },
-	            _react2.default.createElement(
-	              _Table.TableHeader,
-	              null,
-	              _react2.default.createElement(
-	                _Table.TableRow,
-	                null,
-	                _react2.default.createElement(_Table.TableHeaderColumn, null),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  null,
-	                  'UserName'
-	                ),
-	                _react2.default.createElement(
-	                  _Table.TableHeaderColumn,
-	                  null,
-	                  'Status'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Table.TableBody,
-	              {
-	                stripedRows: true,
-	                showRowHover: true
-	              },
-	              available.map(function (row, index) {
-	                return _react2.default.createElement(
-	                  _Table.TableRow,
-	                  { key: index, selected: row.selected },
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    _react2.default.createElement('img', { src: row.url, style: { width: 60, marginBottom: 10, marginTop: 10 } })
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    row.userName
-	                  ),
-	                  _react2.default.createElement(
-	                    _Table.TableRowColumn,
-	                    null,
-	                    'Available'
-	                  )
-	                );
-	              })
-	            )
-	          )
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'dummyAsync',
-	    value: function dummyAsync(cb) {
-	      var _this2 = this;
+				if (this.state.time !== "" && this.state.date !== "") {
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'h3',
+							{ style: { marginTop: 40, textAlign: "center" } },
+							'Please choose an available user'
+						),
+						_react2.default.createElement(
+							_Table.Table,
+							{
+								onCellClick: this.checkLogin
+							},
+							_react2.default.createElement(
+								_Table.TableHeader,
+								null,
+								_react2.default.createElement(
+									_Table.TableRow,
+									null,
+									_react2.default.createElement(_Table.TableHeaderColumn, null),
+									_react2.default.createElement(
+										_Table.TableHeaderColumn,
+										null,
+										'UserName'
+									),
+									_react2.default.createElement(
+										_Table.TableHeaderColumn,
+										null,
+										'Status'
+									)
+								)
+							),
+							_react2.default.createElement(
+								_Table.TableBody,
+								{
+									stripedRows: true,
+									showRowHover: true
+								},
+								available.map(function (row, index) {
+									return _react2.default.createElement(
+										_Table.TableRow,
+										{ key: index, selected: row.selected },
+										_react2.default.createElement(
+											_Table.TableRowColumn,
+											null,
+											_react2.default.createElement('img', { src: row.url, style: { width: 60, marginBottom: 10, marginTop: 10 } })
+										),
+										_react2.default.createElement(
+											_Table.TableRowColumn,
+											null,
+											row.userName
+										),
+										_react2.default.createElement(
+											_Table.TableRowColumn,
+											null,
+											'Available'
+										)
+									);
+								})
+							)
+						)
+					);
+				}
+			}
+		}, {
+			key: 'dummyAsync',
+			value: function dummyAsync(cb) {
+				var _this2 = this;
 
-	      this.setState({ loading: true }, function () {
-	        _this2.asyncTimer = setTimeout(cb, 500);
-	      });
-	    }
+				this.setState({ loading: true }, function () {
+					_this2.asyncTimer = setTimeout(cb, 500);
+				});
+			}
 
-	    //For Material UI Stepper
+			//For Material UI Stepper
 
-	  }, {
-	    key: 'handleNext',
-	    value: function handleNext() {
-	      var _this3 = this;
+		}, {
+			key: 'handleNext',
+			value: function handleNext() {
+				var _this3 = this;
 
-	      var stepIndex = this.state.stepIndex;
+				var stepIndex = this.state.stepIndex;
 
-	      if (!this.state.loading) {
-	        this.dummyAsync(function () {
-	          return _this3.setState({
-	            loading: false,
-	            stepIndex: stepIndex + 1,
-	            finished: stepIndex >= 2
-	          });
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'handlePrev',
-	    value: function handlePrev() {
-	      var _this4 = this;
+				if (!this.state.loading) {
+					this.dummyAsync(function () {
+						return _this3.setState({
+							loading: false,
+							stepIndex: stepIndex + 1,
+							finished: stepIndex >= 2
+						});
+					});
+				}
+			}
+		}, {
+			key: 'handlePrev',
+			value: function handlePrev() {
+				var _this4 = this;
 
-	      var stepIndex = this.state.stepIndex;
+				var stepIndex = this.state.stepIndex;
 
-	      if (!this.state.loading) {
-	        this.dummyAsync(function () {
-	          return _this4.setState({
-	            loading: false,
-	            stepIndex: stepIndex - 1
-	          });
-	        });
-	      }
-	    }
+				if (!this.state.loading) {
+					this.dummyAsync(function () {
+						return _this4.setState({
+							loading: false,
+							stepIndex: stepIndex - 1
+						});
+					});
+				}
+			}
 
-	    //Picks up all data from the table and saves it in this.state
+			//Picks up all data from the table and saves it in this.state
 
-	  }, {
-	    key: 'getServiceInfo',
-	    value: function getServiceInfo(field, event) {
-	      var receiverRequest = {};
-	      if (this.state.login === false && this.state.stepIndex === 2) {
-	        receiverRequest[field] = event.target.value;
-	        console.log("You are not logged in,Fs but here is your job post", receiverRequest);
-	      } else {
-	        console.log(receiverRequest);
-	        this.setState(receiverRequest);
-	        console.log("Your data has been sent");
-	      }
-	    }
-	  }, {
-	    key: 'getTime',
-	    value: function getTime(blank, other, time) {
-	      console.log(time);
-	      t = time;
-	      // this.setState({time: time})
-	    }
-	  }, {
-	    key: 'getDate',
-	    value: function getDate(blank, other, date) {
-	      console.log(date);
-	      d = date;
-	      this.updatetimedate(t, d);
-	    }
-	  }, {
-	    key: 'updatetimedate',
-	    value: function updatetimedate(t, d) {
-	      this.setState({ time: t, date: d });
-	    }
-	  }, {
-	    key: 'getReceiverInfo',
-	    value: function getReceiverInfo(field, event) {
-	      var receiverInfo = {};
+		}, {
+			key: 'getServiceInfo',
+			value: function getServiceInfo(field, event) {
+				var receiverRequest = {};
+				if (this.state.login === false && this.state.stepIndex === 2) {
+					receiverRequest[field] = event.target.value;
+					console.log("You are not logged in,Fs but here is your job post", receiverRequest);
+				} else {
+					console.log(receiverRequest);
+					this.setState(receiverRequest);
+					console.log("Your data has been sent");
+				}
+			}
+		}, {
+			key: 'getTime',
+			value: function getTime(blank, other, time) {
+				console.log(time);
+				t = time;
+				// this.setState({time: time})
+			}
+		}, {
+			key: 'getDate',
+			value: function getDate(blank, other, date) {
+				console.log(date);
+				d = date;
+				this.updatetimedate(t, d);
+			}
+		}, {
+			key: 'updatetimedate',
+			value: function updatetimedate(t, d) {
+				this.setState({ time: t, date: d });
+			}
+		}, {
+			key: 'getReceiverInfo',
+			value: function getReceiverInfo(field, event) {
+				var receiverInfo = {};
 
-	      receiverInfo[field] = event.target.value;
-	      console.log(receiverInfo);
-	      this.setState(receiverInfo);
-	    }
+				receiverInfo[field] = event.target.value;
+				console.log(receiverInfo);
+				this.setState(receiverInfo);
+			}
 
-	    //Once Logged in, this will post the new task to the Receiver table
+			//Once Logged in, this will post the new task to the Receiver table
 
-	  }, {
-	    key: 'postInfo',
-	    value: function postInfo() {
-	      var user = this.props.user;
+		}, {
+			key: 'postInfo',
+			value: function postInfo() {
+				var user = this.props.user;
 
-	      var newRequestid = [];
-	      if (this.state.stepIndex === 2) {
-	        console.log("The new state for task pushInfo()", this.state);
-	        var newTask = this.state;
-	        console.log("newtasks in postInfo", newTask);
-	        _receiverhelpers2.default.postTask(newTask, user.userName).then(function (data) {
-	          console.log("saving receivers now from jsx", data);
-	          console.log("this is the postTask user", user.userName);
-	          newRequestid = data.data.requests[data.data.requests.length - 1];
-	          console.log("newRequestID", newRequestid);
-	          this.setState({ requestId: newRequestid });
-	        }.bind(this));
-	      }
-	    }
-	  }, {
-	    key: 'handleDropdown',
-	    value: function handleDropdown(event, index, value) {
-	      console.log(value);
-	      this.setState({ task: value });
-	    }
-	  }, {
-	    key: 'getStepContent',
-	    value: function getStepContent(stepIndex) {
-	      switch (stepIndex) {
-	        case 0:
-	          return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	              'h4',
-	              null,
-	              'Job Details'
-	            ),
-	            _react2.default.createElement(
-	              _DropDownMenu2.default,
-	              { value: this.state.task, onChange: this.handleDropdown, style: { marginRight: 30 } },
-	              _react2.default.createElement(_MenuItem2.default, { value: 'none', primaryText: 'Choose a category' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 'Mechanic', primaryText: 'Mechanic' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 'Cleaning', primaryText: 'Cleaning' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 'Office', primaryText: 'Office Help' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 'Delivery', primaryText: 'Delivery' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 'Volunteer', primaryText: 'Volunteer' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 7, primaryText: '' })
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(_TextField2.default, {
-	              id: 'text-field-controlled',
-	              floatingLabelText: 'City',
-	              className: 'city',
-	              style: { marginRight: 20 },
-	              onChange: this.getReceiverInfo.bind(this, "city")
-	            }),
-	            _react2.default.createElement(_TextField2.default, {
-	              id: 'text-field-controlled',
-	              floatingLabelText: 'State',
-	              className: 'state',
-	              style: { marginRight: 20 }
-	            }),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(_TextField2.default, {
-	              hintText: 'Job Description',
-	              floatingLabelText: 'Job Description',
-	              fullWidth: true,
-	              multiLine: true,
-	              rows: 4,
-	              rowsMax: 10,
-	              onChange: this.getServiceInfo.bind(this, "description")
-	            }),
-	            _react2.default.createElement('br', null)
-	          );
-	        case 1:
-	          return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(_TimePicker2.default, {
-	              hintText: 'Assignment Time',
-	              onChange: this.getTime.bind(this, "time"),
-	              format: 'ampm'
-	            }),
-	            _react2.default.createElement(_DatePicker2.default, {
-	              hintText: 'Assignment Date',
-	              onChange: this.getDate.bind(this, "date"),
-	              formatDate: this.formatDate
-	            })
-	          );
-	        case 2:
-	          return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	              'h3',
-	              null,
-	              'Great! Press Submit to post your job!'
-	            )
-	          );
-	        default:
-	          return 'You\'re a long way from home sonny jim!';
-	      }
-	    }
-	  }, {
-	    key: 'renderContent',
-	    value: function renderContent() {
-	      var _this5 = this;
+				var newRequestid = [];
+				if (this.state.stepIndex === 2) {
+					console.log("The new state for task pushInfo()", this.state);
+					var newTask = this.state;
+					console.log("newtasks in postInfo", newTask);
+					_receiverhelpers2.default.postTask(newTask, user.userName).then(function (data) {
+						console.log("saving receivers now from jsx", data);
+						console.log("this is the postTask user", user.userName);
+						newRequestid = data.data.requests[data.data.requests.length - 1];
+						console.log("newRequestID", newRequestid);
+						this.setState({ requestId: newRequestid });
+					}.bind(this));
+				}
+			}
+		}, {
+			key: 'handleDropdown',
+			value: function handleDropdown(event, index, value) {
+				console.log(value);
+				this.setState({ task: value });
+			}
+		}, {
+			key: 'getStepContent',
+			value: function getStepContent(stepIndex) {
+				switch (stepIndex) {
+					case 0:
+						return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(
+								'h4',
+								null,
+								'Job Details'
+							),
+							_react2.default.createElement(
+								_DropDownMenu2.default,
+								{ value: this.state.task, onChange: this.handleDropdown, style: { marginRight: 30 } },
+								_react2.default.createElement(_MenuItem2.default, { value: 'none', primaryText: 'Choose a category' }),
+								_react2.default.createElement(_MenuItem2.default, { value: 'Mechanic', primaryText: 'Mechanic' }),
+								_react2.default.createElement(_MenuItem2.default, { value: 'Cleaning', primaryText: 'Cleaning' }),
+								_react2.default.createElement(_MenuItem2.default, { value: 'Office', primaryText: 'Office Help' }),
+								_react2.default.createElement(_MenuItem2.default, { value: 'Delivery', primaryText: 'Delivery' }),
+								_react2.default.createElement(_MenuItem2.default, { value: 'Volunteer', primaryText: 'Volunteer' }),
+								_react2.default.createElement(_MenuItem2.default, { value: 7, primaryText: '' })
+							),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(_TextField2.default, {
+								id: 'text-field-controlled',
+								floatingLabelText: 'City',
+								className: 'city',
+								style: { marginRight: 20 },
+								onChange: this.getReceiverInfo.bind(this, "city")
+							}),
+							_react2.default.createElement(_TextField2.default, {
+								id: 'text-field-controlled',
+								floatingLabelText: 'State',
+								className: 'state',
+								style: { marginRight: 20 }
+							}),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(_TextField2.default, {
+								hintText: 'Job Description',
+								floatingLabelText: 'Job Description',
+								fullWidth: true,
+								multiLine: true,
+								rows: 4,
+								rowsMax: 10,
+								onChange: this.getServiceInfo.bind(this, "description")
+							}),
+							_react2.default.createElement('br', null)
+						);
+					case 1:
+						return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(_TimePicker2.default, {
+								hintText: 'Assignment Time',
+								onChange: this.getTime.bind(this, "time"),
+								format: 'ampm'
+							}),
+							_react2.default.createElement(_DatePicker2.default, {
+								hintText: 'Assignment Date',
+								onChange: this.getDate.bind(this, "date"),
+								formatDate: this.formatDate
+							})
+						);
+					case 2:
+						return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Great! Press Submit to post your job!'
+							)
+						);
+					default:
+						return 'You\'re a long way from home sonny jim!';
+				}
+			}
+		}, {
+			key: 'renderContent',
+			value: function renderContent() {
+				var _this5 = this;
 
-	      var _state = this.state,
-	          finished = _state.finished,
-	          stepIndex = _state.stepIndex;
+				var _state = this.state,
+				    finished = _state.finished,
+				    stepIndex = _state.stepIndex;
 
-	      var contentStyle = { margin: '0 16px', overflow: 'hidden' };
+				var contentStyle = { margin: '0 16px', overflow: 'hidden' };
 
-	      if (finished) {
-	        return _react2.default.createElement(
-	          'div',
-	          { style: contentStyle },
-	          _react2.default.createElement(
-	            'h3',
-	            { style: { marginBottom: 20 } },
-	            'Thank you for filling out the job post! We will contact you once you are connected with a candidate.'
-	          ),
-	          _react2.default.createElement(
-	            _RaisedButton2.default,
-	            {
-	              href: '#',
-	              onClick: function onClick(event) {
-	                event.preventDefault();
-	                _this5.setState({ stepIndex: 0, finished: false });
-	              }
-	            },
-	            'Add Another'
-	          )
-	        );
-	      }
+				if (finished) {
+					return _react2.default.createElement(
+						'div',
+						{ style: contentStyle },
+						_react2.default.createElement(
+							'h3',
+							{ style: { marginBottom: 20 } },
+							'Thank you for filling out the job post! We will contact you once you are connected with a candidate.'
+						),
+						_react2.default.createElement(
+							_RaisedButton2.default,
+							{
+								href: '#',
+								onClick: function onClick(event) {
+									event.preventDefault();
+									_this5.setState({ stepIndex: 0, finished: false });
+								}
+							},
+							'Add Another'
+						)
+					);
+				}
 
-	      return _react2.default.createElement(
-	        'div',
-	        { style: contentStyle },
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this.getStepContent(stepIndex)
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { style: { marginTop: 24, marginBottom: 12 } },
-	          _react2.default.createElement(_FlatButton2.default, {
-	            label: 'Back',
-	            disabled: stepIndex === 0,
-	            onTouchTap: this.handlePrev,
-	            style: { marginRight: 12 }
-	          }),
-	          _react2.default.createElement(_RaisedButton2.default, {
-	            label: stepIndex === 2 ? 'Submit' : 'Next',
-	            primary: true,
-	            onTouchTap: this.handleNext,
-	            onClick: this.postInfo
-	          })
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _state2 = this.state,
-	          loading = _state2.loading,
-	          stepIndex = _state2.stepIndex;
+				return _react2.default.createElement(
+					'div',
+					{ style: contentStyle },
+					_react2.default.createElement(
+						'div',
+						null,
+						this.getStepContent(stepIndex)
+					),
+					_react2.default.createElement(
+						'div',
+						{ style: { marginTop: 24, marginBottom: 12 } },
+						_react2.default.createElement(_FlatButton2.default, {
+							label: 'Back',
+							disabled: stepIndex === 0,
+							onTouchTap: this.handlePrev,
+							style: { marginRight: 12 }
+						}),
+						_react2.default.createElement(_RaisedButton2.default, {
+							label: stepIndex === 2 ? 'Submit' : 'Next',
+							primary: true,
+							onTouchTap: this.handleNext,
+							onClick: this.postInfo
+						})
+					)
+				);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _state2 = this.state,
+				    loading = _state2.loading,
+				    stepIndex = _state2.stepIndex;
 
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'well', style: { width: '100%', maxWidth: 700, margin: 'auto' } },
-	          _react2.default.createElement(
-	            _Stepper.Stepper,
-	            { activeStep: stepIndex },
-	            _react2.default.createElement(
-	              _Stepper.Step,
-	              { completed: false },
-	              _react2.default.createElement(
-	                _Stepper.StepLabel,
-	                null,
-	                'Job Details'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Stepper.Step,
-	              null,
-	              _react2.default.createElement(
-	                _Stepper.StepLabel,
-	                null,
-	                'Time'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              _Stepper.Step,
-	              null,
-	              _react2.default.createElement(
-	                _Stepper.StepLabel,
-	                null,
-	                'Submit'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _ExpandTransition2.default,
-	            { loading: loading, open: true },
-	            this.renderContent()
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this.providerTable()
-	        )
-	      );
-	    }
-	  }]);
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'div',
+						{ className: 'well', style: { width: '100%', maxWidth: 700, margin: 'auto' } },
+						_react2.default.createElement(
+							_Stepper.Stepper,
+							{ activeStep: stepIndex },
+							_react2.default.createElement(
+								_Stepper.Step,
+								{ completed: false },
+								_react2.default.createElement(
+									_Stepper.StepLabel,
+									null,
+									'Job Details'
+								)
+							),
+							_react2.default.createElement(
+								_Stepper.Step,
+								null,
+								_react2.default.createElement(
+									_Stepper.StepLabel,
+									null,
+									'Time'
+								)
+							),
+							_react2.default.createElement(
+								_Stepper.Step,
+								null,
+								_react2.default.createElement(
+									_Stepper.StepLabel,
+									null,
+									'Submit'
+								)
+							)
+						),
+						_react2.default.createElement(
+							_ExpandTransition2.default,
+							{ loading: loading, open: true },
+							this.renderContent()
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						this.providerTable()
+					)
+				);
+			}
+		}]);
 
-	  return ReceiverInfoPage;
+		return ReceiverInfoPage;
 	}(_react.Component);
 
 	exports.default = ReceiverInfoPage;
@@ -60903,7 +60903,9 @@
 								title: 'More Information',
 								actions: actions,
 								modal: true,
-								open: this.state.openModal
+								open: this.state.openModal,
+								autoScrollBodyContent: true,
+								autoDetectWindowHeight: true
 							},
 							_react2.default.createElement(
 								'div',

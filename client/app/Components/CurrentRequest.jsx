@@ -78,6 +78,8 @@ class CurrentRequest extends Component {
 	          actions={actions}
 	          modal={true}
 	          open={this.state.openModal}
+            autoScrollBodyContent={true}
+            autoDetectWindowHeight={true}
 	        >
 	        	<div>
 	        		<Card>
